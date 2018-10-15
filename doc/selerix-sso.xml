@@ -1,0 +1,64 @@
+<md:EntityDescriptor entityID="http://www.benselect.com/SAML" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
+  <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" AuthnRequestsSigned="false" WantAssertionsSigned="false">
+    <md:KeyDescriptor>
+      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <X509Data>
+          <X509Certificate>MIIFVTCCBD2gAwIBAgIQCr8Eeb9B1dn74bLl9c/pqzANBgkqhkiG9w0BAQsFADBNMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5EaWdpQ2VydCBTSEEyIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMTYxMTEwMDAwMDAwWhcNMTkxMTE1MTIwMDAwWjCBiTELMAkGA1UEBhMCVVMxDjAMBgNVBAgTBVRleGFzMREwDwYDVQQHEwhNY0tpbm5leTEeMBwGA1UEChMVU2VsZXJpeCBTeXN0ZW1zLCBJbmMuMR8wHQYDVQQLExZJbmZyYXN0cnVjdHVyZSBTdXBwb3J0MRYwFAYDVQQDDA0qLnNlbGVyaXguY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3b+BrKQzcYJws7znnDDYRw1vFbnYp43O0pfGTXfRX2Hp2ZoK/mlpMgpmV396uOzljrdIjLFJrjCfrrzIdGVCPAvxhpP9RkB7jrAX4xjByZZGvXr5EFk+stAJINL4UMtEFxpAStAknEWxhMeT87Y2y240WBH6oIL1JNKQUIStTextAB03bth3OPCJ6URv4n3nyIvHumxpa/coo82WzAJkzxaaTYhB73pZudMyzLphGfj1QxiE2lriORhE04ta05z/L9pIb8aYUyIt4o3BSpw/Ak21G4fGGM4S11eqDnfH39SmUTRlQBBpqsVaYgfLmaUHxNm37+jI3S2THgyFKzYEqwIDAQABo4IB8jCCAe4wHwYDVR0jBBgwFoAUD4BhHIIxYdUvKOeNRji0LOHG2eIwHQYDVR0OBBYEFHRBFyhTUPlTGGbzcPtS4yLONWtnMDYGA1UdEQQvMC2CDSouc2VsZXJpeC5jb22CC3NlbGVyaXguY29tgg93d3cuc2VsZXJpeC5jb20wDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBrBgNVHR8EZDBiMC+gLaArhilodHRwOi8vY3JsMy5kaWdpY2VydC5jb20vc3NjYS1zaGEyLWc1LmNybDAvoC2gK4YpaHR0cDovL2NybDQuZGlnaWNlcnQuY29tL3NzY2Etc2hhMi1nNS5jcmwwTAYDVR0gBEUwQzA3BglghkgBhv1sAQEwKjAoBggrBgEFBQcCARYcaHR0cHM6Ly93d3cuZGlnaWNlcnQuY29tL0NQUzAIBgZngQwBAgIwfAYIKwYBBQUHAQEEcDBuMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5jb20wRgYIKwYBBQUHMAKGOmh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydFNIQTJTZWN1cmVTZXJ2ZXJDQS5jcnQwDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQsFAAOCAQEAKiMF9Z0o1hjToyjHzdoXrZhmJ1NvDpNcqz2i4wImkAl1UWUksz0R2UoDHTQxA0akQqMvKRi8HPWiNik9f84xwf+Xf0ejcEUsiTD8+4hedIhfNcdGtO4JYOGSrsAAyjv/dQNzTLZQG7YA5st/vexFJGO5S+DLRVtL5cIake7+bTMvwYNfyUIDBpPkPfGszpd0H412vjqVXNsjaODr3b1Kfo6NRoL/seNY+1AqCs+S+XSKySIqbfv1KS1Oh++qx1eUrgaIGU35vMz9P+T96mx2HJYh9h3Y3Lf7ZvMr/doD9ES+uJPyHrADS4tZQfxGGrIZ7SBS7tD0GuL7s+O2e6V+jA==</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </md:KeyDescriptor>
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="[ENTRY_POINT_URL]" index="0" isDefault="true" />
+    <md:AttributeConsumingService index="0" isDefault="true">
+      <md:ServiceName xml:lang="en">AttributeContract</md:ServiceName>
+      <md:RequestedAttribute isRequired="false" Name="GroupNumber" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+      <md:RequestedAttribute isRequired="false" Name="EnrollerID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+      <md:RequestedAttribute isRequired="false" Name="EnrolleeID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+      <md:RequestedAttribute isRequired="false" Name="EnrolleeSignaturePIN" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+      <md:RequestedAttribute isRequired="false" Name="Transmittal" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+      <md:RequestedAttribute isRequired="false" Name="HeaderAndFooter" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">yes</saml:AttributeValue>
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">no</saml:AttributeValue>
+      </md:RequestedAttribute>
+      <md:RequestedAttribute isRequired="false" Name="TopMenu" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">yes</saml:AttributeValue>
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">no</saml:AttributeValue>
+      </md:RequestedAttribute>
+      <md:RequestedAttribute isRequired="false" Name="Sidebar" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">yes</saml:AttributeValue>
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">no</saml:AttributeValue>
+      </md:RequestedAttribute>
+      <md:RequestedAttribute isRequired="false" Name="Welcome" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">yes</saml:AttributeValue>
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">no</saml:AttributeValue>
+      </md:RequestedAttribute>
+      <md:RequestedAttribute isRequired="false" Name="PersonalInfo" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">yes</saml:AttributeValue>
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">no</saml:AttributeValue>
+      </md:RequestedAttribute>
+      <md:RequestedAttribute isRequired="false" Name="BenefitSnapshot" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">yes</saml:AttributeValue>
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">no</saml:AttributeValue>
+      </md:RequestedAttribute>
+      <md:RequestedAttribute isRequired="false" Name="Review" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">yes</saml:AttributeValue>
+        <saml:AttributeValue xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">no</saml:AttributeValue>
+      </md:RequestedAttribute>
+      <md:RequestedAttribute isRequired="false" Name="KeepAliveUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+      <md:RequestedAttribute isRequired="false" Name="KeepAliveTimeout" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+      <md:RequestedAttribute isRequired="false" Name="ReturnUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" />
+    </md:AttributeConsumingService>
+  </md:SPSSODescriptor>
+  <md:Organization>
+    <md:OrganizationName xml:lang="en">Selerix Systems, Inc.</md:OrganizationName>
+    <md:OrganizationDisplayName xml:lang="en">Selerix Systems, Inc.</md:OrganizationDisplayName>
+    <md:OrganizationURL xml:lang="en">www.selerix.com</md:OrganizationURL>
+  </md:Organization>
+  <md:ContactPerson contactType="administrative">
+    <md:Company>Selerix Systems, Inc.</md:Company>
+    <md:GivenName>Kevin</md:GivenName>
+    <md:SurName>Roberts</md:SurName>
+    <md:EmailAddress>kevin.roberts@selerix.com</md:EmailAddress>
+    <md:TelephoneNumber>+1 (214) 856-4216</md:TelephoneNumber>
+  </md:ContactPerson>
+</md:EntityDescriptor>

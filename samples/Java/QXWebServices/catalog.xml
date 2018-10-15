@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:51443/Enrollment.asmx?wsdl" uri="xml-resources/web-service-references/Enrollment/wsdl/localhost_51443/Enrollment.asmx.wsdl"/>
+    <system systemId="https://demo.benselect.com/qx/enrollment.asmx?WSDL" uri="xml-resources/web-service-references/enrollment/wsdl/demo.benselect.com/qx/enrollment.asmx.wsdl"/>
+    <system systemId="file:/C:/Projects/BenefitAgent/src/www.benefits-selection.com/Test/BSTIntegrationExample/Lib/enrollment.wsdl" uri="xml-resources/web-service-references/enrollment/wsdl/enrollment.wsdl"/>
+    <system systemId="file:/C:/Users/pavel.OFFICE/AppData/Roaming/NetBeans/7.3.1/config/WebServices/enrollment-wsdl/catalog/enrollment.wsdl" uri="xml-resources/web-service-references/enrollment/wsdl/enrollment.wsdl"/>
+</catalog>

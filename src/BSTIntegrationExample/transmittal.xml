@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Transmittal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SenderID="3647b533-133a-42ff-9919-ea14c1523b49" PortfolioID="00000000-0000-0000-0000-000000000000">
+  <Applicants>
+    <Applicant ID="6980700" ForceChangePIN="false">
+      <AsOfDate>2010-10-01T15:30:47</AsOfDate>
+      <PhoneHome>(919) 238-4192</PhoneHome>
+      <PhoneWork>(912) 831-9234</PhoneWork>
+      <SSN>999-82-3941</SSN>
+      <FirstName>Test</FirstName>
+      <MiddleInitial />
+      <LastName>Test</LastName>
+      <Suffix />
+      <Sex>Male</Sex>
+      <Employment>
+        <HireDate>2000-01-01T00:00:00</HireDate>
+        <Department>Testing</Department>
+        <Location>Dallas</Location>
+        <JobClass>Full-Time</JobClass>
+        <Salary>55000.00</Salary>
+      </Employment>
+      <Relationship>Employee</Relationship>
+      <BirthDate>1970-08-24T00:00:00</BirthDate>
+      <PriorName />
+      <SmokerStatus>Never</SmokerStatus>
+      <Height>64</Height>
+      <Weight>300</Weight>
+      <Student>false</Student>
+      <Disabled>false</Disabled>
+      <EmployeeIdent>131193</EmployeeIdent>
+    </Applicant>
+  </Applicants>
+</Transmittal>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test page for library ifaremeResizer</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://davidjbradshaw.com/iframe-resizer/js/iframeResizer.min.js"></script>
+    <script>
+        var url_togo_field = null;
+        var go_btn = null;
+        var iframe_place = null;
+        $(document).ready(function () {
+            url_togo_field = $('#URL_togo');
+            go_btn = $('#btn_Go');
+            iframe_place = $('#webFrame');
+
+            go_btn.click(function () {
+                iframe_place[0].src = url_togo_field.val();
+            });
+
+            iFrameResize({
+                log: true,                  // Enable console logging
+                checkOrigin: false,
+                enablePublicMethods: true,                  // Enable methods within iframe hosted page
+                resizedCallback: function (messageData) { // Callback fn when resize is received
+                    $('p#callback').html(
+                        '<b>Frame ID:</b> ' + messageData.iframe.id +
+                        ' <b>Height:</b> ' + messageData.height +
+                        ' <b>Width:</b> ' + messageData.width +
+                        ' <b>Event type:</b> ' + messageData.type
+                    );
+                },
+                messageCallback: function (messageData) { // Callback fn when message is received
+                    $('p#callback').html(
+                        '<b>Frame ID:</b> ' + messageData.iframe.id +
+                        ' <b>Message:</b> ' + messageData.message
+                    );
+                    alert(messageData.message);
+                },
+                closedCallback: function (id) { // Callback fn when iFrame is closed
+                    $('p#callback').html(
+                        '<b>IFrame (</b>' + id +
+                        '<b>) removed from page.</b>'
+                    );
+                }
+            });
+        });
+        function SetURL() {
+            var selectedURL = $("input:radio[name=url]:checked").val()
+            url_togo_field[0].value = selectedURL;
+        }
+    </script>
+</head>
+<body>
+
+    This page is test for library <a href="http://davidjbradshaw.github.io/iframe-resizer/">iframeResizer</a>.
+    <form style="margin-top:10px">
+        Enter URL to show in iframe:
+        <input type="url" id="URL_togo" size="120" value="https://stage.benselect.com/Enroll/login.aspx?user=131193&pin=123456&header_footer=no&topmenu=no"/>
+        <br/>
+        <input type="button" id="btn_Go" value="Go" style="background-color:chocolate; width:150px;     line-height: 1.5" />
+    </form>
+    <div style="margin:50px">
+        <iframe id="webFrame"src="" width="100%" height="400px" scrolling="no"></iframe>
+    </div>
+
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>

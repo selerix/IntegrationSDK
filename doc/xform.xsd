@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.w3.org/2002/xforms" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="XForm">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="model" type="tns:model" />
+      <xs:element minOccurs="0" maxOccurs="1" name="action" type="tns:action" />
+      <xs:element minOccurs="0" maxOccurs="1" name="stylesheet" type="tns:stylesheet" />
+      <xs:element minOccurs="0" maxOccurs="1" name="extension" type="tns:extension" />
+    </xs:sequence>
+    <xs:attribute name="ID" type="xs:string" />
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="model">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="input" type="tns:input" />
+        <xs:element minOccurs="0" maxOccurs="1" name="submission" type="tns:submission" />
+        <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+        <xs:element minOccurs="0" maxOccurs="1" name="select" type="tns:select" />
+        <xs:element minOccurs="0" maxOccurs="1" name="textarea" type="tns:textarea" />
+        <xs:element minOccurs="0" maxOccurs="1" name="HorizontalRule" type="tns:HorizontalRule" />
+        <xs:element minOccurs="0" maxOccurs="1" name="group" type="tns:group" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Box" type="tns:Box" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ImageField" type="tns:ImageField" />
+      </xs:choice>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bind" type="tns:bind" />
+      <xs:element minOccurs="0" maxOccurs="1" name="instance" type="tns:instance" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="functions">
+      <xs:simpleType>
+        <xs:list itemType="xs:QName" />
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="schema">
+      <xs:simpleType>
+        <xs:list itemType="xs:anyURI" />
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="version">
+      <xs:simpleType>
+        <xs:list itemType="xs:string" />
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="input">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="type" type="tns:ElementType" use="required" />
+    <xs:attribute name="EnabledBy" type="xs:string" />
+    <xs:attribute name="RequiredBy" type="xs:string" />
+    <xs:attribute name="TabOrder" type="xs:short" use="required" />
+    <xs:attribute name="FieldHelp" type="xs:string" />
+    <xs:attribute name="DecPoints" type="xs:int" use="required" />
+    <xs:attribute name="mask" type="xs:string" />
+    <xs:attribute name="style" type="xs:string" />
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="StrOn" type="xs:string" />
+    <xs:attribute name="StrOff" type="xs:string" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="inputmode" type="xs:string" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute default="false" name="incremental" type="xs:boolean" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="label" mixed="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="output" type="tns:output" />
+    </xs:sequence>
+    <xs:attribute name="className" type="xs:string" />
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="style" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="output">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:element minOccurs="0" maxOccurs="1" name="mediatype" type="tns:mediatypeWithValue" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute name="value" type="xs:string" />
+    <xs:attribute name="mediatype" type="xs:string" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="mediatypeWithValue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:mediatype">
+        <xs:attribute name="value" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="mediatype">
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="Alert" mixed="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="output" type="tns:output" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="help" mixed="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="output" type="tns:output" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="hint" mixed="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="output" type="tns:output" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:simpleType name="ElementType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="text" />
+      <xs:enumeration value="date" />
+      <xs:enumeration value="numeric" />
+      <xs:enumeration value="radio" />
+      <xs:enumeration value="checkbox" />
+      <xs:enumeration value="currency" />
+      <xs:enumeration value="combo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="submission">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="header" type="tns:submissionHeader" />
+        <xs:element minOccurs="0" maxOccurs="1" name="method" type="tns:ValueTemplate" />
+        <xs:element minOccurs="0" maxOccurs="1" name="resource" type="tns:ValueTemplate" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="resource" type="xs:anyURI" />
+    <xs:attribute name="action" type="xs:anyURI" />
+    <xs:attribute default="asynchronous" name="mode" type="tns:submissionMode" />
+    <xs:attribute name="method" type="xs:string" />
+    <xs:attribute name="validate" type="xs:boolean" />
+    <xs:attribute name="relevant" type="xs:boolean" />
+    <xs:attribute name="serialization" type="xs:string" />
+    <xs:attribute default="1.0" name="version" type="xs:NMTOKEN" />
+    <xs:attribute default="false" name="indent" type="xs:boolean" />
+    <xs:attribute default="application/xml" name="mediatype" type="xs:string" />
+    <xs:attribute default="UTF-8" name="encoding" type="xs:string" />
+    <xs:attribute default="false" name="omit-xml-declaration" type="xs:boolean" />
+    <xs:attribute name="standalone" type="xs:boolean" />
+    <xs:attribute name="cdata-section-elements">
+      <xs:simpleType>
+        <xs:list itemType="xs:QName" />
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="all" name="replace" type="xs:string" />
+    <xs:attribute name="instance" type="xs:IDREF" />
+    <xs:attribute default="&amp;" name="separator" type="tns:submissionSeparator" />
+    <xs:attribute name="targetref" type="xs:string" />
+    <xs:attribute name="target" type="xs:string" />
+    <xs:attribute name="includenamespaceprefixes" type="xs:string" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="submissionHeader">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="name" type="tns:ValueTemplate" />
+        <xs:element minOccurs="0" maxOccurs="1" name="value" type="tns:ValueTemplate" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute default="append" name="combine" type="tns:submissionHeaderCombine" />
+  </xs:complexType>
+  <xs:complexType name="ValueTemplate">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="value" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="submissionHeaderCombine">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="append" />
+      <xs:enumeration value="prepend" />
+      <xs:enumeration value="replace" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="submissionMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="asynchronous" />
+      <xs:enumeration value="synchronous" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="submissionSeparator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="&amp;" />
+      <xs:enumeration value=";" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="select">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="choices" type="tns:choices" />
+        <xs:element minOccurs="0" maxOccurs="1" name="item" type="tns:item" />
+        <xs:element minOccurs="0" maxOccurs="1" name="itemset" type="tns:itemset" />
+      </xs:choice>
+      <xs:element minOccurs="0" maxOccurs="1" default="combo" name="type" type="tns:ElementType" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="EnabledBy" type="xs:string" />
+    <xs:attribute name="TabOrder" type="xs:short" use="required" />
+    <xs:attribute name="FieldHelp" type="xs:string" />
+    <xs:attribute name="style" type="xs:string" />
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute default="closed" name="selection" type="tns:selectSelection" />
+    <xs:attribute default="true" name="incremental" type="xs:boolean" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="choices">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="choices" type="tns:choices" />
+        <xs:element minOccurs="0" maxOccurs="1" name="item" type="tns:item" />
+        <xs:element minOccurs="0" maxOccurs="1" name="itemset" type="tns:itemset" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="item">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:element minOccurs="0" maxOccurs="1" name="value" type="tns:value" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="value">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="id" type="xs:ID" />
+        <xs:attribute name="model" type="xs:IDREF" />
+        <xs:attribute name="ref" type="xs:string" />
+        <xs:attribute name="bind" type="xs:IDREF" />
+        <xs:attribute name="value" type="xs:string" />
+        <xs:anyAttribute />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="itemset">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element minOccurs="0" maxOccurs="1" name="copy" type="tns:copy" />
+        <xs:element minOccurs="0" maxOccurs="1" name="value" type="tns:value" />
+      </xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="nodeset" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="copy">
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:simpleType name="selectSelection">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="open" />
+      <xs:enumeration value="closed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="textarea">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="EnabledBy" type="xs:string" />
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="TabOrder" type="xs:short" use="required" />
+    <xs:attribute name="style" type="xs:string" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="inputmode" type="xs:string" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute default="false" name="incremental" type="xs:boolean" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="HorizontalRule">
+    <xs:attribute name="style" type="xs:string" />
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="group">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+        <xs:element minOccurs="0" maxOccurs="1" name="input" type="tns:input" />
+        <xs:element minOccurs="0" maxOccurs="1" name="output" type="tns:output" />
+        <xs:element minOccurs="0" maxOccurs="1" name="range" type="tns:range" />
+        <xs:element minOccurs="0" maxOccurs="1" name="secret" type="tns:secret" />
+        <xs:element minOccurs="0" maxOccurs="1" name="select" type="tns:select" />
+        <xs:element minOccurs="0" maxOccurs="1" name="select1" type="tns:select1" />
+        <xs:element minOccurs="0" maxOccurs="1" name="submit" type="tns:submit" />
+        <xs:element minOccurs="0" maxOccurs="1" name="textarea" type="tns:textarea" />
+        <xs:element minOccurs="0" maxOccurs="1" name="trigger" type="tns:trigger" />
+        <xs:element minOccurs="0" maxOccurs="1" name="upload" type="tns:upload" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="type" type="tns:ElementType" use="required" />
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="EnabledBy" type="xs:string" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="range">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute name="start" type="xs:string" />
+    <xs:attribute name="end" type="xs:string" />
+    <xs:attribute name="step" type="xs:string" />
+    <xs:attribute default="false" name="incremental" type="xs:boolean" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="secret">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="inputmode" type="xs:string" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute default="false" name="incremental" type="xs:boolean" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="select1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="choices" type="tns:choices" />
+        <xs:element minOccurs="0" maxOccurs="1" name="item" type="tns:item" />
+        <xs:element minOccurs="0" maxOccurs="1" name="itemset" type="tns:itemset" />
+      </xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute default="closed" name="selection" type="tns:select1Selection" />
+    <xs:attribute default="true" name="incremental" type="xs:boolean" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:simpleType name="select1Selection">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="open" />
+      <xs:enumeration value="closed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="submit">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="submission" type="xs:IDREF" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="trigger">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="upload">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="label" type="tns:label" />
+      <xs:element minOccurs="0" maxOccurs="1" name="filename" type="tns:filename" />
+      <xs:element minOccurs="0" maxOccurs="1" name="mediatype" type="tns:mediatype" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="1" name="alert" type="tns:Alert" />
+        <xs:element minOccurs="0" maxOccurs="1" name="help" type="tns:help" />
+        <xs:element minOccurs="0" maxOccurs="1" name="hint" type="tns:hint" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:attribute name="appearance" type="xs:string" />
+    <xs:attribute name="mediatype" type="xs:string" />
+    <xs:attribute default="false" name="incremental" type="xs:boolean" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="filename">
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="model" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:string" />
+    <xs:attribute name="bind" type="xs:IDREF" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="Box">
+    <xs:attribute name="style" type="xs:string" />
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="ImageField">
+    <xs:attribute name="style" type="xs:string" />
+    <xs:attribute name="id" type="xs:string" />
+    <xs:attribute name="src" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="bind">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="bind" type="tns:bind" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Scripts" type="tns:ArrayOfJSScript" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="nodeset" type="xs:string" />
+    <xs:attribute name="calculate" type="xs:string" />
+    <xs:attribute name="type" type="xs:QName" />
+    <xs:attribute name="required" type="xs:boolean" use="required" />
+    <xs:attribute name="constraint" type="xs:string" />
+    <xs:attribute name="relevant" type="xs:string" />
+    <xs:attribute name="readonly" type="xs:boolean" use="required" />
+    <xs:attribute name="p3ptype" type="xs:string" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="ArrayOfJSScript">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Script" nillable="true" type="tns:JSScript" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JSScript">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Calculate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Signature" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfJSParam" />
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="ArrayOfJSParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Param" nillable="true" type="tns:JSParam" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JSParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ScriptValue" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="IsDependent" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:complexType name="instance">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="src" type="xs:anyURI" />
+    <xs:attribute name="resource" type="xs:anyURI" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="action">
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="if" type="xs:string" />
+    <xs:attribute name="while" type="xs:string" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:complexType name="stylesheet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="styles" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extension">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:anyAttribute />
+  </xs:complexType>
+</xs:schema>

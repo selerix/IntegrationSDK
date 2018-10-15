@@ -1,0 +1,151 @@
+body
+{
+	margin-bottom: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px 0px 0px 0px;
+	font-size: 10pt;
+	font-family: 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+	background: white;
+}
+
+td
+{
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	font-size: 10pt;
+	font-family: 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+	color: Black;
+}
+
+input
+{
+    padding: 0px 2px 0px 2px;
+	font-size: 10pt;
+	font-family: Arial ,Sans-serif;
+	color: Black;
+}
+
+a:link, a:visited
+{
+	font-size: 10pt;
+	color: #003366;
+	text-decoration: none;
+}
+
+a:hover
+{
+	font-size: 10pt;
+	color: #FF6600;
+	text-decoration: underline;
+}
+
+ul
+{
+}
+
+/* Question Control */
+.clsQuestion
+{
+	font: 10pt Arial,Sans-Serif;
+	color: #000000;
+	padding-top: 4pt;
+	padding-bottom: 7pt;
+	padding-right: 8pt;
+	padding-left: 0pt; /* border: solid 1px #DCDCDC; */
+	vertical-align: top;
+}
+
+.combobox, .radio
+{
+	font: 10pt Arial,Sans-Serif;
+}
+
+.SamlAgentTable
+{
+	width: 90%;
+	padding: 0px 0px 0px 0px;
+	min-width: 770px;
+	max-width: 930px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.SamlAgentTableHeader
+{
+	vertical-align: top;
+	background-color: #F3F3F3;
+	padding-top: 20px;
+}
+
+.clsCaption
+{
+    font: 8pt Verdana,Arial,sans-serif;
+    color: #33337f;
+}
+
+.clsCaptionError
+{
+    font: 8pt Verdana,Arial,sans-serif;
+    color: red;
+}
+
+.clsCaptionOpt
+{
+    font: italic 8pt Verdana,Arial,sans-serif;
+    color: #33337f;
+}
+
+.clsMainTitleCell
+{
+    width: 100%;
+	font-family: Arial;
+	text-align: left;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #003366;
+	border-bottom: solid 2px #DFDFDF;
+	background-image: url( 'images/inner_top_middle.gif' );
+	background-repeat: repeat-x;
+	vertical-align: bottom;
+}
+
+.clsMainCtrlLeftCell
+{
+	background-image: url( 'images/inner_middle_left.gif' );
+	background-repeat: repeat-y;
+}
+
+.clsMainCtrlRightCell
+{
+	background-image: url( 'images/inner_middle_right.gif' );
+	background-repeat: repeat-y;
+}
+
+.clsMainCtrlBottomLeftCell
+{
+	background: url('images/inner_bottom_left.gif') bottom left no-repeat;
+	height: 25px;
+}
+
+.clsMainCtrlBottomCell
+{
+	background-image: url( 'images/inner_bottom.gif' );
+	background-repeat: repeat-x;
+	height: 25px;
+}
+
+.clsMainCtrlBottomRightCell
+{
+	background: url('images/inner_bottom_right.gif') top right no-repeat;
+	height: 25px;
+}
+
+.header1
+{
+    font: Century-Gothic;
+    font-size: medium;
+}
+ 
+  

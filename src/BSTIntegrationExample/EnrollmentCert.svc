@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="BSTIntegrationExample.EnrollmentCert" CodeBehind="EnrollmentCert.svc.cs" %>

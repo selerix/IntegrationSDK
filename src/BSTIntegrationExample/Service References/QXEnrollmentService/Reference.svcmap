@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="63dc2b3e-3b22-4514-84f3-5fd2d580e211" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:51443/Enrollment.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Enrollment.xsd" MetadataType="Schema" ID="b4886f94-ba33-409e-b8a9-dfbdd922c8b5" SourceId="1" SourceUrl="http://localhost:51443/Enrollment.svc?xsd=xsd1" />
+    <MetadataFile FileName="Enrollment1.xsd" MetadataType="Schema" ID="a8bf1b4e-c338-4e68-b7d0-14bb39c5eeb7" SourceId="1" SourceUrl="http://localhost:51443/Enrollment.svc?xsd=xsd0" />
+    <MetadataFile FileName="Enrollment.wsdl" MetadataType="Wsdl" ID="d41ca8f4-1f91-4e37-95ba-b0fe895ed0e7" SourceId="1" SourceUrl="http://localhost:51443/Enrollment.svc?wsdl" />
+    <MetadataFile FileName="Enrollment1.wsdl" MetadataType="Wsdl" ID="9e93d399-57c3-4e27-94df-39c8a9e4551c" SourceId="1" SourceUrl="http://localhost:51443/Enrollment.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="Enrollment.disco" MetadataType="Disco" ID="bada5a7f-f657-409e-9662-76b41837cf89" SourceId="1" SourceUrl="http://localhost:51443/Enrollment.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

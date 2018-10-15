@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="benefitagent.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="benefitagent.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="benefitagent.com/Imports">
+      <xsd:import schemaLocation="http://localhost:51443/Enrollment.svc?xsd=xsd0" namespace="benefitagent.com" />
+      <xsd:import schemaLocation="http://localhost:51443/Enrollment.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEnrollment_GetLoginGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginGUID" />
+  </wsdl:message>
+  <wsdl:message name="IEnrollment_GetLoginGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEnrollment_Query_InputMessage">
+    <wsdl:part name="parameters" element="tns:Query" />
+  </wsdl:message>
+  <wsdl:message name="IEnrollment_Query_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEnrollment_Upload_InputMessage">
+    <wsdl:part name="parameters" element="tns:Upload" />
+  </wsdl:message>
+  <wsdl:message name="IEnrollment_Upload_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEnrollment">
+    <wsdl:operation name="GetLoginGUID">
+      <wsdl:input wsaw:Action="benefitagent.com/IEnrollment/GetLoginGUID" message="tns:IEnrollment_GetLoginGUID_InputMessage" />
+      <wsdl:output wsaw:Action="benefitagent.com/IEnrollment/GetLoginGUIDResponse" message="tns:IEnrollment_GetLoginGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input wsaw:Action="benefitagent.com/IEnrollment/Query" message="tns:IEnrollment_Query_InputMessage" />
+      <wsdl:output wsaw:Action="benefitagent.com/IEnrollment/QueryResponse" message="tns:IEnrollment_Query_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Upload">
+      <wsdl:input wsaw:Action="benefitagent.com/IEnrollment/Upload" message="tns:IEnrollment_Upload_InputMessage" />
+      <wsdl:output wsaw:Action="benefitagent.com/IEnrollment/UploadResponse" message="tns:IEnrollment_Upload_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
