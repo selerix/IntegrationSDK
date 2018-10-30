@@ -9,7 +9,7 @@ namespace BSTIntegrationExample.WebService
     /// <summary>
     /// Enrollment service. Surrports single sign to enrollment site.
     /// </summary>
-    [WebService(Namespace = "http://www.selerix.com/enrollment")]
+    [WebService(Namespace = "https://benefits-selection.com/qx/enrollment")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     public class Enrollment : System.Web.Services.WebService
     { 
