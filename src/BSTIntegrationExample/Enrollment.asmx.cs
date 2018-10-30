@@ -14,19 +14,19 @@ namespace BSTIntegrationExample.WebService
     public class Enrollment : System.Web.Services.WebService
     { 
         [WebMethod(EnableSession = true)]
-        public string Upload(string user, string passwd, string transmittal)
+        public string Upload(string user, string passwd, string data)
         {
             BSTIntegrationExample.Enrollment svc = new BSTIntegrationExample.Enrollment();
 
-            return svc.Upload(transmittal);
+            return svc.Upload(data);
         }
 
         [WebMethod(EnableSession = true)]
-        public string Query(string user, string passwd, string transmittal)
+        public string Query(string user, string passwd, string data)
         {
             BSTIntegrationExample.Enrollment svc = new BSTIntegrationExample.Enrollment();
 
-            return svc.Query(transmittal);
+            return svc.Query(data);
         }
 
         [WebMethod(EnableSession = true)]

@@ -402,19 +402,19 @@ namespace BSTIntegrationExample
         string DoQuery(string data)
         {
             // Uncomment next line if you want use soap http client instead WCF
-            //return CreateQXWebServiceClient().Query("username", "password", data);
+            return CreateQXWebServiceClient().Query("username", "password", data);
 
-            return CreatQXEnrollmentServiceClient().Query(data);
+            //return CreatQXEnrollmentServiceClient().Query(data);
         }
 
         string DoUpdate(string data)
         {
             // Uncomment next line if you want use soap http client instead WCF
-            //return CreateQXWebServiceClient().Upload("username", "password", data);
+            return CreateQXWebServiceClient().Upload("username", "password", data);
             
-            return CreatQXEnrollmentServiceClient().Upload(data);
+            //return CreatQXEnrollmentServiceClient().Upload(data);
         }
-    }
+    }   
 
     /// <summary>
     /// BindingHelper
