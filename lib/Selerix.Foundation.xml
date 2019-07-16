@@ -497,557 +497,33 @@
             Si.
             </summary>
         </member>
-        <member name="T:Selerix.Foundation.IZipArchive">
+        <member name="T:Selerix.Foundation.Data.TokenHelper">
             <summary>
-            Represents a package of compressed files in the zip archive format.
+            Summary description for TokenHelper.
             </summary>
         </member>
-        <member name="P:Selerix.Foundation.IZipArchive.Entries">
+        <member name="T:Selerix.Foundation.Data.HelpLink">
             <summary>
-            Gets the collection of entries that are currently in the zip archive.
+            Help link for JScript support.
             </summary>
-            <exception cref="T:System.NotSupportedException">The zip archive does not support reading.</exception>
-            <exception cref="T:System.ObjectDisposedException">The zip archive has been disposed.</exception>
-            <exception cref="T:System.IO.InvalidDataException"> The zip archive is corrupt, and its entries cannot be retrieved.</exception>
+            <remarks></remarks>
         </member>
-        <member name="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String)">
+        <member name="F:Selerix.Foundation.Data.HelpLink.HelpChapter">
             <summary>
-            Creates an empty entry that has the specified path and entry name in the zip archive.
+            Help chapter.
             </summary>
-            <param name="entryName">A path, relative to the root of the archive, that specifies the name of the entry to be created.</param>
-            <returns>An empty entry in the zip archive.</returns>
-            <exception cref="T:System.ArgumentException">
-            <paramref name="entryName"/> is <see cref="F:System.String.Empty"/>
-            </exception>
-            <exception cref="T:System.ArgumentNullException">
-            <paramref name="entryName"/> is null./>
-            </exception>
-            <exception cref="T:System.NotSupportedException">
-            The zip archive does not support writing.
-            </exception>
-            <exception cref="T:System.ObjectDisposedException">
-            The zip archive has been disposed.
-            </exception>
         </member>
-        <member name="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String,System.IO.Stream,System.Nullable{System.DateTime})">
+        <member name="F:Selerix.Foundation.Data.HelpLink.HelpChapterUrl">
             <summary>
-            Creates an entry with data.
-            <para>For more information see <see cref="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String)"/></para>
+            Link to help page.
             </summary>
-            <param name="entryName"></param>
-            <param name="inputStream"></param>
-            <param name="writeTime"></param>
-            <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String,System.Byte[],System.Int32,System.Int32,System.Nullable{System.DateTime})">
+        <member name="M:Selerix.Foundation.Data.HelpLink.#ctor(System.String,System.String)">
             <summary>
-            Creates an entry with data.
-            <para>For more information see <see cref="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String)"/></para>
+            Initializes a new instance of the <see cref="T:Selerix.Foundation.Data.HelpLink"/> class.
             </summary>
-            <param name="entryName"></param>
-            <param name="buffer"></param>
-            <param name="offset"></param>
-            <param name="count"></param>
-            <param name="writeTime"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.IZipArchive.GetEntry(System.String)">
-            <summary>
-            Retrieves a wrapper for the specified entry in the zip archive.
-            </summary>
-            <param name="entryName">A path, relative to the root of the archive, that identifies the entry to retrieve.</param>
-            <returns>A wrapper for the specified entry in the archive; null if the entry does not exist in the archive.</returns>
-            <exception cref="T:System.ArgumentException">
-            <paramref name="entryName"/> is <see cref="F:System.String.Empty"/>
-            </exception>
-            <exception cref="T:System.ArgumentNullException">
-            <paramref name="entryName"/> is null./>
-            </exception>
-            <exception cref="T:System.NotSupportedException">
-            The zip archive does not support reading.
-            </exception>
-            <exception cref="T:System.ObjectDisposedException">
-            The zip archive has been disposed.
-            </exception>
-            <exception cref="T:System.IO.InvalidDataException">
-            The zip archive is corrupt, and its entries cannot be retrieved.
-            </exception>
-        </member>
-        <member name="M:Selerix.Foundation.IZipArchive.SetLevel(System.Int32)">
-            <summary>
-            Sets the Compression Level for all zip archive entries.
-            </summary>
-            <param name="compressionLevel">number from 0 to 9 - compression lowest to highest.</param>
-            <exception cref="T:System.ArgumentException"><paramref name="compressionLevel"/> is not in required range.</exception>
-        </member>
-        <member name="T:Selerix.Foundation.IZipArchiveEntry">
-            <summary>
-            Represents a compressed file within a zip archive.
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.IZipArchiveEntry.CompressedLength">
-            <summary>
-            Gets the compressed size of the entry in the zip archive.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">
-            The value of the property is not available because the entry has been modified.
-            </exception>
-        </member>
-        <member name="P:Selerix.Foundation.IZipArchiveEntry.FullName">
-            <summary>
-            Gets the relative path of the entry in the zip archive.
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.IZipArchiveEntry.LastWriteTime">
-            <summary>
-            Gets or sets the last time the entry in the zip archive was changed.
-            </summary>
-            <exception cref="T:System.NotSupportedException">
-            The attempt to set this property failed, because the zip archive for the entry is in 'Read' mode.
-            </exception>
-            <exception cref="T:System.IO.IOException">
-            The archive mode is set to 'Create' or 'Update' mode and the entry has been opened.
-            </exception>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-            An attempt was made to set this property to a value that is either earlier than
-            1980 January 1 0:00:00 (midnight) or later than 2107 December 31 23:59:58 (one second before midnight).
-            </exception>
-        </member>
-        <member name="P:Selerix.Foundation.IZipArchiveEntry.Length">
-            <summary>
-            Gets the uncompressed size of the entry in the zip archive.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">
-            The value of the property is not available because the entry has been modified.
-            </exception>
-        </member>
-        <member name="P:Selerix.Foundation.IZipArchiveEntry.Name">
-            <summary>
-            Gets the file name of the entry in the zip archive.
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.IZipArchiveEntry.Delete">
-            <summary>
-            Deletes the entry from the zip archive.
-            </summary>
-            <exception cref="T:System.IO.IOException">
-            The entry is already open for reading or writing.
-            </exception>
-            <exception cref="T:System.NotSupportedException">
-            The zip archive for this entry was opened in a mode other than 'Update'.
-            </exception>
-        </member>
-        <member name="M:Selerix.Foundation.IZipArchiveEntry.Open">
-            <summary>
-            Opens the entry from the zip archive.
-            </summary>
-            <returns>The stream that represents the contents of the entry.</returns>
-            <exception cref="T:System.IO.IOException">
-            The entry is already currently open for writing or the entry has been deleted from the archive.
-            Or the archive for this entry was opened with the 'Create' mode, and this entry has already been written to.
-            </exception>
-            <exception cref="T:System.IO.InvalidDataException">
-            The entry is either missing from the archive or is corrupt and cannot be read.
-            Or the entry has been compressed by using a compression method that is not supported.
-            </exception>
-            <exception cref="T:System.ObjectDisposedException">
-            Opens the entry from the zip archive.
-            </exception>
-        </member>
-        <member name="P:Selerix.Foundation.IZipArchiveEntry.Comment">
-            <summary>
-            Optional Comment.
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Compression">
-            <summary>
-            Helper class to work with archiving.
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Compression.CompressionType">
-            <summary>
-            Indicates the type of compression
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Compression.CompressionType.Deflate">
-            <summary>
-            Deflate (raw compression algorithm used by both 'Zip' and 'GZip' formats)
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Compression.CompressionType.GZip">
-            <summary>
-            GZip
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Compression.CompressionType.DeflateSilverlight">
-            <summary>
-            Deflate for Silverlight control (raw compression algorithm used by both 'Zip' and 'GZip' formats)
-            Silverlight infragistics implementation has a bug which requires to add additional 4096 bytes to output.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Compression.GZip">
-            <summary>
-            Activates the GZip format compression.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Compression.Deflate">
-            <summary>
-            Activates the Deflate algorithm compression.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Compression.DeflateSilverlight">
-            <summary>
-            Activates the Deflate algorithm compression.
-            (DO NOT USE for non-silverlight control)
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.ZipArchiveCreate(System.IO.Stream)">
-            <summary>
-            Creates a new zip archive.
-            </summary>
-            <param name="outputStream">A <see cref="T:System.IO.Stream"/> for writting a compressed data into.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.ZipArchiveRead(System.IO.Stream)">
-            <summary>
-            Reads an existing zip archive.
-            </summary>
-            <param name="inputStream">A <see cref="T:System.IO.Stream"/> for reading a compressed data from.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.ZipArchiveUpdate(System.IO.Stream)">
-            <summary>
-            Updates an existing zip archive.
-            </summary>
-            <param name="ioStream">A <see cref="T:System.IO.Stream"/> for reading and writting a compressed data.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.ExtractZip(System.String,System.String)">
-            <summary>
-            Extracts all Zip Archive entries into the target folder.
-            </summary>
-            <param name="zipFilePath">The path to the Zip file to extract.</param>
-            <param name="targetDir">
-            The full path to the destination folder.
-            <para>If <paramref name="targetDir"/> does not exists, a new folder will be created.</para>
-            <para>If <paramref name="targetDir"/> is not empty, <see cref="T:System.ArgumentException"/> will be thrown.</para>
-            </param>
-            <exception cref="T:System.ArgumentException">Zip file does't exists or destination folder is not empty.</exception>
-            <returns>A count of extracted files.</returns>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.#ctor(Selerix.Foundation.Compression.CompressionType)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Selerix.Foundation.Compression"/> class.
-            </summary>
-            <param name="compressionType">Type of the compression.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.OutputStream(System.IO.Stream)">
-            <summary>
-            Creates a compression stream based on the given output stream.
-            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
-            </summary>
-            <param name="outputStream">The output stream.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.OutputStream(System.IO.Stream,System.Boolean)">
-            <summary>
-            Creates a compression stream based on the given output stream.
-            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
-            </summary>
-            <param name="outputStream">The output stream.</param>
-            <param name="leaveOpen">Leave original stream open after dispose.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.InputStream(System.IO.Stream)">
-            <summary>
-            Creates a decompression stream based on the given input stream.
-            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
-            </summary>
-            <param name="inputStream">The input stream.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.InputStream(System.IO.Stream,System.Boolean)">
-            <summary>
-            Creates a decompression stream based on the given input stream.
-            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
-            </summary>
-            <param name="inputStream">The input stream.</param>
-            <param name="leaveOpen">Leave original stream open after dispose.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.Compress(System.Byte[])">
-            <summary>
-            Compresses the specified bytes.
-            </summary>
-            <param name="bytesToCompress">The bytes to compress.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.Compress(System.String)">
-            <summary>
-            Compresses the specified string.
-            </summary>
-            <param name="stringToCompress">The string to compress.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.CompressToByte(System.String)">
-            <summary>
-            Compresses to byte.
-            </summary>
-            <param name="stringToCompress">The string to compress.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.DeCompress(System.String)">
-            <summary>
-            Decompress string.
-            </summary>
-            <param name="stringToDecompress">The string to decompress.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Compression.DeCompress(System.Byte[])">
-            <summary>
-            Decompress bytes.
-            </summary>
-            <param name="bytesToDecompress">The bytes to decompress.</param>
-            <returns></returns>
-        </member>
-        <member name="T:Selerix.Foundation.Conveyor.AbstractStep`1">
-            <summary>
-            Conveyor step 
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.ID">
-            <summary>
-            The step id
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Conveyor.AbstractStep`1._StaticLock">
-            <summary>
-            Static lock object to syncronize steps status
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Conveyor.AbstractStep`1._TaskID">
-            <summary>
-            Id of task that execute this step
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.PushLockObject">
-            <summary>
-            Syncronize object for input data
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.FetchLockObject">
-            <summary>
-            Syncronize object for output data
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.Finished">
-            <summary>
-            Finished flag
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.IsReady">
-            <summary>
-            IsReady flag - means that there are no more Push in future and step need to be proceded even if 
-            other flags is false
-            </summary>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.IsSerialStep">
-            <summary>
-            indicated that step shoul be executed by only one task in serial mode
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.AbstractStep`1.Push(`0)">
-            <summary>
-            Add Input Queue
-            </summary>
-            <param name="input">The input object</param>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.AbstractStep`1.Fetch(System.Nullable{System.Int32})">
-            <summary>
-            Get next result of step execution
-            </summary>
-            <returns>Next result</returns>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.AbstractStep`1.SetReady">
-            <summary>
-            Notify step to calculate data anyway
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Conveyor.Conveyor`1">
-            <summary>
-            Class for parallel execution 
-            </summary>
-        </member>
-        <member name="E:Selerix.Foundation.Conveyor.Conveyor`1.RowReceived">
-            <summary>
-            Event that raised when every row passed troght all steps
-            </summary>
-        </member>
-        <member name="E:Selerix.Foundation.Conveyor.Conveyor`1.ResultReceived">
-            <summary>
-            Event that raised when all rows passed troght all steps
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Conveyor.Conveyor`1._Tasks">
-            <summary>
-            List of running tasks
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.Conveyor`1.#ctor">
-            <summary>
-            Conveyour constructor
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.Conveyor`1.#ctor(System.Threading.CancellationTokenSource,System.Int32)">
-            <summary>
-            Conveyour constructor
-            </summary>
-            <param name="tokenSource">Cancellation TokenSource</param>
-            <param name="taskLimit">Max processor count</param>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.Conveyor`1.NotifyResultReceived(System.Threading.Tasks.Task)">
-            <summary>
-            Notify that Result is done
-            </summary>
-            <param name="result">the result</param>        
-        </member>
-        <member name="T:Selerix.Foundation.Conveyor.ResultReceivedEventArgs">
-            <summary>
-            ResultReceivedEventArgs
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.ResultReceivedEventArgs.#ctor(System.Object)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="result">result</param>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.ResultReceivedEventArgs.Result">
-            <summary>
-            get the result
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Conveyor.StepsCollection`1">
-            <summary>
-            Collection of Conveyor steps, that implements MoveNext/Prev methods 
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.#ctor">
-            <summary>
-            Constructor
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.#ctor(System.Collections.Generic.List{Selerix.Foundation.Conveyor.AbstractStep{`0}})">
-            <summary>
-            Constructor
-            </summary>
-            <param name="list">List of steps</param>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.StepsCollection`1.Current">
-            <summary>
-            Current step
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.MoveNext">
-            <summary>
-            MoveNext
-            </summary>
-            <returns>Returns false if current step is the last step in collection, else returns true</returns>
-        </member>
-        <member name="P:Selerix.Foundation.Conveyor.StepsCollection`1.Next">
-            <summary>
-            Get the next step in collection without moving.
-            If Current step is the last step returns null
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.MovePrevious">
-            <summary>
-            MovePrevious
-            </summary>
-            <returns>Returns false if current step is the first step in collection, else returns true</returns>
-        </member>
-        <member name="T:Selerix.Foundation.CustomFieldType">
-            <summary>
-            Enum. Specifies the attributes for the custom field type.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.Unknown">
-            <summary>
-            Unknown.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.Int">
-            <summary>
-            Number.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.String">
-            <summary>
-            Text.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.DateTime">
-            <summary>
-            Date.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.Boolean">
-            <summary>
-            Yes/No.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.Decimal">
-            <summary>
-            Decimal.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.ComboBox">
-            <summary>
-            Combo Box.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.Money">
-            <summary>
-            Money.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.ZipCode">
-            <summary>
-            ZipCode.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.ZipCodePlus4">
-            <summary>
-            Zip Code + 4.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.PhoneNumber">
-            <summary>
-            Phone number.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.SSN">
-            <summary>
-            Social Security Number.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldType.Other">
-            <summary>
-            Other.
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.CustomFieldScope">
-            <summary>
-            List of Custom Field Scopes
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldScope.Employee">
-            <summary>
-            Employee level custom field
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldScope.Person">
-            <summary>
-            Person level custom field
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.CustomFieldScope.Coverage">
-            <summary>
-            Coverage level custom field
-            </summary>
+            <param name="chapter">The chapter.</param>
+            <param name="url">The URL.</param>
         </member>
         <member name="T:Selerix.Foundation.Data.ScriptableAttribute">
             <summary>
@@ -1145,6 +621,149 @@
             Gets or sets a value indicating whether to hide entity from view.
             </summary>
             <value><c>true</c> if to hide entity from view; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Selerix.Foundation.Data.DataValidationException">
+            <summary>
+            Data validation exception.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataValidationException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataValidationException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+            <param name="inner">Inner exception</param>
+        </member>
+        <member name="T:Selerix.Foundation.Data.DataRequiredException">
+            <summary>
+            Data required exception
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataRequiredException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataRequiredException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataRequiredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+            <param name="inner">Inner exception</param>
+        </member>
+        <member name="T:Selerix.Foundation.Data.DataExistsException">
+            <summary>
+            Data already exists exception
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataExistsException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataExistsException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataExistsException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+            <param name="inner">Inner exception</param>
+        </member>
+        <member name="T:Selerix.Foundation.Data.DataMissingException">
+            <summary>
+            Data missing exception
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataMissingException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataMissingException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="M:Selerix.Foundation.Data.DataMissingException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">Error message</param>
+            <param name="inner">Inner exception</param>
+        </member>
+        <member name="T:Selerix.Foundation.Data.Levenshtein">
+            <summary>
+            Class that helps calculate difference between two strings
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Levenshtein.CalcEditDistance(System.String,System.String)">
+            <summary>
+            Compute Levenshtein distance. 
+            http://www.merriampark.com/ld.htm
+            </summary>
+            <returns>Distance between the two strings.
+            The larger the number, the bigger the difference.
+            </returns>
+        </member>
+        <member name="T:Selerix.Foundation.Data.XmlUtils">
+            <summary>
+            Helper methods to handle xml.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.XmlUtils.RemoveInvalidXmlCharacters(System.String)">
+            <summary>
+            Removes control characters and other non-UTF-8 characters
+            </summary>
+            <param name="inString">The string to process</param>
+            <returns>A string with only valid XML characters</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.XmlUtils.RemoveXMLAttribute(System.String,System.String)">
+            <summary>
+            Removes the XML attribute.
+            </summary>
+            <param name="strParentXML">The STR parent XML.</param>
+            <param name="strName">Name of the STR.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.XmlUtils.InsertXMLChild(System.String,System.String)">
+            <summary>
+            Inserts the XML child.
+            </summary>
+            <param name="strParentXML">The STR parent XML.</param>
+            <param name="strChildXML">The STR child XML.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.XmlUtils.InsertXMLAttribute(System.String,System.String,System.String)">
+            <summary>
+            Inserts the XML attribute. Won't insert attribute if value is null or empty.
+            </summary>
+            <param name="strParentXML">The STR parent XML.</param>
+            <param name="strName">Name of the STR.</param>
+            <param name="strValue">The STR value.</param>
+            <returns></returns>
         </member>
         <member name="T:Selerix.Foundation.Data.PersistentStoreAttribute">
             <summary>
@@ -3158,22 +2777,6 @@
             <param name="text"></param>
             <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.ReplaceNonAlphaNum(System.String,System.String)">
-            <summary>
-            Replaces all non alpha-num chars from string with new string.
-            </summary>
-            <param name="text">The string.</param>
-            <param name="replacement">The replacement string.</param>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.ListToXmlString(System.Collections.IList,System.String,System.String)">
-            <summary>
-            Lists to XML string.
-            </summary>
-            <param name="list">The list.</param>
-            <param name="rootElementName">Name of the root element.</param>
-            <param name="itemElementName">Name of the item element.</param>
-            <returns>System.String.</returns>
-        </member>
         <member name="M:Selerix.Foundation.Data.Utils.StripNonAlphaNumWhitespace(System.String)">
             <summary>
             Deletes all non alpha-num-whitespace chars from string.
@@ -3255,6 +2858,21 @@
             <param name="strIN">String that may contain characters that should be ignored</param>
             <returns>Result string</returns>
         </member>
+        <member name="M:Selerix.Foundation.Data.Utils.IsPrintableAsciiChar(System.Char)">
+            <summary>
+            Is this char a printable, ASCII char?
+            </summary>
+            <param name="c">char to test</param>
+            <returns>true if printable ASCII char</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.StripNonPrintableAsciiCharacters(System.String)">
+            <summary>
+            This will strip all chars not in the \u0020 to \u007E range like is
+            required for RFC2822 mail headers
+            </summary>
+            <param name="inString">input string</param>
+            <returns>string with only printable ASCII chars</returns>
+        </member>
         <member name="T:Selerix.Foundation.Data.Utils.VerificatorDelegate">
             <summary>
             Use this delegate to define filter to strip character. It run for each <paramref name="ch"/>
@@ -3273,6 +2891,132 @@
             <param name="maxResultLength">This is nullable. Max length of result. If it is null then do not strip result</param>
             <param name="checkedLength">Position of the last checked character from input</param>
             <returns>Result string</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.ReplaceNonAlphaNum(System.String,System.String)">
+            <summary>
+            Replaces all non alpha-num chars from string with new string.
+            </summary>
+            <param name="text">The string.</param>
+            <param name="replacement">The replacement string.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.ListToXmlString(System.Collections.IList,System.String,System.String)">
+            <summary>
+            Lists to XML string.
+            </summary>
+            <param name="list">The list.</param>
+            <param name="rootElementName">Name of the root element.</param>
+            <param name="itemElementName">Name of the item element.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.NormalizeIdentifier(System.String)">
+            <summary>
+            Utility function that removes all non-alphanumeric characters from
+            a string and returns just the numbers and letters, permits underscore, and prepends with
+            underscore if the identifier starts with a number.  This is used for converting
+            text valid XML tags, for example.
+            </summary>
+            <param name="stringIN">The string IN.</param>
+            <returns>String containing only the alphanumeric characters and underscores from
+            the input string</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.NormalizeXmlIdentifier(System.String)">
+            <summary>
+            Utility function that removes all non-alphanumeric and '.', ':', '-', '_' characters from
+            a string and returns just the numbers, letters and this spec characters,
+            Prepends with underscore if the identifier starts with a number or '.' or'-'.
+            This is used for converting text valid XML tags and attributes.
+            </summary>
+            <param name="stringIN">The string IN.</param>
+            <returns>String containing only the alphanumeric characters and underscores from
+            the input string</returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.BytesToHexString(System.Byte[])">
+            <summary>
+            Convert bytes to string of hex codes.
+            </summary>
+            <param name="data">data to convert</param>
+            <returns>hex codes</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.EncodeBase64URLSafeString(System.Byte[])">
+            <summary>
+            Encodes binary data using a URL-safe variation of the base64 algorithm but does not chunk the output.
+            The url-safe variation emits - and _ instead of + and / characters.
+            </summary>
+            <param name="toEncode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.Trim(System.String)">
+            <summary>
+            Trim string
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.LeftStr(System.String,System.Int32)">
+            <summary>
+            Lefts the string. Trims string to specified lenght
+            </summary>
+            <param name="str">string</param>
+            <param name="len">lenght</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.CompareIgnoreNulls(System.String,System.String)">
+            <summary>
+            Compares two strings and returns true if they are the same. For the comparison, nulls and empty strings are treated as equal and leading and trailing spaces are ignored. 
+            </summary>
+            <param name="str1"></param>
+            <param name="str2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.Collate(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Return the first string that is not null or whitespace
+            </summary>
+            <param name="s1">string 1</param>
+            <param name="s2">string 2</param>
+            <param name="s3">string 3</param>
+            <param name="s4">string 4</param>
+            <param name="s5">string 5</param>
+            <param name="s6">string 6</param>
+            <returns>first string not null or whitespace</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.FirstIntergerValueIfPiped(System.String)">
+            <summary>
+            Find first integer-like value in <paramref name="option"/> string and return its string representation
+            </summary>
+            <param name="option">string contains parts joined by '|' character</param>
+            <returns>string with found integer value or <paramref name="option"/> otherwise</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.MailHeaderSafeString(System.String)">
+            <summary>
+            Create a string which is RFC2822 Header Compliant
+            </summary>
+            <param name="text">input string</param>
+            <returns>RFC2822 Header Compliant string</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.RemoveDiacritics(System.String)">
+            <summary>
+            Replaces characters like u with umlaut to u and unmappable chars like Cyrillic chars to ?
+            </summary>
+            <param name="text">input string</param>
+            <returns>string with diacritical marks removed</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.CompareToPolicyNumber(System.String,System.String)">
+            <summary>
+            Compare policy number to provided pattern. Comparing to null means match to any policy number.
+            </summary>
+            <param name="policyNumber">Policy number we compare.</param>
+            <param name="pattern">Pattern we compare policy number to.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.ContainsIgnoreCase(System.String,System.String)">
+            <summary>
+            Does the string body contain the string value, ignoring case
+            </summary>
+            <param name="body">The main string to check its contents</param>
+            <param name="value">Does this value exist in the body string</param>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.CommentScript(System.String)">
             <summary>
@@ -3322,30 +3066,6 @@
               <c>true</c> if the specified GUID string is GUID; otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.NormalizeIdentifier(System.String)">
-            <summary>
-            Utility function that removes all non-alphanumeric characters from
-            a string and returns just the numbers and letters, permits underscore, and prepends with
-            underscore if the identifier starts with a number.  This is used for converting
-            text valid XML tags, for example.
-            </summary>
-            <param name="stringIN">The string IN.</param>
-            <returns>String containing only the alphanumeric characters and underscores from
-            the input string</returns>
-            <remarks></remarks>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.NormalizeXmlIdentifier(System.String)">
-            <summary>
-            Utility function that removes all non-alphanumeric and '.', ':', '-', '_' characters from
-            a string and returns just the numbers, letters and this spec characters,
-            Prepends with underscore if the identifier starts with a number or '.' or'-'.
-            This is used for converting text valid XML tags and attributes.
-            </summary>
-            <param name="stringIN">The string IN.</param>
-            <returns>String containing only the alphanumeric characters and underscores from
-            the input string</returns>
-            <remarks></remarks>
-        </member>
         <member name="M:Selerix.Foundation.Data.Utils.NormalizeSSN(System.String,System.Boolean)">
             <summary>
             Checks that SSN has the right format.
@@ -3384,6 +3104,13 @@
             </summary>
             <param name="strSSN">unformatted SSN</param>
             <returns>formatted SSN</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.MaskSSN(System.String)">
+            <summary>
+            Returns masked SSN
+            </summary>
+            <param name="retVal"></param>
+            <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.NormalizeEIN(System.String)">
             <summary>
@@ -3433,44 +3160,12 @@
             <param name="city">The city.</param>
             <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.BytesToHexString(System.Byte[])">
+        <member name="M:Selerix.Foundation.Data.Utils.ConvertValueToBooleanString(System.String)">
             <summary>
-            Convert bytes to string of hex codes.
+            Converts the value to boolean string.
             </summary>
-            <param name="data">data to convert</param>
-            <returns>hex codes</returns>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.EncodeBase64URLSafeString(System.Byte[])">
-            <summary>
-            Encodes binary data using a URL-safe variation of the base64 algorithm but does not chunk the output.
-            The url-safe variation emits - and _ instead of + and / characters.
-            </summary>
-            <param name="toEncode"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.Trim(System.String)">
-            <summary>
-            Trim string
-            </summary>
-            <param name="str"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.LeftStr(System.String,System.Int32)">
-            <summary>
-            Lefts the string. Trims string to specified lenght
-            </summary>
-            <param name="str">string</param>
-            <param name="len">lenght</param>
-            <returns></returns>
-            <remarks></remarks>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.CompareIgnoreNulls(System.String,System.String)">
-            <summary>
-            Compares two strings and returns true if they are the same. For the comparison, nulls and empty strings are treated as equal and leading and trailing spaces are ignored. 
-            </summary>
-            <param name="str1"></param>
-            <param name="str2"></param>
-            <returns></returns>
+            <param name="value">The value.</param>
+            <returns>System.String.</returns>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.FileCompare(System.String,System.String)">
             <summary>
@@ -3488,73 +3183,6 @@
             </summary>
             <param name="file1"></param>
             <param name="file2"></param>
-            <returns></returns>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.WSPDateFormat">
-            <summary>
-            WSP date format
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.WSPTimeFormat">
-            <summary>
-            WSP date time format
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.SQLTimeFormat">
-            <summary>
-            SQL Server date time format
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.UITimeFormat">
-            <summary>
-            UI date time format
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.SQLDateFormat">
-            <summary>
-            SQL Server date format
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.StdDateFormat">
-            <summary>
-            Standard date format
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.XmlTimeFormat">
-            <summary>
-            XML standard dateTime format. http://www.w3.org/TR/xmlschema-2/#dateTime
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.SmallDateTimeMinValue">
-            <summary>
-            Min date for SQL SmallDateTime value
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Data.Utils.SmallDateTimeMaxValue">
-            <summary>
-            Max date for SQL SmallDateTime value
-            </summary>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.DateToStringWithMaxDefault(System.Nullable{System.DateTime})">
-            <summary>
-            DateTime to String conversion.
-            </summary>
-            <param name="date"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.DateToStringWithMaxDefault(System.Nullable{System.DateTime},System.String)">
-            <summary>
-            DateTime to String conversion.
-            </summary>
-            <param name="date"></param>
-            <param name="format"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.DateFromStringWithMaxDefault(System.String)">
-            <summary>
-            String to DateTime conversion.
-            </summary>
-            <param name="date"></param>
             <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.IsMDBFile(System.String)">
@@ -3624,12 +3252,92 @@
             <param name="destinationFileName">Name of the destination file.</param>
             <remarks></remarks>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.EqualArrayComparison(System.Collections.ArrayList,System.Collections.ArrayList)">
+        <member name="M:Selerix.Foundation.Data.Utils.FormatFileSize(System.Int64)">
             <summary>
-            Compares 2 arrays and determines if equal.
+            Returns a formatted file size
             </summary>
-            <param name="firstArrayList">The first array list.</param>
-            <param name="secondArrayList">The second array list.</param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.IsFileNameSafe(System.String)">
+            <summary>
+            Checks if the file name is safe for the system
+            and does not point to unauthorized locations
+            </summary>
+            <param name="fileName">The file name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.GenerateTempFileName(System.String)">
+            <summary>
+            Generates file name from filename parameter with tilde suffix and new Guid that can be used as temporary file name.
+            </summary>
+            <param name="fileName">File name with full path</param>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.WSPDateFormat">
+            <summary>
+            WSP date format
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.WSPTimeFormat">
+            <summary>
+            WSP date time format
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.SQLTimeFormat">
+            <summary>
+            SQL Server date time format
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.UITimeFormat">
+            <summary>
+            UI date time format
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.SQLDateFormat">
+            <summary>
+            SQL Server date format
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.StdDateFormat">
+            <summary>
+            Standard date format
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.XmlTimeFormat">
+            <summary>
+            XML standard dateTime format. http://www.w3.org/TR/xmlschema-2/#dateTime
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.SmallDateTimeMinValue">
+            <summary>
+            Min date for SQL SmallDateTime value
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.Utils.SmallDateTimeMaxValue">
+            <summary>
+            Max date for SQL SmallDateTime value
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.DateToStringWithMaxDefault(System.Nullable{System.DateTime})">
+            <summary>
+            DateTime to String conversion.
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.DateToStringWithMaxDefault(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            DateTime to String conversion.
+            </summary>
+            <param name="date"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.DateFromStringWithMaxDefault(System.String)">
+            <summary>
+            String to DateTime conversion.
+            </summary>
+            <param name="date"></param>
             <returns></returns>
         </member>
         <member name="P:Selerix.Foundation.Data.Utils.DefaultLongDateFormatString">
@@ -3705,26 +3413,12 @@
             <param name="date2"></param>
             <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.FormatFileSize(System.Int64)">
-            <summary>
-            Returns a formatted file size
-            </summary>
-            <param name="size"></param>
-            <returns></returns>
-        </member>
         <member name="M:Selerix.Foundation.Data.Utils.FormatDate(System.Nullable{System.DateTime},Selerix.Foundation.Data.Utils.DateFormat)">
             <summary>
             Returns a formatted date string
             </summary>
             <param name="d"></param>
             <param name="f"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.Foundation.Data.Utils.MaskSSN(System.String)">
-            <summary>
-            Returns masked SSN
-            </summary>
-            <param name="retVal"></param>
             <returns></returns>
         </member>
         <member name="T:Selerix.Foundation.Data.Utils.DateFormat">
@@ -3761,12 +3455,12 @@
             <param name="baseDateTime">Base date to calculate</param>
             <returns>whole quantity of milliseconds from base date to now</returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.IsFileNameSafe(System.String)">
+        <member name="M:Selerix.Foundation.Data.Utils.EqualArrayComparison(System.Collections.ArrayList,System.Collections.ArrayList)">
             <summary>
-            Checks if the file name is safe for the system
-            and does not point to unauthorized locations
+            Compares 2 arrays and determines if equal.
             </summary>
-            <param name="fileName">The file name</param>
+            <param name="firstArrayList">The first array list.</param>
+            <param name="secondArrayList">The second array list.</param>
             <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.Retry``1(System.Func{``0},System.Int32,System.Int32,System.String)">
@@ -3797,74 +3491,1549 @@
             <param name="length">length</param>
             <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.Collate(System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="T:Selerix.Foundation.Data.EnumDescriptionDictionary`1">
             <summary>
-            Return the first string that is not null or whitespace
+            Helper to parse the string value to enum according [Description] attributes.
+            [DefaulValue] attribute assigns the value using when unable to find association
             </summary>
-            <param name="s1">string 1</param>
-            <param name="s2">string 2</param>
-            <param name="s3">string 3</param>
-            <param name="s4">string 4</param>
-            <param name="s5">string 5</param>
-            <param name="s6">string 6</param>
-            <returns>first string not null or whitespace</returns>
+            <typeparam name="T">enum with [Description] attributes</typeparam>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.FirstIntergerValueIfPiped(System.String)">
+        <member name="M:Selerix.Foundation.Data.EnumDescriptionDictionary`1.GetValue(System.String)">
             <summary>
-            Find first integer-like value in <paramref name="option"/> string and return its string representation
+            Try to find enum value assigned with [Description] attribute
             </summary>
-            <param name="option">string contains parts joined by '|' character</param>
-            <returns>string with found integer value or <paramref name="option"/> otherwise</returns>
+            <param name="description">value to parse</param>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.MailHeaderSafeString(System.String)">
+        <member name="T:Selerix.Foundation.Data.XmlBooleanFormatProvider">
             <summary>
-            Create a string which is RFC2822 Header Compliant
+            Provides the XML compatible formatter for boolean values
+            
+            Example to use:   bool value = false;
+                              value.ToString(new XmlBooleanFormatProvider);
             </summary>
-            <param name="text">input string</param>
-            <returns>RFC2822 Header Compliant string</returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.RemoveDiacritics(System.String)">
+        <member name="F:Selerix.Foundation.Data.XmlBooleanFormatProvider.TrueStringLowCase">
             <summary>
-            Replaces characters like u with umlaut to u and unmappable chars like Cyrillic chars to ?
+            Represents the Boolean value true as a string. This field is read-only.
             </summary>
-            <param name="text">input string</param>
-            <returns>string with diacritical marks removed</returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.IsPrintableAsciiChar(System.Char)">
+        <member name="F:Selerix.Foundation.Data.XmlBooleanFormatProvider.FalseStringLowCase">
             <summary>
-            Is this char a printable, ASCII char?
+            Represents the Boolean value false as a string. This field is read-only.
             </summary>
-            <param name="c">char to test</param>
-            <returns>true if printable ASCII char</returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.StripNonPrintableAsciiCharacters(System.String)">
+        <member name="M:Selerix.Foundation.Data.XmlBooleanFormatProvider.GetFormat(System.Type)">
             <summary>
-            This will strip all chars not in the \u0020 to \u007E range like is
-            required for RFC2822 mail headers
+            Returns an object that provides formatting services for the specified type.
             </summary>
-            <param name="inString">input string</param>
-            <returns>string with only printable ASCII chars</returns>
+            <param name="formatType">An object that specifies the type of format object to return.</param>
+            <returns>
+               An instance of the object specified by formatType, if the System.IFormatProvider
+               implementation can supply that type of object; otherwise, null.
+            </returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.RemoveInvalidXmlCharacters(System.String)">
+        <member name="M:Selerix.Foundation.Data.XmlBooleanFormatProvider.Format(System.String,System.Object,System.IFormatProvider)">
             <summary>
-            Removes control characters and other non-UTF-8 characters
+            
             </summary>
-            <param name="inString">The string to process</param>
-            <returns>A string with only valid XML characters</returns>
+            <param name="format"></param>
+            <param name="arg"></param>
+            <param name="formatProvider"></param>
+            <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.CompareToPolicyNumber(System.String,System.String)">
+        <member name="T:Selerix.Foundation.Enumerations.ThemeGroup">
             <summary>
-            Compare policy number to provided pattern. Comparing to null means match to any policy number.
+            Theme group types
             </summary>
-            <param name="policyNumber">Policy number we compare.</param>
-            <param name="pattern">Pattern we compare policy number to.</param>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.ContainsIgnoreCase(System.String,System.String)">
+        <member name="F:Selerix.Foundation.Enumerations.ThemeGroup.Legacy">
             <summary>
-            Does the string body contain the string value, ignoring case
+            Legacy
             </summary>
-            <param name="body">The main string to check its contents</param>
-            <param name="value">Does this value exist in the body string</param>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ThemeGroup.Standard">
+            <summary>
+            Standard
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ThemeGroup.Prime">
+            <summary>
+            Prime
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ThemeGroup.Other">
+            <summary>
+            Other
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.TwoFactorAuthRequestType">
+            <summary>
+            Location type to send two factor auth codes
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.TwoFactorAuthRequestType.Unknown">
+            <summary>
+            Default value, invalid option
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.TwoFactorAuthRequestType.Email">
+            <summary>
+            Send to email address
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.TwoFactorAuthRequestType.SMS">
+            <summary>
+            Send to text message to phone number
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.TwoFactorAuthRequestType.Voice">
+            <summary>
+            Send requested two factor code via voice call
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.BorderRadius">
+            <summary>
+            Portal types
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.None">
+            <summary>
+            No border radius
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.Small">
+            <summary>
+            Small border radius - 4px
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.Medium">
+            <summary>
+            Medium border radius - 8px
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.Large">
+            <summary>
+            Large border radius - 12px
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.ConnectionType">
+            <summary>
+            API and 3rd-Party connection types
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConnectionType.Unset">
+            <summary>
+            Unset connection
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConnectionType.Sandbox">
+            <summary>
+            Sandbox connection
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConnectionType.Production">
+            <summary>
+            Production connection
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.Container">
+            <summary>
+            Container display style
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Container.Default">
+            <summary>
+            Default container that constrains to set widths based on device or browser size
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Container.Fluid">
+            <summary>
+            Fluid containers render at the full width of its parent container, device, or browser
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.DateRange">
+            <summary>
+            Date range options
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.Today">
+            <summary>
+            Today only
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.Yesterday">
+            <summary>
+            Yesterday only
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.ThisWeek">
+            <summary>
+            This week
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.LastWeek">
+            <summary>
+            Last week
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.ThisMonth">
+            <summary>
+            This month
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.LastMonth">
+            <summary>
+            Last month
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.ThisYear">
+            <summary>
+            This year
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DateRange.LastYear">
+            <summary>
+            Last year
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.IntegrationAction">
+            <summary>
+            Integration Event action
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.Unset">
+            <summary>
+            Unset default value
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.Approve">
+            <summary>
+            Approve events
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.Reject">
+            <summary>
+            Reject events
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.Resend">
+            <summary>
+            Resend events
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.ConfigurationType">
+            <summary>
+            Enum for integration configuration switches.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConfigurationType.None">
+            <summary>
+            No configurations are supported.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConfigurationType.Production">
+            <summary>
+            Production configuration.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConfigurationType.Sandbox">
+            <summary>
+            Sandbox configuration.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.IntegrationProvider">
+            <summary>
+            Integration providers
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationProvider.Paylocity">
+            <summary>
+            Paylocity Integration
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationProvider.WBEDX">
+            <summary>
+            WBEDX Integration
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.IntegrationStatus">
+            <summary>
+            Integration
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationStatus.Unset">
+            <summary>
+            Unset value
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationStatus.Awaiting">
+            <summary>
+            Awaiting approval
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationStatus.Ready">
+            <summary>
+            Ready for processing
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationStatus.Success">
+            <summary>
+            Successfully processed
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationStatus.Errors">
+            <summary>
+            Errors
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.DeliveryStatus">
+            <summary>
+            Delivery status enum
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DeliveryStatus.OK">
+            <summary>
+            Delivery was ok.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DeliveryStatus.Error">
+            <summary>
+            Delivery returned an error.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.Placement">
+            <summary>
+            Placement types
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Placement.Default">
+            <summary>
+            Default Placement
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Placement.Header">
+            <summary>
+            Header placement
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Placement.Jumbotron">
+            <summary>
+            Jumbotron placement
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Placement.BodyLeft">
+            <summary>
+            Body left placement
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Placement.BodyRight">
+            <summary>
+            Body right placement
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Placement.Footer">
+            <summary>
+            Footer placement
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.Portal">
+            <summary>
+            Portal types
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Portal.General">
+            <summary>
+            General site
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Portal.Admin">
+            <summary>
+            Admin site
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Portal.Enroll">
+            <summary>
+            Enroll site
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Portal.Agent">
+            <summary>
+            Benefit Agent
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Portal.HR">
+            <summary>
+            HR portal
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Portal.Engagement">
+            <summary>
+            Engagement portal
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.ReportEditorMode">
+            <summary>
+            View modes for the report editor
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportEditorMode.Simple">
+            <summary>
+            Simple mode - used in QuickReport.aspx
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportEditorMode.Full">
+            <summary>
+            Full mode - used when editing the report definition
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportEditorMode.Custom">
+            <summary>
+            Custom mode - used for custom category parameters
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.ILog">
+            <summary>
+            Interface ILog
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.ILog.IsFatalEnabled">
+            <summary>
+            Gets a value indicating whether this instance is fatal enabled.
+            </summary>
+            <value><c>true</c> if this instance is fatal enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.Foundation.ILog.IsDebugEnabled">
+            <summary>
+            Gets a value indicating whether this instance is debug enabled.
+            </summary>
+            <value><c>true</c> if this instance is debug enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.Foundation.ILog.IsErrorEnabled">
+            <summary>
+            Gets a value indicating whether this instance is error enabled.
+            </summary>
+            <value><c>true</c> if this instance is error enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.Foundation.ILog.IsInfoEnabled">
+            <summary>
+            Gets a value indicating whether this instance is information enabled.
+            </summary>
+            <value><c>true</c> if this instance is information enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.Foundation.ILog.IsWarnEnabled">
+            <summary>
+            Gets a value indicating whether this instance is warn enabled.
+            </summary>
+            <value><c>true</c> if this instance is warn enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Debug(System.Object)">
+            <summary>
+            Debugs the specified message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Debug(System.Object,System.Exception)">
+            <summary>
+            Debugs the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.DebugFormat(System.String,System.Object[])">
+            <summary>
+            Debugs the format.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Fatal(System.Object)">
+            <summary>
+            Fatals the specified message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Fatal(System.Object,System.Exception)">
+            <summary>
+            Fatals the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.FatalFormat(System.String,System.Object[])">
+            <summary>
+            Fatals the format.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Error(System.Object)">
+            <summary>
+            Errors the specified message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Error(System.Object,System.Exception)">
+            <summary>
+            Errors the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.ErrorFormat(System.String,System.Object[])">
+            <summary>
+            Errors the format.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Info(System.Object)">
+            <summary>
+            Informations the specified message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Info(System.Object,System.Exception)">
+            <summary>
+            Informations the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.InfoFormat(System.String,System.Object[])">
+            <summary>
+            Informations the format.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Warn(System.Object)">
+            <summary>
+            Warns the specified message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.Warn(System.Object,System.Exception)">
+            <summary>
+            Warns the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:Selerix.Foundation.ILog.WarnFormat(System.String,System.Object[])">
+            <summary>
+            Warns the format.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="T:Selerix.Foundation.LogManager">
+            <summary>
+            Class LogManager.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.LogManager.Configure">
+            <summary>
+            Configures log.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.LogManager.ConfigureAndWatch(System.IO.FileInfo)">
+            <summary>
+            Configures log from configuration file.
+            </summary>
+            <param name="configFile">The configuration file.</param>
+        </member>
+        <member name="M:Selerix.Foundation.LogManager.GetLogger(System.String)">
+            <summary>
+            Gets the logger.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>ILog.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.LogManager.GetLogger(System.Type)">
+            <summary>
+            Gets the logger.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>ILog.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.LogManager.GetLogDirectory">
+            <summary>
+            Gets the log directory.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.LogManager.GetLogFilePath">
+            <summary>
+            Gets the root log file path if file logging is enabled.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider">
+            <summary>
+            Password check rules configuration provider.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.BreakOnCheckFail">
+            <summary>
+            Break check on any check fail
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordHistoryCount">
+            <summary>
+            How many old password to remember in history for reusability check.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMinLength">
+            <summary>
+            Password minimum length.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMaxLength">
+            <summary>
+            Password maximum length.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMinDigits">
+            <summary>
+            Minimum amount digits to include.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMaxRepeatingCharacters">
+            <summary>
+            Maximum amount of repeating characters.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordDoesntContainLoginName">
+            <summary>
+            Password shouldn't contain login name.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordDoesntStartWithLoginName">
+            <summary>
+            Password shouldn't start with login name.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordDoesntEqualLoginName">
+            <summary>
+            Password shouldn't equal to login name.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMaxValidityDays">
+            <summary>
+            For how many days password doesn't expire.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMinUpperCaseLetters">
+            <summary>
+            Minimum amount of upper case characters.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMinLowerCaseLetters">
+            <summary>
+            Minimum amonut of lower case characters.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMinSpecialCharacters">
+            <summary>
+            Minimum amount of special characters.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordCharacterRules">
+            <summary>
+            List of character rules to check.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.IPasswordCheckRulesConfigurationProvider.PasswordMinCharacterRulesToApply">
+            <summary>
+            Minimum amount of character rules to pass validation.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Security.PasswordCheckRules">
+            <summary>
+            Password check rules.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.OK">
+            <summary>
+            OK.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_EMPTY">
+            <summary>
+            Password is empty.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_SHORT">
+            <summary>
+            Password is too short.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_LONG">
+            <summary>
+            Password is too long.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_MUST_CONTAIN_DIGITS">
+            <summary>
+            Password must contain digits.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_EQUAL_EMPLOYEEID">
+            <summary>
+            Password is equal to employee id.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_STARTS_EMPLOYEEID">
+            <summary>
+            Password starts with employee id.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_CONTAINS_EMPLOYEEID">
+            <summary>
+            Password contains employee id.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_EQUAL_EMPLOYEE_SSN">
+            <summary>
+            Password is equal to employee ssn.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_EQUAL_USERNAME">
+            <summary>
+            Password is equal user name.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_STARTS_USERNAME">
+            <summary>
+            Password starts with user name.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_CONTAINS_USERNAME">
+            <summary>
+            Password contains employee user name.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_TOO_SIMILAR_USERNAME">
+            <summary>
+            Password and user name is similar.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_REPEATING_CHARACTERS">
+            <summary>
+            Password contains repeating characters.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_REUSED">
+            <summary>
+            Password has been used in past already.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_MUST_CONTAIN_UPPER_CASE">
+            <summary>
+            Password must contain upper case character.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_MUST_CONTAIN_LOWER_CASE">
+            <summary>
+            Password must contain lower character.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_MUST_CONTAIN_SPEC_CHAR">
+            <summary>
+            Password must contain special character.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_MUST_CONTAIN_ALPHANUMERIC">
+            <summary>
+            Password must contain alphanumeric character.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_MUST_CONTAIN_MIXEDCASE">
+            <summary>
+            Password must contain upper case and lower case characters.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordCheckRules.PASSWORD_IN_USER_NOTE">
+            <summary>
+            Password mustnot be contained in user note.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_EMPTY">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_SHORT">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_LONG">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_EQUAL_EMPLOYEEID">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_STARTS_EMPLOYEEID">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_CONTAINS_EMPLOYEEID">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_EQUAL_EMPLOYEE_SSN">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_EQUAL_EMPLOYEE_USERID">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_STARTS_EMPLOYEE_USERID">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_CONTAINS_EMPLOYEE_USERID">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_REPEATING_CHARACTERS">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_REUSED">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_MUST_CONTAIN_DIGITS">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_MUST_CONTAIN_UPPER_CASE">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_MUST_CONTAIN_LOWER_CASE">
+            
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordStrengthChecker.ERROR_PASSWORD_MUST_CONTAIN_SPEC_CHAR">
+            
+        </member>
+        <member name="M:Selerix.Foundation.Security.PasswordStrengthChecker.GetErrorMessage(Selerix.Foundation.Security.PasswordCheckRules)">
+            <summary>
+            Produce error message for invalid password result.
+            </summary>
+            <param name="failedRule">Password validation result</param>
+            <returns></returns>
+        </member>
+        <member name="T:Selerix.Foundation.Security.PasswordHasher">
+            <summary>
+            Identity password hasher.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Security.PasswordHasher.#ctor(Selerix.Foundation.Security.PasswordHasherOptions)">
+            <summary>
+            Creates a new instance of <see cref="T:Selerix.Foundation.Security.PasswordHasher"/>.
+            </summary>
+            <param name="options">The options for this instance.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Security.PasswordHasher.HashPassword(System.String)">
+            <summary>
+            Returns a hashed representation of the supplied <paramref name="password"/>.
+            </summary>
+            <param name="password">The password to hash.</param>
+            <returns>A hashed representation of the supplied <paramref name="password"/>.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Security.PasswordHasher.VerifyHashedPassword(System.String,System.String)">
+            <summary>
+            Returns a <see cref="T:Selerix.Foundation.PasswordVerificationResult"/> indicating the result of a password hash comparison.
+            </summary>
+            <param name="hashedPassword">The hash value for a user's stored password.</param>
+            <param name="providedPassword">The password supplied for comparison.</param>
+            <returns>A <see cref="T:Selerix.Foundation.PasswordVerificationResult"/> indicating the result of a password hash comparison.</returns>
+            <remarks>Implementations of this method should be time consistent.</remarks>
+        </member>
+        <member name="T:Selerix.Foundation.Security.PasswordHasherOptions">
+            <summary>
+            Password hasher options.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Security.PasswordHasherOptions.CompatibilityMode">
+            <summary>
+            Gets or sets the compatibility mode used when hashing passwords. Defaults to 'ASP.NET Identity version 3'.
+            </summary>
+            <value>
+            The compatibility mode used when hashing passwords.
+            </value>
+        </member>
+        <member name="P:Selerix.Foundation.Security.PasswordHasherOptions.IterationCount">
+            <summary>
+            Gets or sets the number of iterations used when hashing passwords using PBKDF2. Default is 100,000.
+            </summary>
+            <value>
+            The number of iterations used when hashing passwords using PBKDF2.
+            </value>
+            <remarks>
+            This value is only used when the compatibility mode is set to 'V2'.
+            The value must be a positive integer. 
+            </remarks>
+        </member>
+        <member name="T:Selerix.Foundation.Security.KeyDerivationPrf">
+            <summary>
+            Specifies the PRF which should be used for the key derivation algorithm.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.KeyDerivationPrf.HMACSHA1">
+            <summary>
+            The HMAC algorithm (RFC 2104) using the SHA-1 hash function (FIPS 180-4).
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.KeyDerivationPrf.HMACSHA256">
+            <summary>
+            The HMAC algorithm (RFC 2104) using the SHA-256 hash function (FIPS 180-4).
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.KeyDerivationPrf.HMACSHA512">
+            <summary>
+            The HMAC algorithm (RFC 2104) using the SHA-512 hash function (FIPS 180-4).
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Security.PasswordHasherCompatibilityMode">
+            <summary>
+            Password hasher compatability version.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordHasherCompatibilityMode.V1">
+            <summary>
+            Version 1, uses MD5 hash function.
+            Format: { md5 }
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Security.PasswordHasherCompatibilityMode.V2">
+            <summary>
+            Version 2, uses PBKDF2 with HMAC-SHA256, 128-bit salt, 256-bit subkey, 10000 iterations.
+            Format: { 0x01, prf (UInt32), iter count (UInt32), salt length (UInt32), salt, subkey }
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Security.KeyDerivation">
+            <summary>
+            Provides algorithms for performing key derivation.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Security.KeyDerivation.Pbkdf2(System.String,System.Byte[],Selerix.Foundation.Security.KeyDerivationPrf,System.Int32,System.Int32)">
+            <summary>
+            Performs key derivation using the PBKDF2 algorithm.
+            </summary>
+            <param name="password">The password from which to derive the key.</param>
+            <param name="salt">The salt to be used during the key derivation process.</param>
+            <param name="prf">The pseudo-random function to be used in the key derivation process.</param>
+            <param name="iterationCount">The number of iterations of the pseudo-random function to apply
+            during the key derivation process.</param>
+            <param name="numBytesRequested">The desired length (in bytes) of the derived key.</param>
+            <returns>The derived key.</returns>
+            <remarks>
+            The PBKDF2 algorithm is specified in RFC 2898.
+            </remarks>
+        </member>
+        <member name="T:Selerix.Foundation.Security.Pbkdf2Util">
+            <summary>
+            Internal base class used for abstracting away the PBKDF2 implementation since the implementation is OS-specific.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Security.IPbkdf2Provider">
+            <summary>
+            Internal interface used for abstracting away the PBKDF2 implementation since the implementation is OS-specific.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Security.ManagedPbkdf2Provider">
+            <summary>
+            A PBKDF2 provider which utilizes the managed hash algorithm classes as PRFs.
+            This isn't the preferred provider since the implementation is slow, but it is provided as a fallback.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Security.RandomNumberGenerator">
+            <summary>
+            Random number generator class.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Security.RandomNumberGenerator.NextInt">
+            <summary>
+            Returns next random integer greater or equal 0.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Security.RandomNumberGenerator.NextInt(System.Int32,System.Int32)">
+            <summary>
+            Returns next random integer in range between minValue and maxValue.
+            </summary>
+            <param name="minValue">Min value.</param>
+            <param name="maxValue">Max value</param>
+        </member>
+        <member name="M:Selerix.Foundation.Security.RandomNumberGenerator.NextBytes(System.Byte[])">
+            <summary>
+            Fills the elements of a specified array of bytes with random numbers.
+            </summary>
+            <param name="buffer">An array of bytes to contain random numbers.</param>
+        </member>
+        <member name="T:Selerix.Foundation.SoftwareVersion">
+            <summary>
+            Application software version
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.SoftwareVersion.#ctor(System.String,System.DateTime)">
+            <summary>
+            SoftwareVersion ctor
+            </summary>
+            <param name="build">Application build version</param>
+            <param name="date">Application build date</param>
+        </member>
+        <member name="P:Selerix.Foundation.SoftwareVersion.BuildVersion">
+            <summary>
+            Application build version
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.SoftwareVersion.BuildDate">
+            <summary>
+            Application build date
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.SoftwareVersion.ToString">
+            <summary>
+            ToString
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Selerix.Foundation.IZipArchive">
+            <summary>
+            Represents a package of compressed files in the zip archive format.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.IZipArchive.Entries">
+            <summary>
+            Gets the collection of entries that are currently in the zip archive.
+            </summary>
+            <exception cref="T:System.NotSupportedException">The zip archive does not support reading.</exception>
+            <exception cref="T:System.ObjectDisposedException">The zip archive has been disposed.</exception>
+            <exception cref="T:System.IO.InvalidDataException"> The zip archive is corrupt, and its entries cannot be retrieved.</exception>
+        </member>
+        <member name="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String)">
+            <summary>
+            Creates an empty entry that has the specified path and entry name in the zip archive.
+            </summary>
+            <param name="entryName">A path, relative to the root of the archive, that specifies the name of the entry to be created.</param>
+            <returns>An empty entry in the zip archive.</returns>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="entryName"/> is <see cref="F:System.String.Empty"/>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="entryName"/> is null./>
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The zip archive does not support writing.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The zip archive has been disposed.
+            </exception>
+        </member>
+        <member name="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String,System.IO.Stream,System.Nullable{System.DateTime})">
+            <summary>
+            Creates an entry with data.
+            <para>For more information see <see cref="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String)"/></para>
+            </summary>
+            <param name="entryName"></param>
+            <param name="inputStream"></param>
+            <param name="writeTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String,System.Byte[],System.Int32,System.Int32,System.Nullable{System.DateTime})">
+            <summary>
+            Creates an entry with data.
+            <para>For more information see <see cref="M:Selerix.Foundation.IZipArchive.CreateEntry(System.String)"/></para>
+            </summary>
+            <param name="entryName"></param>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+            <param name="writeTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.IZipArchive.GetEntry(System.String)">
+            <summary>
+            Retrieves a wrapper for the specified entry in the zip archive.
+            </summary>
+            <param name="entryName">A path, relative to the root of the archive, that identifies the entry to retrieve.</param>
+            <returns>A wrapper for the specified entry in the archive; null if the entry does not exist in the archive.</returns>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="entryName"/> is <see cref="F:System.String.Empty"/>
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="entryName"/> is null./>
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The zip archive does not support reading.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The zip archive has been disposed.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The zip archive is corrupt, and its entries cannot be retrieved.
+            </exception>
+        </member>
+        <member name="M:Selerix.Foundation.IZipArchive.SetLevel(System.Int32)">
+            <summary>
+            Sets the Compression Level for all zip archive entries.
+            </summary>
+            <param name="compressionLevel">number from 0 to 9 - compression lowest to highest.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="compressionLevel"/> is not in required range.</exception>
+        </member>
+        <member name="T:Selerix.Foundation.IZipArchiveEntry">
+            <summary>
+            Represents a compressed file within a zip archive.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.IZipArchiveEntry.CompressedLength">
+            <summary>
+            Gets the compressed size of the entry in the zip archive.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            The value of the property is not available because the entry has been modified.
+            </exception>
+        </member>
+        <member name="P:Selerix.Foundation.IZipArchiveEntry.FullName">
+            <summary>
+            Gets the relative path of the entry in the zip archive.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.IZipArchiveEntry.LastWriteTime">
+            <summary>
+            Gets or sets the last time the entry in the zip archive was changed.
+            </summary>
+            <exception cref="T:System.NotSupportedException">
+            The attempt to set this property failed, because the zip archive for the entry is in 'Read' mode.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The archive mode is set to 'Create' or 'Update' mode and the entry has been opened.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            An attempt was made to set this property to a value that is either earlier than
+            1980 January 1 0:00:00 (midnight) or later than 2107 December 31 23:59:58 (one second before midnight).
+            </exception>
+        </member>
+        <member name="P:Selerix.Foundation.IZipArchiveEntry.Length">
+            <summary>
+            Gets the uncompressed size of the entry in the zip archive.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            The value of the property is not available because the entry has been modified.
+            </exception>
+        </member>
+        <member name="P:Selerix.Foundation.IZipArchiveEntry.Name">
+            <summary>
+            Gets the file name of the entry in the zip archive.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.IZipArchiveEntry.Delete">
+            <summary>
+            Deletes the entry from the zip archive.
+            </summary>
+            <exception cref="T:System.IO.IOException">
+            The entry is already open for reading or writing.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The zip archive for this entry was opened in a mode other than 'Update'.
+            </exception>
+        </member>
+        <member name="M:Selerix.Foundation.IZipArchiveEntry.Open">
+            <summary>
+            Opens the entry from the zip archive.
+            </summary>
+            <returns>The stream that represents the contents of the entry.</returns>
+            <exception cref="T:System.IO.IOException">
+            The entry is already currently open for writing or the entry has been deleted from the archive.
+            Or the archive for this entry was opened with the 'Create' mode, and this entry has already been written to.
+            </exception>
+            <exception cref="T:System.IO.InvalidDataException">
+            The entry is either missing from the archive or is corrupt and cannot be read.
+            Or the entry has been compressed by using a compression method that is not supported.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            Opens the entry from the zip archive.
+            </exception>
+        </member>
+        <member name="P:Selerix.Foundation.IZipArchiveEntry.Comment">
+            <summary>
+            Optional Comment.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Compression">
+            <summary>
+            Helper class to work with archiving.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Compression.CompressionType">
+            <summary>
+            Indicates the type of compression
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Compression.CompressionType.Deflate">
+            <summary>
+            Deflate (raw compression algorithm used by both 'Zip' and 'GZip' formats)
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Compression.CompressionType.GZip">
+            <summary>
+            GZip
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Compression.CompressionType.DeflateSilverlight">
+            <summary>
+            Deflate for Silverlight control (raw compression algorithm used by both 'Zip' and 'GZip' formats)
+            Silverlight infragistics implementation has a bug which requires to add additional 4096 bytes to output.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Compression.GZip">
+            <summary>
+            Activates the GZip format compression.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Compression.Deflate">
+            <summary>
+            Activates the Deflate algorithm compression.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Compression.DeflateSilverlight">
+            <summary>
+            Activates the Deflate algorithm compression.
+            (DO NOT USE for non-silverlight control)
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.ZipArchiveCreate(System.IO.Stream)">
+            <summary>
+            Creates a new zip archive.
+            </summary>
+            <param name="outputStream">A <see cref="T:System.IO.Stream"/> for writting a compressed data into.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.ZipArchiveRead(System.IO.Stream)">
+            <summary>
+            Reads an existing zip archive.
+            </summary>
+            <param name="inputStream">A <see cref="T:System.IO.Stream"/> for reading a compressed data from.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.ZipArchiveUpdate(System.IO.Stream)">
+            <summary>
+            Updates an existing zip archive.
+            </summary>
+            <param name="ioStream">A <see cref="T:System.IO.Stream"/> for reading and writting a compressed data.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.ExtractZip(System.String,System.String)">
+            <summary>
+            Extracts all Zip Archive entries into the target folder.
+            </summary>
+            <param name="zipFilePath">The path to the Zip file to extract.</param>
+            <param name="targetDir">
+            The full path to the destination folder.
+            <para>If <paramref name="targetDir"/> does not exists, a new folder will be created.</para>
+            <para>If <paramref name="targetDir"/> is not empty, <see cref="T:System.ArgumentException"/> will be thrown.</para>
+            </param>
+            <exception cref="T:System.ArgumentException">Zip file does't exists or destination folder is not empty.</exception>
+            <returns>A count of extracted files.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.#ctor(Selerix.Foundation.Compression.CompressionType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.Foundation.Compression"/> class.
+            </summary>
+            <param name="compressionType">Type of the compression.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.OutputStream(System.IO.Stream)">
+            <summary>
+            Creates a compression stream based on the given output stream.
+            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
+            </summary>
+            <param name="outputStream">The output stream.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.OutputStream(System.IO.Stream,System.Boolean)">
+            <summary>
+            Creates a compression stream based on the given output stream.
+            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
+            </summary>
+            <param name="outputStream">The output stream.</param>
+            <param name="leaveOpen">Leave original stream open after dispose.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.InputStream(System.IO.Stream)">
+            <summary>
+            Creates a decompression stream based on the given input stream.
+            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
+            </summary>
+            <param name="inputStream">The input stream.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.InputStream(System.IO.Stream,System.Boolean)">
+            <summary>
+            Creates a decompression stream based on the given input stream.
+            <para>After disposing this <see cref="T:System.IO.Stream"/> an underling <see cref="T:System.IO.Stream"/> remains open.</para>
+            </summary>
+            <param name="inputStream">The input stream.</param>
+            <param name="leaveOpen">Leave original stream open after dispose.</param>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.Compress(System.Byte[])">
+            <summary>
+            Compresses the specified bytes.
+            </summary>
+            <param name="bytesToCompress">The bytes to compress.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.Compress(System.String)">
+            <summary>
+            Compresses the specified string.
+            </summary>
+            <param name="stringToCompress">The string to compress.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.CompressToByte(System.String)">
+            <summary>
+            Compresses to byte.
+            </summary>
+            <param name="stringToCompress">The string to compress.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.DeCompress(System.String)">
+            <summary>
+            Decompress string.
+            </summary>
+            <param name="stringToDecompress">The string to decompress.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Compression.DeCompress(System.Byte[])">
+            <summary>
+            Decompress bytes.
+            </summary>
+            <param name="bytesToDecompress">The bytes to decompress.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Selerix.Foundation.Conveyor.AbstractStep`1">
+            <summary>
+            Conveyor step 
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.ID">
+            <summary>
+            The step id
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Conveyor.AbstractStep`1._TaskID">
+            <summary>
+            Id of task that execute this step
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.PushLockObject">
+            <summary>
+            Syncronize object for input data
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.FetchLockObject">
+            <summary>
+            Syncronize object for output data
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.Finished">
+            <summary>
+            Finished flag
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.IsReady">
+            <summary>
+            IsReady flag - means that there are no more Push in future and step need to be proceded even if 
+            other flags is false
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.AbstractStep`1.IsSerialStep">
+            <summary>
+            indicated that step shoul be executed by only one task in serial mode
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.AbstractStep`1.Push(`0)">
+            <summary>
+            Add Input Queue
+            </summary>
+            <param name="input">The input object</param>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.AbstractStep`1.Fetch(System.Nullable{System.Int32})">
+            <summary>
+            Get next result of step execution
+            </summary>
+            <returns>Next result</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.AbstractStep`1.SetReady">
+            <summary>
+            Notify step to calculate data anyway
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Conveyor.Conveyor`1">
+            <summary>
+            Class for parallel execution 
+            </summary>
+        </member>
+        <member name="E:Selerix.Foundation.Conveyor.Conveyor`1.RowReceived">
+            <summary>
+            Event that raised when every row passed troght all steps
+            </summary>
+        </member>
+        <member name="E:Selerix.Foundation.Conveyor.Conveyor`1.ResultReceived">
+            <summary>
+            Event that raised when all rows passed troght all steps
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Conveyor.Conveyor`1._Tasks">
+            <summary>
+            List of running tasks
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.Conveyor`1.#ctor">
+            <summary>
+            Conveyour constructor
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.Conveyor`1.#ctor(System.Threading.CancellationTokenSource,System.Int32)">
+            <summary>
+            Conveyour constructor
+            </summary>
+            <param name="tokenSource">Cancellation TokenSource</param>
+            <param name="taskLimit">Max processor count</param>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.Conveyor`1.NotifyResultReceived(System.Threading.Tasks.Task)">
+            <summary>
+            Notify that Result is done
+            </summary>
+            <param name="result">the result</param>        
+        </member>
+        <member name="T:Selerix.Foundation.Conveyor.ResultReceivedEventArgs">
+            <summary>
+            ResultReceivedEventArgs
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.ResultReceivedEventArgs.#ctor(System.Object)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="result">result</param>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.ResultReceivedEventArgs.Result">
+            <summary>
+            get the result
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Conveyor.StepsCollection`1">
+            <summary>
+            Collection of Conveyor steps, that implements MoveNext/Prev methods 
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.#ctor(System.Collections.Generic.List{Selerix.Foundation.Conveyor.AbstractStep{`0}})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="list">List of steps</param>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.StepsCollection`1.Current">
+            <summary>
+            Current step
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.MoveNext">
+            <summary>
+            MoveNext
+            </summary>
+            <returns>Returns false if current step is the last step in collection, else returns true</returns>
+        </member>
+        <member name="P:Selerix.Foundation.Conveyor.StepsCollection`1.Next">
+            <summary>
+            Get the next step in collection without moving.
+            If Current step is the last step returns null
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Conveyor.StepsCollection`1.MovePrevious">
+            <summary>
+            MovePrevious
+            </summary>
+            <returns>Returns false if current step is the first step in collection, else returns true</returns>
+        </member>
+        <member name="T:Selerix.Foundation.CustomFieldType">
+            <summary>
+            Enum. Specifies the attributes for the custom field type.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.Unknown">
+            <summary>
+            Unknown.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.Int">
+            <summary>
+            Number.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.String">
+            <summary>
+            Text.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.DateTime">
+            <summary>
+            Date.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.Boolean">
+            <summary>
+            Yes/No.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.Decimal">
+            <summary>
+            Decimal.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.ComboBox">
+            <summary>
+            Combo Box.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.Money">
+            <summary>
+            Money.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.ZipCode">
+            <summary>
+            ZipCode.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.ZipCodePlus4">
+            <summary>
+            Zip Code + 4.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.PhoneNumber">
+            <summary>
+            Phone number.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.SSN">
+            <summary>
+            Social Security Number.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldType.Other">
+            <summary>
+            Other.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.CustomFieldScope">
+            <summary>
+            List of Custom Field Scopes
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldScope.Employee">
+            <summary>
+            Employee level custom field
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldScope.Person">
+            <summary>
+            Person level custom field
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CustomFieldScope.Coverage">
+            <summary>
+            Coverage level custom field
+            </summary>
         </member>
         <member name="T:Selerix.Foundation.DateTimeExtensions">
             <summary>
@@ -4204,6 +5373,135 @@
             Excise tax rate.
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.FileCheckSum">
+            <summary>
+            Class FileCheckSum. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.FileCheckSum.GetSHA1Hash(System.String)">
+            <summary>
+            Calculates SHA1 hash for file.
+            </summary>
+            <param name="pathName">Path to file</param>
+        </member>
+        <member name="M:Selerix.Foundation.FileCheckSum.GetSHA256Hash(System.String)">
+            <summary>
+            Calculates SHA256 hash for file.
+            </summary>
+            <param name="pathName">Path to file</param>
+        </member>
+        <member name="M:Selerix.Foundation.FileCheckSum.GetMD5Hash(System.String)">
+            <summary>
+            Calculates MD5 hash for file.
+            </summary>
+            <param name="pathName">Path to file</param>
+        </member>
+        <member name="M:Selerix.Foundation.FileCheckSum.GetSHA256Hash(System.IO.Stream)">
+            <summary>
+            Calculates SHA256 hash for data stream.
+            </summary>
+            <param name="dataStream">Data Stream</param>
+        </member>
+        <member name="M:Selerix.Foundation.FileCheckSum.GetMD5Hash(System.IO.Stream)">
+            <summary>
+            Calculates MD5 hash for data stream.
+            </summary>
+            <param name="dataStream">Path to file</param>
+        </member>
+        <member name="M:Selerix.Foundation.FileCheckSum.EncryptorHashToFileCheckSum(System.String)">
+            <summary>
+            Converts <see cref="T:Selerix.Foundation.Encryptor"/> hash string to <see cref="T:Selerix.Foundation.FileCheckSum"/> hash string.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Encryptor">
+            <summary>
+            Class Encryptor. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="P:Selerix.Foundation.Encryptor.Phrase">
+            <value>Set the phrase used to generate the secret key.</value>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="SecretPhrase">Secret phrase to generate key</param>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.Encrypt(System.String)">
+            <summary>
+            Encrypt the given value with the Rijndael algorithm.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>Encrypted value.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.Decrypt(System.String)">
+            <summary>
+            Decrypts the specified data.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.MD5(System.IO.Stream)">
+            <summary>
+            Calculate MD5 hash for stream.
+            </summary>
+            <param name="sourceStream">Source stream.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.MD5Hex(System.IO.Stream)">
+            <summary>
+            Calculate MD5 hash for stream.
+            </summary>
+            <param name="sourceStream">Source stream.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.SHA256(System.IO.Stream)">
+            <summary>
+            Shes the a256.
+            </summary>
+            <param name="sourceStream">The source stream.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.MD5(System.String)">
+            <summary>
+            ms the d5.
+            </summary>
+            <param name="source">The source.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.MD5Hex(System.String)">
+            <summary>
+            ms the d5 hexadecimal.
+            </summary>
+            <param name="source">The source.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.SHA2(System.String)">
+            <summary>
+            Computes SHA2 hash from source string.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.SHA2Hex(System.String)">
+            <summary>
+            Computes SHA2 hash from source string and return in hex format.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Selerix.Foundation.Base32">
+            <summary>
+            Class Base32. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Base32.Encode(System.Byte[])">
+            <summary>
+            Encodes the specified data.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>System.String.</returns>
+        </member>
         <member name="T:Selerix.Foundation.DefaultPINType">
             <summary>
             Enum. Specifies the PIN type.
@@ -4384,6 +5682,46 @@
             The neither
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.PrerequisiteRules">
+            <summary>
+            Specifies prerequisite requirements to check
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PrerequisiteRules.Gender">
+            <summary>
+            The gender
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PrerequisiteRules.SSN">
+            <summary>
+            The SSN
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PrerequisiteRules.Address">
+            <summary>
+            The address
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PrerequisiteRules.MaritalStatus">
+            <summary>
+            The marital status
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PrerequisiteRules.Email">
+            <summary>
+            The email
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PrerequisiteRules.HomePhone">
+            <summary>
+            The home phone
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PrerequisiteRules.WorkPhone">
+            <summary>
+            The work phone
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.EnrollmentStatus">
             <summary>
             Enum. Indicates the enrollment status.
@@ -4449,136 +5787,6 @@
             HR or some other administrator enrolled.
             </summary>
         </member>
-        <member name="T:Selerix.Foundation.Enumerations.BorderRadius">
-            <summary>
-            Portal types
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.None">
-            <summary>
-            No border radius
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.Small">
-            <summary>
-            Small border radius - 4px
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.Medium">
-            <summary>
-            Medium border radius - 8px
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.BorderRadius.Large">
-            <summary>
-            Large border radius - 12px
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Enumerations.Container">
-            <summary>
-            Container display style
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Container.Default">
-            <summary>
-            Default container that constrains to set widths based on device or browser size
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Container.Fluid">
-            <summary>
-            Fluid containers render at the full width of its parent container, device, or browser
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Enumerations.Placement">
-            <summary>
-            Placement types
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Placement.Default">
-            <summary>
-            Default Placement
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Placement.Header">
-            <summary>
-            Header placement
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Placement.Jumbotron">
-            <summary>
-            Jumbotron placement
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Placement.BodyLeft">
-            <summary>
-            Body left placement
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Placement.BodyRight">
-            <summary>
-            Body right placement
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Placement.Footer">
-            <summary>
-            Footer placement
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Enumerations.Portal">
-            <summary>
-            Portal types
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Portal.General">
-            <summary>
-            General site
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Portal.Admin">
-            <summary>
-            Admin site
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Portal.Enroll">
-            <summary>
-            Enroll site
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Portal.Agent">
-            <summary>
-            Benefit Agent
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Portal.HR">
-            <summary>
-            HR portal
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Portal.Engagement">
-            <summary>
-            Engagement portal
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Enumerations.ReportEditorMode">
-            <summary>
-            View modes for the report editor
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.ReportEditorMode.Simple">
-            <summary>
-            Simple mode - used in QuickReport.aspx
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.ReportEditorMode.Full">
-            <summary>
-            Full mode - used when editing the report definition
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.ReportEditorMode.Custom">
-            <summary>
-            Custom mode - used for custom category parameters
-            </summary>
-        </member>
         <member name="T:Selerix.Foundation.LifeEventProcessingStep">
             <summary>
             Indicates what step the event is on
@@ -4604,14 +5812,109 @@
             Unknown
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.Add">
+            <summary>
+            Add.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.Marriage">
+            <summary>
+            Marriage.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.Divorce">
+            <summary>
+            Divorce event
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.LegalSeparation">
+            <summary>
+            Legal separation.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.NameChange">
+            <summary>
+            Name change.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.AddressChange">
+            <summary>
+            Address change.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.Transferred">
+            <summary>
+            Transferred.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.JobClassChanged">
+            <summary>
+            Job class change.
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.ApplicationCoverageReason.TerminatedEmploymentUnspecified">
             <summary>
             TerminatedEmploymentUnspecified
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.BirthOfChild">
+            <summary>
+            Birth of child.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.AdoptionOfChild">
+            <summary>
+            Adoption of child.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.DeathOfSpouse">
+            <summary>
+            Death of spouse.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.DeathOfDependent">
+            <summary>
+            Death of dependent.
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.ApplicationCoverageReason.AgeLimitAttained">
             <summary>
             AgeLimitAttained
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.BeneficiaryChange">
+            <summary>
+            Beneficiary change.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.SpouseEmploymentChange">
+            <summary>
+            Spouse employment change.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.RegainDependent">
+            <summary>
+            Regain dependent.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.SalaryChanged">
+            <summary>
+            Salary changed.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.LeaveOfAbsence">
+            <summary>
+            Leave of absence.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.ReturnFromLeave">
+            <summary>
+            Return from leave.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.Rehire">
+            <summary>
+            Re-hire.
             </summary>
         </member>
         <member name="F:Selerix.Foundation.ApplicationCoverageReason.TerminatedEmploymentLayoff">
@@ -4624,6 +5927,21 @@
             WithdrawnByApplicant
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.CustomFieldChange">
+            <summary>
+            Custom field change.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.ReturnFromRetire">
+            <summary>
+            Return from retire.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.PayGroupChange">
+            <summary>
+            Pay group change.
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.ApplicationCoverageReason.TerminatedEmploymentOther">
             <summary>
             TerminatedEmploymentOther
@@ -4632,6 +5950,61 @@
         <member name="F:Selerix.Foundation.ApplicationCoverageReason.TerminatedEmploymentResignation">
             <summary>
             TerminatedEmploymentResignation
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.NumberOfHoursChange">
+            <summary>
+            Number of hours is changed
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.DependentDeleted">
+            <summary>
+            Dependent is manually deleted
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.COBRAStart">
+            <summary>
+            COBRA start date
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.COBRAEnd">
+            <summary>
+            COBRA end date
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.CourtOrder">
+            <summary>
+            Court-ordered enrollment
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.CourtOrderAddDependent">
+            <summary>
+            Court-ordered enrollment
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.WagesChanged">
+            <summary>
+            Wages Changed
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.DateOfHireChange">
+            <summary>
+            Date of Hire changed
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.EligibilityDateChange">
+            <summary>
+            Eligibility date changed
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.FTERateChanged">
+            <summary>
+            FTE Rate Changed
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.TerminationDateChanged">
+            <summary>
+            Termination Date Changed
             </summary>
         </member>
         <member name="F:Selerix.Foundation.ApplicationCoverageReason.TerminatedEmploymentRetired">
@@ -4762,6 +6135,31 @@
         <member name="F:Selerix.Foundation.FormProviderType.LFGEOI">
             <summary>
             LFG EOI
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.FormProviderType.StandardEOI">
+            <summary>
+            Standard EOI
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.FormProviderType.DearbornEOI">
+            <summary>
+            Dearborn EOI
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.FormProviderType.GuardianEOI">
+            <summary>
+            Guardian EOI
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.FormProviderType.CignaEOI">
+            <summary>
+            Cigna EOI
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.FormProviderType.SunLifeEOI">
+            <summary>
+            SunLife EOI
             </summary>
         </member>
         <member name="T:Selerix.Foundation.SignatureMode">
@@ -5903,6 +7301,11 @@
             The state of birth
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.QuestionType.TrueFalse">
+            <summary>
+            True/False.
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.QuestionType.Other">
             <summary>
             Other.
@@ -5982,6 +7385,46 @@
             <summary>
             Other.
             </summary>
+        </member>
+        <member name="T:Selerix.Foundation.RateCalculationHelper">
+            <summary>
+            Class RateCalculationHelper.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.RateCalculationHelper.AnnualToPayCheck(System.Decimal,System.Int32,Selerix.Foundation.enmRoundingMode)">
+            <summary>
+            Annual to pay check.
+            </summary>
+            <param name="decPremium">The decimal premium.</param>
+            <param name="DeductionFrequency">The deduction frequency.</param>
+            <param name="mode">The mode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.RateCalculationHelper.RoundAmount(System.Decimal,System.Decimal,Selerix.Foundation.enmRoundingMode)">
+            <summary>
+            Rounds the amount.
+            </summary>
+            <param name="Amount">The amount.</param>
+            <param name="Factor">The factor.</param>
+            <param name="Mode">The mode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.RateCalculationHelper.MonthlyToPayCheck(System.Decimal,System.Int32,Selerix.Foundation.enmRoundingMode)">
+            <summary>
+            Monthly to pay check.
+            </summary>
+            <param name="decPremium">The dec premium.</param>
+            <param name="DeductionFrequency">The deduction frequency.</param>
+            <param name="mode">The mode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.RateCalculationHelper.PayCheckToMonthly(System.Decimal,System.Int32)">
+            <summary>
+            Paycheck to monthly.
+            </summary>
+            <param name="decPremium">The dec premium.</param>
+            <param name="DeductionFrequency">The deduction frequency.</param>
+            <returns></returns>
         </member>
         <member name="T:Selerix.Foundation.RateParamType">
             <summary>
@@ -9363,20 +10806,34 @@
             Female.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.Gender.Unisex">
-            <summary>
-            Unisex.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Gender.Combined">
-            <summary>
-            Issued on a combined rate blended from male and female.
-            </summary>
-        </member>
         <member name="F:Selerix.Foundation.Gender.Other">
             <summary>
             Other.
             </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Gender.NotSet">
+            <summary>
+            NotSet
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.GenderExtension">
+            <summary>
+            Gender related extension methods.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.GenderExtension.ParseAsGender(System.String)">
+            <summary>
+            Parse string into gender.
+            </summary>
+            <param name="str">The gender string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.GenderExtension.ToGenderCode(Selerix.Foundation.Gender)">
+            <summary>
+            Convert gender enum value into string code.
+            </summary>
+            <param name="gender">The gender enum value.</param>
+            <returns></returns>
         </member>
         <member name="T:Selerix.Foundation.InterfaceOption">
             <summary>
@@ -9821,167 +11278,172 @@
             Change of Bank Address.
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.EventSubClass.EnrollmentStatusChanged">
+            <summary>
+            Enrollment status changed
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.EventSubClass.Other">
             <summary>
             Other.
             </summary>
         </member>
-        <member name="T:Selerix.Foundation.PayrollEventSubClass">
+        <member name="T:Selerix.Foundation.EventSubClassEx">
             <summary>
             Enum. Employee payroll event sub types.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.NoSubClass">
+        <member name="F:Selerix.Foundation.EventSubClassEx.NoSubClass">
             <summary>
             Empty sub class.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.MaritalStatusChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.MaritalStatusChanged">
             <summary>
             Marital status changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.LocationChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.HomeAddressChanged">
+            <summary>
+            Employee address changed.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EventSubClassEx.LocationChanged">
             <summary>
             Employee location changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.JobClassChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.JobClassChanged">
             <summary>
             Job class changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.EmploymentStatusChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.EmploymentStatusChanged">
             <summary>
             Employment status changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.SalaryChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.SalaryChanged">
             <summary>
             Salary changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.PayGroupChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.PayGroupChanged">
             <summary>
             Pay group changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.NumberOfHoursChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.NumberOfHoursChanged">
             <summary>
             Number of hours changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.EmployeeIdChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.EmployeeIdChanged">
             <summary>
             Employe id changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.WagesChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.WagesChanged">
             <summary>
             Wages changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.DateOfHireChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.DateOfHireChanged">
             <summary>
             Date of hire changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.EligibilityDateChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.EligibilityDateChanged">
             <summary>
             Eligibility date changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.FTERateChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.FTERateChanged">
             <summary>
             FTE rate changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.TerminationDateChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.TerminationDateChanged">
             <summary>
             Termination date changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.CoverageChanged">
-            <summary>
-            Coverage changed.
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.PaymentInfoChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.PaymentInfoChanged">
             <summary>
             Payment info changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.ExEventBase">
+        <member name="F:Selerix.Foundation.EventSubClassEx.ExEventBase">
             <summary>
             Extended event offset.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.EmailChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.EmailChanged">
             <summary>
             Email changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.Email2Changed">
+        <member name="F:Selerix.Foundation.EventSubClassEx.Email2Changed">
             <summary>
             Personal email changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.PTOBalanceChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.PTOBalanceChanged">
             <summary>
             PTO Balance changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.PTOCostChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.PTOCostChanged">
             <summary>
             PTO const changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.OvertimeChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.OvertimeChanged">
             <summary>
             Overtime changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.StockOptionGrantValueChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.StockOptionGrantValueChanged">
             <summary>
             Stock option grant value changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.BonusChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.BonusChanged">
             <summary>
             Bonus changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.MedicareTaxChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.MedicareTaxChanged">
             <summary>
             Medicare tax changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.FederalUnemploymentTaxChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.FederalUnemploymentTaxChanged">
             <summary>
             Federal unemployment tax changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.StateUnemploymentTaxChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.StateUnemploymentTaxChanged">
             <summary>
             State unemployment tax changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.SocialSecurityTaxChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.SocialSecurityTaxChanged">
             <summary>
             Social security tax changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.FederalTaxChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.FederalTaxChanged">
             <summary>
             Federal tax changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.WorkersCompChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.WorkersCompChanged">
             <summary>
             Workers comp changed.
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.PayrollEventSubClass.CommissionsChanged">
+        <member name="F:Selerix.Foundation.EventSubClassEx.CommissionsChanged">
             <summary>
             Commissions changed.
             </summary>
@@ -10366,6 +11828,304 @@
             The video
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.CertificateType">
+            <summary>
+            Type of certificate
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CertificateType.FtpCertificate">
+            <summary>Certificates used for ftp</summary>
+        </member>
+        <member name="F:Selerix.Foundation.CertificateType.GeneralCertificate">
+            <summary>General purpose certificates</summary>
+        </member>
+        <member name="T:Selerix.Foundation.PermissionEventType">
+            <summary>
+            User changes Permission Types
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PermissionEventType.AddPermission">
+            <summary>Add a permission for a role + security id</summary>
+        </member>
+        <member name="F:Selerix.Foundation.PermissionEventType.DeletePermission">
+            <summary>Delete a permission for a role + security id</summary>
+        </member>
+        <member name="T:Selerix.Foundation.UserEventType">
+            <summary>
+            User changes event types
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.CreateAccount">
+            <summary>
+            The create account
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.LockAccount">
+            <summary>
+            The lock account
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.UnlockAccount">
+            <summary>
+            The unlock account
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangeEffectiveDate">
+            <summary>
+            The change effective date
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangeTerminationDate">
+            <summary>
+            The change termination date
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.AddRole">
+            <summary>
+            The add role
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.DeleteRole">
+            <summary>
+            The delete role
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangePassword">
+            <summary>
+            The change password
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ConfirmEmail">
+            <summary>
+            The confirm email
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangeLoginName">
+            <summary>
+            The change login name
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangeName">
+            <summary>
+            The change name
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangeEmail">
+            <summary>
+            The change email
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.AddEmployerAssociation">
+            <summary>
+            The add employer association
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.AddBrokerAssociation">
+            <summary>
+            The add broker association
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.AddPayerAssociation">
+            <summary>
+            The add payer association
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.RemoveEmployerAssociation">
+            <summary>
+            The remove employer association
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.RemoveBrokerAssociation">
+            <summary>
+            The remove broker association
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.RemovePayerAssociation">
+            <summary>
+            The remove payer association
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.AddLocation">
+            <summary>
+            The add location
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.RemoveLocation">
+            <summary>
+            The remove location
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangeCertificate">
+            <summary>
+            The change certificate
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.ChangeIPAddressRestriction">
+            <summary>
+            The change ip address restriction
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.AccessCase">
+            <summary>
+            User accessed case
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.DeleteCase">
+            <summary>
+            The delete case
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.UndeleteCase">
+            <summary>
+            The undelete case
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.UserEventType.DeleteUser">
+            <summary>
+            User has been marked as deleted
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.PasswordVerificationResult">
+            <summary>
+            Specifies the results for password verification.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PasswordVerificationResult.Failed">
+            <summary>
+            Indicates password verification failed.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PasswordVerificationResult.Success">
+            <summary>
+            Indicates password verification was successful.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.PasswordVerificationResult.SuccessRehashNeeded">
+            <summary>
+            Indicates password verification was successful however the password was encoded using a deprecated algorithm
+            and should be rehashed and updated.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.enmRoundingMode">
+            <summary>
+            Enum for rounding.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmRoundingMode.NoRound">
+            <summary>
+            No rounding.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmRoundingMode.RoundDown">
+            <summary>
+            Round down.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmRoundingMode.Round">
+            <summary>
+            Alias for Financial.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmRoundingMode.RoundUp">
+            <summary>
+            Round up.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmRoundingMode.Math">
+            <summary>
+            Math rounding.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmRoundingMode.Financial">
+            <summary>
+            Financial rounding.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.ScriptPlace">
+            <summary>
+            Specifies where the script is located.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.Plan">
+            <summary>
+            Plan
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.Presentation">
+            <summary>
+            Presentation.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.Question">
+            <summary>
+            Question.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.Form">
+            <summary>
+            Form.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.Product">
+            <summary>
+            Product.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.TextBank">
+            <summary>
+            Textbank.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.BenefitAgent">
+            <summary>
+            BenefitAgent.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.ScriptPlace.BenRecommend">
+            <summary>
+            BenRecommend advertishing
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.TextBankSearchScope">
+            <summary>
+            Enum TextBankSearchScope
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.TextBankSearchScope.Local">
+            <summary>
+            The local
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.TextBankSearchScope.Global">
+            <summary>
+            The global
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.TextBankSearchScope.Both">
+            <summary>
+            The both
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.TextBankSearchMode">
+            <summary>
+            Enum TextBankSearchMode
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.TextBankSearchMode.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.TextBankSearchMode.Content">
+            <summary>
+            The content
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.TextBankSearchMode.Both">
+            <summary>
+            The both
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.RemotePost">
             <summary>
             Specifies the attributes of a remote post.
@@ -10478,6 +12238,30 @@
             <param name="xml">The XML.</param>
             <param name="redirectURL">The redirect URL.</param>
             <returns></returns>
+        </member>
+        <member name="T:Selerix.Foundation.LogOnlyException">
+            <summary>
+            Log only inner exception
+            </summary>
+            <seealso cref="T:Selerix.Foundation.SelerixException" />
+        </member>
+        <member name="M:Selerix.Foundation.LogOnlyException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.Foundation.LogOnlyException"/> class.
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.LogOnlyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.Foundation.LogOnlyException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:Selerix.Foundation.LogOnlyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.Foundation.LogOnlyException"/> class.
+            </summary>
+            <param name="message">The message that displays when the exception is thrown.</param>
+            <param name="inner">The inner exception value - the set of exceptions that led to the current exception.</param>
         </member>
         <member name="T:Selerix.Foundation.Images.BitonalConverter">
             <summary> 
@@ -10676,56 +12460,6 @@
             <param name="outFile">target TIFF file to be produced</param>
             <param name="compressEncoder">compression codec enum</param>
         </member>
-        <member name="T:Selerix.BusinessObjects.DecisionSupport.IProductSettings`1">
-            <summary>
-            Product projection settings base interface.
-            </summary>
-            <typeparam name="T">The type of Id key.</typeparam>
-        </member>
-        <member name="P:Selerix.BusinessObjects.DecisionSupport.IProductSettings`1.ProductId">
-            <summary>
-            Product ID.
-            </summary>
-        </member>
-        <member name="P:Selerix.BusinessObjects.DecisionSupport.IProductSettings`1.PlanId">
-            <summary>
-            Plan ID.
-            </summary>
-        </member>
-        <member name="T:Selerix.ConfigStorage.IConfigStorageObject">
-            <summary>
-            A marker interface for any configuration objects or interfaces.
-            </summary>
-        </member>
-        <member name="T:Selerix.ConfigStorage.IConfigDataObject">
-            <summary>
-            IConfigDataObject interface. All config object that stored in DB should implement this interface.
-            </summary>
-        </member>
-        <member name="P:Selerix.ConfigStorage.IConfigDataObject.PK">
-            <summary>
-            Gets or sets the Primary Key.
-            </summary>
-            <value>
-            The Primary Key.
-            </value>
-        </member>
-        <member name="M:Selerix.ConfigStorage.IConfigDataObject.ToModel">
-            <summary>
-            Creates model object based on database object
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Selerix.ConfigStorage.IConfigDataObject.MapXmlConfigToDB(Selerix.ConfigStorage.IConfigModelObject,System.Boolean)">
-            <summary>
-            Merges properties from object loaded from config file into object loaded from database.
-            It allows us to keep minimum set of data in the database and keep full configuration of the object in config file.
-            </summary>
-            <param name="model">The model.</param>
-            <param name="autoDelete">if set to <c>true</c> [auto delete].</param>
-            <returns>bool</returns>
-            <remarks></remarks>
-        </member>
         <member name="T:Selerix.ConfigStorage.IConfigModelObject">
             <summary>
             Configuration object interface
@@ -10791,57 +12525,21 @@
             Last change of the object
             </summary>
         </member>
-        <member name="T:Selerix.ConfigStorage.IXmlWatchFile`1">
+        <member name="T:Selerix.BusinessObjects.DecisionSupport.IProductSettings`1">
             <summary>
-            Interface IXmlWatchFile
+            Product projection settings base interface.
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T">The type of Id key.</typeparam>
         </member>
-        <member name="M:Selerix.ConfigStorage.IXmlWatchFile`1.HasSensitiveData(`0)">
+        <member name="P:Selerix.BusinessObjects.DecisionSupport.IProductSettings`1.ProductId">
             <summary>
-            Gets whether xml can contain sensitive data needs to be encrypted.
-            </summary>
-        </member>
-        <member name="M:Selerix.ConfigStorage.IXmlWatchFile`1.GetWatchFileEncryptionPassword(`0)">
-            <summary>
-            XML file encryption password.
+            Product ID.
             </summary>
         </member>
-        <member name="M:Selerix.ConfigStorage.IXmlWatchFile`1.SetWatchFileEncryptionPassword(`0,System.String)">
+        <member name="P:Selerix.BusinessObjects.DecisionSupport.IProductSettings`1.PlanId">
             <summary>
-            Sets the watch file encryption password.
+            Plan ID.
             </summary>
-            <param name="model">The model.</param>
-            <param name="password">The password.</param>
-        </member>
-        <member name="M:Selerix.ConfigStorage.IXmlWatchFile`1.GetUniqueIDInXmlFile(`0)">
-            <summary>
-            Gets the unique identifier in XML file.
-            </summary>
-            <param name="model">The model.</param>
-            <returns>Guid.</returns>
-        </member>
-        <member name="M:Selerix.ConfigStorage.IXmlWatchFile`1.GetWatchFileIsAlias(`0)">
-            <summary>
-            Gets the watch file is alias.
-            </summary>
-            <param name="model">The model.</param>
-            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        </member>
-        <member name="M:Selerix.ConfigStorage.IXmlWatchFile`1.SetWatchFileIsAlias(`0,System.Boolean)">
-            <summary>
-            Sets the watch file is alias.
-            </summary>
-            <param name="model">The model.</param>
-            <param name="watchFileIsAlias">if set to <c>true</c> [watch file is alias].</param>
-        </member>
-        <member name="M:Selerix.ConfigStorage.IXmlWatchFile`1.AnalyzeGUIDInXmlFile(`0,System.String)">
-            <summary>
-            Analyzes the unique identifier in XML file.
-            </summary>
-            <param name="model">The model.</param>
-            <param name="xmlFilename">The XML filename.</param>
-            <returns>Guid.</returns>
         </member>
     </members>
 </doc>
