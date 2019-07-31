@@ -2505,7 +2505,7 @@
             Class DependentVerificationDocumentWrapper.
             </summary>
         </member>
-        <member name="F:Selerix.BusinessObjects.DependentVerificationDocumentWrapper.DocumentType">
+        <member name="P:Selerix.BusinessObjects.DependentVerificationDocumentWrapper.DocumentType">
             <summary>
             The document type
             </summary>
@@ -2526,7 +2526,7 @@
             Specifies reference on applicant
             </summary>
         </member>
-        <member name="F:Selerix.BusinessObjects.ApplicantCC.ApplicantID">
+        <member name="P:Selerix.BusinessObjects.ApplicantCC.ApplicantID">
             <summary>
             The applicant identifier
             </summary>
@@ -2581,22 +2581,22 @@
             </summary>
             <value>The legal status of the relationship.</value>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.Label">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.Label">
             <summary>
             The Label object specifies the name of the relationship. Can be used to override the default name.
             </summary>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.RequiredSSN">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.RequiredSSN">
             <summary>
             The RequiredSSN object displays if the information is required. 
             </summary>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.IgnoreRequireSSN6Month">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.IgnoreRequireSSN6Month">
             <summary>
             The IgnoreRequireSSN6Month object specifies whether the RequiredSSN option can be ignored for dependents who are age 6 months or less.
             </summary>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.RequiredStudent">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.RequiredStudent">
             <summary>
             The RequiredStudent object displays if the information is required. 
             </summary>
@@ -2628,7 +2628,7 @@
             </summary>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.MinAge">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.MinAge">
             <summary>
             The MinAge object specifies if the applicant meets the standardized minimum age for an applicant.
             </summary>
@@ -2639,7 +2639,7 @@
             </summary>
             <returns>bool true/false</returns>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.MaxAge">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.MaxAge">
             <summary>
             The MaxAge object specifies if the applicant has reached the maximum age limit for continued coverage.
             </summary>
@@ -2650,13 +2650,13 @@
             </summary>
             <returns>bool true/false</returns>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.PartTimeAsFullTimeStudent">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.PartTimeAsFullTimeStudent">
             <summary>
             The PartTimeAsFullTimeStudent object specifies if the applicant is a part-time as full-time student.
             </summary>
             <returns>bool true/false</returns>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.MaxStudentAge">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.MaxStudentAge">
             <summary>
             The MaxStudentAge object specifies if the applicant has reached the maximum age allowed for a student.
             </summary>
@@ -2668,7 +2668,7 @@
             </summary>
             <returns>bool true/false</returns>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.MaxDisabledAge">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.MaxDisabledAge">
             <summary>
             The MaxDisabledAge object specifies the maximum age of a disabled student.
             </summary>
@@ -2679,12 +2679,12 @@
             </summary>
             <returns>bool true/false</returns>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.DomesticPartnerEligibility">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.DomesticPartnerEligibility">
             <summary>
             The DomesticPartnerEligibility object specifies if the applicant's domestic partner is eligible for coverage.
             </summary>
         </member>
-        <member name="F:Selerix.BusinessObjects.RelationshipCC.BeneficiaryRequiredPrimary">
+        <member name="P:Selerix.BusinessObjects.RelationshipCC.BeneficiaryRequiredPrimary">
             <summary>
             Sets the BeneficiaryRequiredPrimary field to 'Not Shown'.
             </summary>
@@ -2790,7 +2790,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeNeedCalculatePostEnrollmentDeliveries">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeNeedCalculatePostEnrollmentDeliveries) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeNeedCalculatePostEnrollmentDeliveries)
+            that returns true or false. XML serialization enables an object's public fields and properties
+            to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for
+            an object that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns></returns>
         </member>
@@ -2804,7 +2808,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeBirthDate">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeBirthDate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeBirthDate) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that is
+            not null or empty and has a value such as a string object or a list object that is not null
+            and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -2893,7 +2901,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeHeight">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeHeight) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeHeight) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -2905,7 +2917,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeWeight">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeWeight) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeWeight) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -2916,7 +2932,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeStudent">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeStudent) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeStudent) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -2930,7 +2950,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeDisabled">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeDisabled) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeDisabled) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -2971,7 +2995,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeXmlForceChangePIN">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeXmlForceChangePIN) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeXmlForceChangePIN) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded 
+            to/from an XML file. Typically, XML serialization will be desired for an object that is not
+            null or empty and has a value such as a string object or a list object that is not null and
+            has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3006,7 +3034,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeQuestionnaire">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeQuestionnaire) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeQuestionnaire) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that is not
+            null or empty and has a value such as a string object or a list object that is not null and
+            has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3034,7 +3066,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeCustomFields">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeCustomFields) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeCustomFields) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3060,7 +3096,10 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeExternalReferenceIDs">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeExternalReferenceIDs) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeExternalReferenceIDs) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded to/from
+            an XML file. Typically, XML serialization will be desired for an object that is not null or empty
+            and has a value such as a string object or a list object that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3086,7 +3125,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeEventDate">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeEventDate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeEventDate) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3110,7 +3153,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Applicant.ShouldSerializeEvents">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeEvent) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeEvent) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3332,7 +3379,10 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeXmlIncreaseEffectiveImmediate">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeXmlIncreaseEffectiveImmediate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeXmlIncreaseEffectiveImmediate) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file.
+            Typically, XML serialization will be desired for an object that is not null or empty and has a value such as
+            a string object or a list object that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3344,7 +3394,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeInsureds">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeInsureds) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeInsureds) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3367,7 +3421,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeRiders">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeRiders) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeRiders) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3390,7 +3448,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeBeneficiaries">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeBeneficiaries) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeBeneficiaries) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3416,7 +3478,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeApplicationDocuments">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeApplicationDocuments) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeApplicationDocuments) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3428,7 +3494,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeEnrollers">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeEnrollers) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeEnrollers) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3481,7 +3551,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeApplicationDate">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeApplicationDate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeApplicationDate) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3493,7 +3567,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeEventDate">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeEventDate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeEventDate) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3624,13 +3702,21 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeRepairLatestCoverageEffectiveDate">
             <summary>
-            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeLocked">
             <summary>
-            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3659,7 +3745,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializePolicyDate">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializePolicyDate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializePolicyDate) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3726,7 +3816,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeQuestionnaire">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeQuestionnaire) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeQuestionnaire) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -3862,7 +3956,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Attachment.ShouldSerializeOwner">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeOwner) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeOwner) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -4029,7 +4127,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Beneficiary.ShouldSerializeAge">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeAge) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeAge) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and
+            loaded to/from an XML file. Typically, XML serialization will be desired for an object
+            that is not null or empty and has a value such as a string object or a list object
+            that is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -4054,7 +4156,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Beneficiary.ShouldSerializeBirthDate">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializeBirthDate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializeBirthDate) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -4075,7 +4181,11 @@
         </member>
         <member name="M:Selerix.BusinessObjects.Beneficiary.ShouldSerializePercent">
             <summary>
-            A ShouldSerialize[Object] method (ShouldSerializePercent) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            A ShouldSerialize[Object] method (ShouldSerializePercent) that returns true or false.
+            XML serialization enables an object's public fields and properties to be saved and loaded
+            to/from an XML file. Typically, XML serialization will be desired for an object that
+            is not null or empty and has a value such as a string object or a list object that
+            is not null and has at least one element.
             </summary>
             <returns>bool true/false</returns>
         </member>
@@ -9470,6 +9580,30 @@
             </summary>
             <value>The status.</value>
         </member>
+        <member name="P:Selerix.BusinessObjects.Employment.EventDate">
+            <summary>
+            Gets or sets the event date.
+            </summary>
+            <value>The event date.</value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Employment.ShouldSerializeEventDate">
+            <summary>
+            A ShouldSerialize[Object] method (ShouldSerializeEventDate) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            </summary>
+            <returns>bool true/false</returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Employment.EventReasonCode">
+            <summary>
+            Gets or sets the event reason code.
+            </summary>
+            <value>The event reason code.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Employment.EventReason">
+            <summary>
+            Gets or sets the event reason.
+            </summary>
+            <value>The event reason.</value>
+        </member>
         <member name="M:Selerix.BusinessObjects.Employment.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.Employment"/> class.
@@ -10224,6 +10358,50 @@
             Gets the <see cref="T:Selerix.BusinessObjects.Field"/> with the specified field ID.
             </summary>
             <value>The field ID.</value>
+        </member>
+        <member name="T:Selerix.BusinessObjects.Folder">
+            <summary>
+            Folder Model Object.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Folder.FolderGuid">
+            <summary>
+            Gets/Sets folder guid.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Folder.RelativePath">
+            <summary>
+            Gets/Sets folder relative path. (relate on QXConfig settings in app.config).
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Folder.FileName">
+            <summary>
+            Obsolete for folder object.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Folder.PK">
+            <summary>
+            Get/sets folder primary key.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Folder.Initialized">
+            <summary>
+            TRUE - if config was prepared by Server and ready to use.
+            FALSE - just loaded from storage and ready to be prepared by Server
+            </summary>
+            <value><c>true</c> if initialized; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Folder.Selerix#ConfigStorage#IConfigModelObject#LoadChildXmlConfig">
+            <summary>
+            Loads child objects.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Folder.Selerix#ConfigStorage#IConfigModelObject#SaveChildXmlConfig">
+            <summary>
+            Saves child objects.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Selerix.BusinessObjects.Form">
             <summary>
@@ -11096,6 +11274,546 @@
             The job class locations.
             </value>
         </member>
+        <member name="T:Selerix.BusinessObjects.LifeEvent">
+            <summary>
+            The LifeEvent object.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.Type">
+            <summary>
+            Gets or sets the LifeEventType
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.AllowEnrollmentFor">
+            <summary>
+            Gets or sets the AllowEnrollmentFor 
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.Recalculate">
+            <summary>
+            Gets or sets the Recalculate  
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.IfEnrolled">
+            <summary>
+            Gets or sets the IfEnrolled   
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.IfEligibilityChanges">
+            <summary>
+            Gets or sets the IfEligibilityChanges    
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.CoverageStartsEndsPreviousDay">
+            <summary>
+            Gets or sets the CoverageStartsEndsPreviousDay   
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.CoverageStartsEndsDayOf">
+            <summary>
+            Gets or sets the CoverageStartsEndsDayOf     
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.CoverageStartsEndsNextDay">
+            <summary>
+            Gets or sets the CoverageStartsEndsNextDay      
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.TierChangeOnly">
+            <summary>
+            Gets or sets the TierChangeOnly      
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.LifeEvent.RequireApprovalSelfService">
+            <summary>
+            Gets or sets the RequireApprovalSelfService       
+            </summary>		
+        </member>
+        <member name="T:Selerix.BusinessObjects.LifeEventType">
+            <summary>
+            LifeEventType
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Added">
+            <summary>
+            Added
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Marriage">
+            <summary>
+            Marriage
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Divorce">
+            <summary>
+            Divorce
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LegalSeparation">
+            <summary>
+            LegalSeparation
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.NameChange">
+            <summary>
+            NameChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.AddressChange">
+            <summary>
+            Change of address, phone, or e-mail
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Transferred">
+            <summary>
+            Transferred to new location
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.JobClassChanged">
+            <summary>
+            JobClassChanged
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Terminated">
+            <summary>
+            Terminated employment
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.BirthOfChild">
+            <summary>
+            Birth of child
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.AdoptionOfChild">
+            <summary>
+            Adoption of child
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DeathOfSpouse">
+            <summary>
+            Death of spouse
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DeathOfDependent">
+            <summary>
+            Death of dependent
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DependentAgeLimit">
+            <summary>
+            Dependent reaches age limit
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.BeneficiaryChange">
+            <summary>
+            Beneficiary change
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.SpouseEmploymentChange">
+            <summary>
+            SpouseEmploymentChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.EnableReEnrollment">
+            <summary>
+            EnableReEnrollment
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.RegainDependent">
+            <summary>
+            RegainDependent
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.SalaryChanged">
+            <summary>
+            SalaryChanged
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.MarriageAddDependent">
+            <summary>
+            Add dependent (marriage)
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DivorceAddDependent">
+            <summary>
+            Add dependent (divorce)
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.AutoEnroll">
+            <summary>
+            AutoEnroll
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeaveOfAbsence">
+            <summary>
+            Leave of Absence
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.ReturnFromLeave">
+            <summary>
+            Return from Leave
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Rehire">
+            <summary>
+            Rehire
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Cancelled">
+            <summary>
+            Cancelled
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.CourtOrder">
+            <summary>
+            CourtOrder
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Deceased">
+            <summary>
+            Deceased
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Declined">
+            <summary>
+            Declined
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DirectBill">
+            <summary>
+            DirectBill
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DisabilityExtension">
+            <summary>
+            DisabilityExtension
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Ineligible">
+            <summary>
+            Ineligible
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.IneligibleWorkHours">
+            <summary>
+            IneligibleWorkHours
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Lapsed">
+            <summary>
+            Lapsed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Layoff">
+            <summary>
+            Layoff
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeaveDisabled">
+            <summary>
+            LeaveDisabled
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeaveFMLA">
+            <summary>
+            LeaveFMLA
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeaveMilitary">
+            <summary>
+            LeaveMilitary
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeavePregnancy">
+            <summary>
+            LeavePregnancy
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LegalSeparationEnd">
+            <summary>
+            LegalSeparationEnd
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LoseCustody">
+            <summary>
+            LoseCustody
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.OpenEnrollment">
+            <summary>
+            OpenEnrollment
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Retired">
+            <summary>
+            Retired
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.SpouseOfDeceased">
+            <summary>
+            SpouseOfDeceased
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.StateExtension">
+            <summary>
+            StateExtension
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Strike">
+            <summary>
+            Strike
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.SuspendedWithBenefits">
+            <summary>
+            SuspendedWithBenefits
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.SuspendedWithoutBenefits">
+            <summary>
+            SuspendedWithoutBenefits
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Withdrawn">
+            <summary>
+            Withdrawn
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.CustomFieldChange">
+            <summary>
+            CustomFieldChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.ReturnFromRetire">
+            <summary>
+            ReturnFromRetire
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.PayGroupChange">
+            <summary>
+            PayGroupChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.OtherInvoluntaryTermination">
+            <summary>
+            OtherInvoluntaryTermination
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Resignation">
+            <summary>
+            Resignation
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.NumberOfHoursChange">
+            <summary>
+            NumberOfHoursChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DependentDropped">
+            <summary>
+            Dependent dropped
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.EmailCommunicationSent">
+            <summary>
+            Email communication sent from system
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.StartCOBRA">
+            <summary>
+            Start COBRA
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.EndCOBRA">
+            <summary>
+            End COBRA
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.EmployeeIdChange">
+            <summary>
+            Employee ID Change
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.CourtOrderedChange">
+            <summary>
+            Court-ordered change
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.CourtOrderedEnrollment">
+            <summary>
+            Court-ordered enrollment, add dependent
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.WagesChanged">
+            <summary>
+            Wages changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.PINChanged">
+            <summary>
+            PIN changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.DateOfHireChanged">
+            <summary>
+            Date of hire changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.EligibilityDateChanged">
+            <summary>
+            Eligibility date changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.UserIDChanged">
+            <summary>
+            UserIDChanged
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.FTERateChanged">
+            <summary>
+            FTE Rate Changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.AsOfDateChanged">
+            <summary>
+            As Of Date Changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.TerminationDateChanged">
+            <summary>
+            Termination date changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.CoverageChange">
+            <summary>
+            Coverage Change
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.PaymentInformationChanged">
+            <summary>
+            Payment Information Changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.BankNameChanged">
+            <summary>
+            Bank Name Changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.BankAddressChanged">
+            <summary>
+            Bank Address Changed
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.EnrollmentStatusChanged">
+            <summary>
+            Life_Events_EnrollmentStatusChanged
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.AdministrativeChange">
+            <summary>
+            AdministrativeChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.TerminatedEmploymentRetired">
+            <summary>
+            Retired
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.VoluntaryTermination">
+            <summary>
+            Voluntary Termination
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.TerminationOfBenefits">
+            <summary>
+            TerminationOfBenefits
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.COBRAPremiumPaid">
+            <summary>
+            COBRAPremiumPaid
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.PrimaryProviderChange">
+            <summary>
+            PrimaryProviderChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.PlanChange">
+            <summary>
+            PlanChange
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.BenefitSelection">
+            <summary>
+            BenefitSelection
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeaveOfAbsenceWithoutBenefits">
+            <summary>
+            LeaveOfAbsenceWithoutBenefits
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LayoffWithBenefits">
+            <summary>
+            LayoffWithBenefits
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LayoffWithoutBenefits">
+            <summary>
+            LayoffWithoutBenefits
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.ReEnrollment">
+            <summary>
+            ReEnrollment
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.COBRAContinuation">
+            <summary>
+            COBRAContinuation
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeaveWOPay">
+            <summary>
+            LeaveWOPay
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.LeaveWorkComp">
+            <summary>
+            LeaveWorkComp
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Active">
+            <summary>
+            Active
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.TerminatedGrossMisconduct">
+            <summary>
+            TerminatedGrossMisconduct
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.TerminatedDeath">
+            <summary>
+            TerminatedDeath
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.TerminatedLeaveExpired">
+            <summary>
+            TerminatedLeaveExpired
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LifeEventType.Other">
+            <summary>
+            Other.
+            </summary>
+        </member>
         <member name="T:Selerix.BusinessObjects.Department">
             <summary>
             The Department object specifies the attributes of a Department.
@@ -11586,6 +12304,17 @@
             <value>The text items.</value>
         </member>
         <member name="M:Selerix.BusinessObjects.Offering.ShouldSerializeTextItems">
+            <summary>
+            A ShouldSerialize[Object] method (ShouldSerializeTextItems) that returns true or false. XML serialization enables an object's                public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an               object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one            element.
+            </summary>
+            <returns>bool true/false</returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Offering.LifeEvents">
+            <summary>
+            Gets or sets the live events.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Offering.ShouldSerializeLifeEvents">
             <summary>
             A ShouldSerialize[Object] method (ShouldSerializeTextItems) that returns true or false. XML serialization enables an object's                public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an               object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one            element.
             </summary>
@@ -13701,11 +14430,12 @@
             </summary>
             <returns>bool true/false</returns>
         </member>
-        <member name="M:Selerix.BusinessObjects.Portfolio.GetTextItemText(Selerix.Foundation.Languages,System.String)">
+        <member name="M:Selerix.BusinessObjects.Portfolio.GetTextItemText(Selerix.Foundation.Languages,Selerix.Foundation.Enumerations.Portal,System.String)">
             <summary>
             Gets text for <see cref="T:Selerix.Foundation.Data.TextItem"/>.
             </summary>
             <param name="language">The language.</param>
+            <param name="portalId">The portal id.</param>
             <param name="itemID">The item ID.</param>
             <returns>item ID</returns>
             <remarks></remarks>
@@ -14617,6 +15347,13 @@
             <value>The provider find URL.</value>
             <remarks></remarks>
         </member>
+        <member name="P:Selerix.BusinessObjects.Product.ProviderNumberFormat">
+            <summary>
+            Gets or sets the provider number format.
+            </summary>
+            <value>The provider number format.</value>
+            <remarks></remarks>
+        </member>
         <member name="P:Selerix.BusinessObjects.Product.ProviderNumber">
             <summary>
             Gets or sets a value indicating whether [provider number].
@@ -14871,6 +15608,11 @@
             Shoulds the serialize UW limits.
             </summary>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Product.UseAgeReduction">
+            <summary>Gets or sets a value indicating whether [use age reduction].</summary>
+            <value>
+              <c>true</c> if [use age reduction]; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:Selerix.BusinessObjects.Product.MinimumBenefitAmount">
             <summary>
@@ -19292,6 +20034,307 @@
             <param name="region">The region.</param>
             <param name="location">The location.</param>
         </member>
+        <member name="T:Selerix.BusinessObjects.ReportOutputFormat">
+            <summary>
+            ReportOutputFormat Enum.
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.PDF">
+            <summary>
+            PDF
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.XML">
+            <summary>
+            XML
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.CSV">
+            <summary>
+            CSV
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.HTML">
+            <summary>
+            HTML
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.RTF">
+            <summary>
+            RTF
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.TXT">
+            <summary>
+            TXT
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.EXCEL">
+            <summary>
+            EXCEL
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportOutputFormat.CUSTOM">
+            <summary>
+            CUSTOM
+            </summary>
+        </member>
+        <member name="T:Selerix.BusinessObjects.CensusUpload">
+            <summary>
+            Class CensusUpload.
+            Implements the <see cref="T:Selerix.BusinessObjects.ReportBase" />
+            </summary>
+            <seealso cref="T:Selerix.BusinessObjects.ReportBase" />
+        </member>
+        <member name="M:Selerix.BusinessObjects.CensusUpload.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.CensusUpload"/> class.
+            </summary>
+        </member>
+        <member name="T:Selerix.BusinessObjects.ReportBase">
+            <summary>
+            Class ReportBase.
+            Implements the <see cref="T:Selerix.Foundation.Data.AbstractEntityObject" />
+            </summary>
+            <seealso cref="T:Selerix.Foundation.Data.AbstractEntityObject" />
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.ReportBase"/> class.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportBase.Parameters">
+            <summary>
+            Gets or sets the parameters. <see cref="T:Selerix.BusinessObjects.ReportParameterList" /> object.
+            </summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportBase.Recipients">
+            <summary>
+            Gets or sets the recipients.
+            </summary>
+            <value>
+            The recipients.
+            </value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportBase.ShouldSerializeRecipients">
+            <summary>
+            Shoulds the serialize recipients.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportBase.ReportSchedules">
+            <summary>
+            Gets or sets the report schedule.
+            </summary>
+            <value>
+            The report schedule.
+            </value>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportBase.Range">
+            <summary>
+            The range
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportBase.Formula">
+            <summary>
+            Gets the formula.
+            </summary>
+            <value>The formula.</value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportBase.FormulaToRange(System.String)">
+            <summary>
+            Formulas to range.
+            </summary>
+            <param name="formula">The formula.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Selerix.BusinessObjects.ReportBase.Description">
+            <summary>
+            The description
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportBase.ShouldSerializeReportSchedule">
+            <summary>
+            Shoulds the serialize report schedule.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Selerix.BusinessObjects.Report">
+            <summary>
+            Summary description for Report.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Report.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.Report"/> class.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Report.#ctor(System.String,Selerix.BusinessObjects.ReportTemplate,Selerix.BusinessObjects.ReportParameterList)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.Report"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="template">The template.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.TemplateGuid">
+            <summary>
+            Gets or sets the template GUID.
+            </summary>
+            <value>The template GUID.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.OutputFormat">
+            <summary>
+            Gets or sets the output format.
+            </summary>
+            <value>The output format.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.PK">
+            <summary>
+            Gets or sets the PK.
+            </summary>
+            <value>The PK.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.Initialized">
+            <summary>
+            TRUE - if config was prepared by Server and ready to use.
+            FALSE - just loaded from storage and ready to be prepared by Server
+            </summary>
+            <value><c>true</c> if initialized; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Report.Selerix#ConfigStorage#IConfigModelObject#LoadChildXmlConfig">
+            <summary>
+            Loads child XML configurations. <see cref="T:Selerix.ConfigStorage.IConfigObject" /> object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Report.Selerix#ConfigStorage#IConfigModelObject#SaveChildXmlConfig">
+            <summary>
+            Saves child XML configurations. <see cref="T:Selerix.ConfigStorage.IConfigObject" /> object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.FolderGuid">
+            <summary>
+            Guid of parent folder object.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.RelativePath">
+            <summary>
+            Path to current object.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Report.ShouldSerializeFolderGuid">
+            <summary>
+            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            </summary>
+            <returns>bool true/false</returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.FileName">
+            <summary>
+            Path to object config file.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Report.Owner">
+            <summary>
+            Get owner of object.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Report.ShouldSerializeOwner">
+            <summary>
+            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            </summary>
+            <returns>bool true/false</returns>
+        </member>
+        <member name="T:Selerix.BusinessObjects.Reports">
+            <summary>
+            reports
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Reports.PortfolioID">
+            <summary>
+            Gets or sets the portfolio identifier.
+            </summary>
+            <value>
+            The portfolio identifier.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Reports.ReportList">
+            <summary>
+            Gets or sets the reports.
+            </summary>
+            <value>
+            The reports.
+            </value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Reports.ShouldSerializeReports">
+            <summary>
+            Shoulds the serialize reports.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Selerix.BusinessObjects.ReportList">
+            <summary>
+            Summary description for ReportList.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportList.IndexOf(System.String)">
+            <summary>
+            IndexOf object.
+            </summary>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportList.IndexOf(System.Guid)">
+            <summary>
+            IndexOf object.
+            </summary>
+            <param name="id">The id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportList.Contains(System.String)">
+            <summary>
+            Determines whether [contains] [the specified name].
+            </summary>
+            <param name="name">The name.</param>
+            <returns>
+            	<c>true</c> if [contains] [the specified name]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportList.Contains(System.Guid)">
+            <summary>
+            Determines whether [contains] [the specified id].
+            </summary>
+            <param name="id">The id.</param>
+            <returns>
+            	<c>true</c> if [contains] [the specified id]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportList.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:Selerix.BusinessObjects.Report"/> with the specified name.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportList.Item(System.Guid)">
+            <summary>
+            Gets or sets the <see cref="T:Selerix.BusinessObjects.Report"/> with the specified id.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportList.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+        </member>
         <member name="T:Selerix.BusinessObjects.ReportDataSourceItem">
             <summary>
             Report Data source info
@@ -19318,6 +20361,101 @@
             </summary>
             <value>The data source path.</value>
             <remarks></remarks>
+        </member>
+        <member name="T:Selerix.BusinessObjects.ReportDataSource">
+            <summary>
+            Summary description for ReportDataSource.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportDataSource.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.ReportDataSource"/> class.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportDataSource.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.ReportDataSource"/> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.Query">
+            <summary>
+            Gets or sets the query.
+            </summary>
+            <value>The query.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.Parameters">
+            <summary>
+            Gets or sets the parameters. <see cref="T:Selerix.BusinessObjects.ReportParameterList" /> object.
+            </summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.PK">
+            <summary>
+            Gets or sets the PK.
+            </summary>
+            <value>The PK.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.Initialized">
+            <summary>
+            TRUE - if config was prepared by Server and ready to use.
+            FALSE - just loaded from storage and ready to be prepared by Server
+            </summary>
+            <value><c>true</c> if initialized; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.FileName">
+            <summary>
+            Path to object config file.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportDataSource.Selerix#ConfigStorage#IConfigModelObject#LoadChildXmlConfig">
+            <summary>
+            Loads child XML configurations. <see cref="T:Selerix.ConfigStorage.IConfigObject" /> object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportDataSource.Selerix#ConfigStorage#IConfigModelObject#SaveChildXmlConfig">
+            <summary>
+            Saves child XML configurations. <see cref="T:Selerix.ConfigStorage.IConfigObject" /> object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.Owner">
+            <summary>
+            Get owner of object.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportDataSource.ShouldSerializeOwner">
+            <summary>
+            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            </summary>
+            <returns>bool true/false</returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.FolderGuid">
+            <summary>
+            Guid of parent folder object.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ReportDataSource.RelativePath">
+            <summary>
+            Path to current object.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ReportDataSource.ShouldSerializeFolderGuid">
+            <summary>
+            ShouldSerialize[Object] method (where [Object] is the object name) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            </summary>
+            <returns>bool true/false</returns>
         </member>
         <member name="T:Selerix.BusinessObjects.ReportParameter">
             <summary>
@@ -20321,7 +21459,7 @@
             </summary>
             <returns>bool true/false</returns>
         </member>
-        <member name="F:Selerix.BusinessObjects.Result.Error">
+        <member name="P:Selerix.BusinessObjects.Result.Error">
             <summary>
             Error object.
             </summary>
@@ -24160,6 +25298,9 @@
             <summary>
             Maximum Salary Multiplier
             </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.LimitType.StepDown">
+            <summary>The step down</summary>
         </member>
         <member name="T:Selerix.BusinessObjects.LimitTypeFilter">
             <summary>
@@ -28959,11 +30100,12 @@
             Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.UI.StoryLine"/> class.
             </summary>
         </member>
-        <member name="M:Selerix.BusinessObjects.UI.StoryLine.GetTextItemText(Selerix.Foundation.Languages,System.String)">
+        <member name="M:Selerix.BusinessObjects.UI.StoryLine.GetTextItemText(Selerix.Foundation.Languages,Selerix.Foundation.Enumerations.Portal,System.String)">
             <summary>
             Gets text for <see cref="T:Selerix.Foundation.Data.TextItem"/>.
             </summary>
             <param name="language">The language.</param>
+            <param name="portalId">The portal id.</param>
             <param name="itemID">The item ID.</param>
             <returns></returns>
             <remarks></remarks>
@@ -31083,6 +32225,256 @@
             Constructor of object
             </summary>
         </member>
+        <member name="T:Selerix.BusinessObjects.User">
+            <summary>
+            Class User.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.PK">
+            <summary>
+            Gets or sets the pk.
+            </summary>
+            <value>The pk.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.ActivationDate">
+            <summary>
+            Gets or sets the activation date.
+            </summary>
+            <value>The activation date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.ActivationExpirationDate">
+            <summary>
+            Gets or sets the activation expiration date.
+            </summary>
+            <value>The activation expiration date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.ActivationID">
+            <summary>
+            Gets or sets the activation identifier.
+            </summary>
+            <value>The activation identifier.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.ApplicationName">
+            <summary>
+            Gets or sets the name of the application.
+            </summary>
+            <value>The name of the application.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.CreationDate">
+            <summary>
+            Gets or sets the creation date.
+            </summary>
+            <value>The creation date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Deleted">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Selerix.Foundation.Data.IModelObject" /> is deleted.
+            </summary>
+            <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.EffectiveDate">
+            <summary>
+            Gets or sets the effective date.
+            </summary>
+            <value>The effective date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>The email.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.FailedPasswordAnswerAttemptCount">
+            <summary>
+            Gets or sets the failed password answer attempt count.
+            </summary>
+            <value>The failed password answer attempt count.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.FailedPasswordAnswerAttemptWindowStart">
+            <summary>
+            Gets or sets the failed password answer attempt window start.
+            </summary>
+            <value>The failed password answer attempt window start.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.FailedPasswordAttemptCount">
+            <summary>
+            Gets or sets the failed password attempt count.
+            </summary>
+            <value>The failed password attempt count.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.FailedPasswordAttemptWindowStart">
+            <summary>
+            Gets or sets the failed password attempt window start.
+            </summary>
+            <value>The failed password attempt window start.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.FullName">
+            <summary>
+            Gets or sets the full name.
+            </summary>
+            <value>The full name.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.IsApproved">
+            <summary>
+            Gets or sets a value indicating whether this instance is approved.
+            </summary>
+            <value><c>true</c> if this instance is approved; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.IsChangePasswordNextLogin">
+            <summary>
+            Gets or sets a value indicating whether this instance is change password next login.
+            </summary>
+            <value><c>true</c> if this instance is change password next login; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.IsLockedOut">
+            <summary>
+            Gets or sets a value indicating whether this instance is locked out.
+            </summary>
+            <value><c>true</c> if this instance is locked out; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.IsOnLine">
+            <summary>
+            Gets or sets a value indicating whether this instance is on line.
+            </summary>
+            <value><c>true</c> if this instance is on line; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.IsPasswordNeverExpired">
+            <summary>
+            Gets or sets a value indicating whether this instance is password never expired.
+            </summary>
+            <value><c>true</c> if this instance is password never expired; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.IsTermsOfUseApproved">
+            <summary>
+            Gets or sets a value indicating whether this instance is terms of use approved.
+            </summary>
+            <value><c>true</c> if this instance is terms of use approved; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Language">
+            <summary>
+            Gets or sets the language.
+            </summary>
+            <value>The language.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.LastActivityDate">
+            <summary>
+            Gets or sets the last activity date.
+            </summary>
+            <value>The last activity date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.LastLockedOutDate">
+            <summary>
+            Gets or sets the last locked out date.
+            </summary>
+            <value>The last locked out date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.LastLoginDate">
+            <summary>
+            Gets or sets the last login date.
+            </summary>
+            <value>The last login date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.LastPasswordChangedDate">
+            <summary>
+            Gets or sets the last password changed date.
+            </summary>
+            <value>The last password changed date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Note">
+            <summary>
+            Gets or sets the note.
+            </summary>
+            <value>The note.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.PasswordAnswer">
+            <summary>
+            Gets or sets the password answer.
+            </summary>
+            <value>The password answer.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.PasswordAnswer1">
+            <summary>
+            Gets or sets the password answer1.
+            </summary>
+            <value>The password answer1.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.PasswordQuestion">
+            <summary>
+            Gets or sets the password question.
+            </summary>
+            <value>The password question.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.PasswordQuestion1">
+            <summary>
+            Gets or sets the password question1.
+            </summary>
+            <value>The password question1.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.PhoneWork">
+            <summary>
+            Gets or sets the phone work.
+            </summary>
+            <value>The phone work.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.TerminationDate">
+            <summary>
+            Gets or sets the termination date.
+            </summary>
+            <value>The termination date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.UniqueID">
+            <summary>
+            Gets or sets the unique identifier.
+            </summary>
+            <value>The unique identifier.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.AsOfDate">
+            <summary>
+            Gets as of date.
+            </summary>
+            <value>As of date.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.ExtEngineConfigs">
+            <summary>
+            Gets the ext engine configs.
+            </summary>
+            <value>The ext engine configs.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Verified">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Selerix.Foundation.Data.IModelObject" /> is verified.
+            </summary>
+            <value><c>true</c> if verified; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.User.Readonly">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Selerix.Foundation.Data.IModelObject" /> is readonly.
+            </summary>
+            <value><c>true</c> if readonly; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.User.UpgradeModel">
+            <summary>
+            Upgrades the model.
+            </summary>
+        </member>
         <member name="T:Selerix.BusinessObjects.ConverterUtils">
             <summary>
             Utility conversion class.
@@ -31536,11 +32928,10 @@
             Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.UWLimitCC"/> class.
             </summary>
         </member>
-        <member name="M:Selerix.BusinessObjects.UWLimitCC.#ctor(Selerix.Foundation.UnderwritingMode)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.UWLimitCC"/> class.
-            </summary>
+        <member name="M:Selerix.BusinessObjects.UWLimitCC.#ctor(Selerix.Foundation.UnderwritingMode,System.Nullable{System.Decimal})">
+            <summary>Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.UWLimitCC"/> class.</summary>
             <param name="mode">The mode.</param>
+            <param name="age"></param>
         </member>
         <member name="M:Selerix.BusinessObjects.UWLimitCC.#ctor(Selerix.Foundation.UnderwritingMode,System.String,System.Decimal)">
             <summary>Initializes a new instance of the <see cref="T:Selerix.BusinessObjects.UWLimitCC"/> class.</summary>
@@ -31564,6 +32955,13 @@
             <summary>Gets or sets the <see cref="T:Selerix.BusinessObjects.UWLimitCC"/> with the specified mode.</summary>
             <param name="mode">The mode.</param>
             <param name="benefitLevel">The benefit level.</param>
+            <param name="minAge">The minimum age.</param>
+            <value>The <see cref="T:Selerix.BusinessObjects.UWLimitCC"/>.</value>
+            <returns></returns>
+        </member>
+        <member name="P:Selerix.BusinessObjects.UWlimitCCCollection.Item(Selerix.Foundation.UnderwritingMode,System.Decimal)">
+            <summary>Gets or sets the <see cref="T:Selerix.BusinessObjects.UWLimitCC"/> with the specified mode.</summary>
+            <param name="mode">The mode.</param>
             <param name="minAge">The minimum age.</param>
             <value>The <see cref="T:Selerix.BusinessObjects.UWLimitCC"/>.</value>
             <returns></returns>

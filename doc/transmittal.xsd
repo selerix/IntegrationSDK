@@ -382,11 +382,11 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractModelObject">
         <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="SenderID" xmlns:q6="http://microsoft.com/wsdl/types/" type="q6:guid" />
           <xs:element minOccurs="0" maxOccurs="1" name="UserID" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="EventDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" maxOccurs="1" name="ReasonCode" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Reason" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="SenderID" xmlns:q6="http://microsoft.com/wsdl/types/" type="q6:guid" />
           <xs:element minOccurs="0" maxOccurs="1" name="EventDetails" type="ArrayOfEventDetail" />
         </xs:sequence>
         <xs:attribute default="Unknown" name="EventClass" type="EventClass" />
@@ -454,6 +454,7 @@
       <xs:enumeration value="PaymentChanged" />
       <xs:enumeration value="BankNameChanged" />
       <xs:enumeration value="BankAddressChanged" />
+      <xs:enumeration value="EnrollmentStatusChanged" />
       <xs:enumeration value="Other" />
     </xs:restriction>
   </xs:simpleType>
@@ -616,13 +617,14 @@
     <xs:attribute name="Label" type="xs:string" />
     <xs:attribute default="Unknown" name="RequiredSSN" type="InterfaceOption" />
     <xs:attribute default="Unknown" name="RequiredStudent" type="InterfaceOption" />
-    <xs:attribute default="Unknown" name="RequiredDisabled" type="InterfaceOption" />
-    <xs:attribute default="Unknown" name="RequiredAddress" type="InterfaceOption" />
     <xs:attribute default="NotShown" name="BeneficiaryRequiredPrimary" type="InterfaceOption" />
     <xs:attribute default="true" name="IsPrimary" type="xs:boolean" />
     <xs:attribute default="true" name="IsEnabled" type="xs:boolean" />
     <xs:attribute default="Unknown" name="Relationship" type="Relationship" />
     <xs:attribute default="Unknown" name="LegalStatus" type="LegalStatus" />
+    <xs:attribute default="Unknown" name="RequiredDisabled" type="InterfaceOption" />
+    <xs:attribute default="Unknown" name="RequiredAddress" type="InterfaceOption" />
+    <xs:attribute default="Unknown" name="RequiredEmail" type="InterfaceOption" />
   </xs:complexType>
   <xs:complexType name="ArrayOfUWLimitCC">
     <xs:sequence>
@@ -1231,6 +1233,9 @@
           <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionFamilyPercentage" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionMaximumAmount" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionFamilyMaximumAmount" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionBenefitAmount" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionSalaryMultiplier" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionSalaryMultiplierMode" nillable="true" type="Frequency" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1689,9 +1694,6 @@
     <xs:sequence>
       <xs:element minOccurs="1" maxOccurs="1" name="Type" type="BeneficiaryType" />
       <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Phone" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="BeneficiaryAddress" type="Address" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Percent" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" maxOccurs="1" name="FirstName" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="MiddleInitial" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="LastName" type="xs:string" />
@@ -1701,7 +1703,10 @@
       <xs:element minOccurs="0" maxOccurs="1" name="Age" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" maxOccurs="1" name="BirthDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" maxOccurs="1" name="CountryOfCitizenship" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="Sex" type="Gender" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Phone" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BeneficiaryAddress" type="Address" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Percent" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" default="NotSet" name="Sex" type="Gender" />
     </xs:sequence>
     <xs:attribute name="UniqueID" xmlns:q9="http://microsoft.com/wsdl/types/" type="q9:guid" use="required" />
     <xs:attribute name="ApplicantID" type="xs:string" />
@@ -1719,9 +1724,8 @@
       <xs:enumeration value="Unknown" />
       <xs:enumeration value="Male" />
       <xs:enumeration value="Female" />
-      <xs:enumeration value="Unisex" />
-      <xs:enumeration value="Combined" />
       <xs:enumeration value="Other" />
+      <xs:enumeration value="NotSet" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ArrayOfPolicyHolder">
@@ -2188,6 +2192,7 @@
         <xs:attribute default="NotSet" name="BenefitAmountMode" type="RuleBenefitAmountMode" />
         <xs:attribute default="NotSet" name="RiderState" type="RateParamState" />
         <xs:attribute default="false" name="ChangeUWLimit" type="xs:boolean" />
+        <xs:attribute default="false" name="IncludeInEmployerAmount" type="xs:boolean" />
         <xs:attribute default="Unknown" name="UWMode" type="UnderwritingMode" />
         <xs:anyAttribute />
       </xs:extension>
@@ -2333,20 +2338,11 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractScriptableEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Agents" type="ArrayOfAgent" />
-          <xs:element minOccurs="0" maxOccurs="1" default="false" name="MaximumContributionIsProrated" type="xs:boolean" />
-          <xs:element minOccurs="0" maxOccurs="1" default="false" name="CalcBasedOnSalary" type="xs:boolean" />
-          <xs:element minOccurs="0" maxOccurs="1" default="Monthly" name="RatesFrequencyMode" type="Frequency" />
-          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="RoundMode" type="RoundMode" />
-          <xs:element minOccurs="0" maxOccurs="1" default="Financial" name="EmployerContributionRoundMode" type="RoundMode" />
-          <xs:element minOccurs="0" maxOccurs="1" default="0.01" name="EmployerContributionRoundFactor" type="xs:decimal" />
-          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="PremiumRoundMode" type="RoundMode" />
-          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="BenefitAmountMode" type="BenefitAmountMode" />
-          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="RatesAndFormsState" type="RatesAndFormsState" />
           <xs:element minOccurs="0" maxOccurs="1" name="Payer" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PayerEIN" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Code" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="OfferingCodeRequired" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Agents" type="ArrayOfAgent" />
           <xs:element minOccurs="0" maxOccurs="1" name="Relationships" type="ArrayOfRelationshipCC" />
           <xs:element minOccurs="0" maxOccurs="1" name="Insureds" type="ArrayOfInsured" />
           <xs:element minOccurs="0" maxOccurs="1" name="AuthorizedUsers" type="ArrayOfAuthorizedUser" />
@@ -2408,12 +2404,21 @@
           <xs:element minOccurs="0" maxOccurs="1" name="EmployeeAdministrativeFee" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="EmployerAdministrativeFee" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" default="true" name="SetBenefitAmountOnApplication" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" default="false" name="MaximumContributionIsProrated" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" default="false" name="CalcBasedOnSalary" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="MinimumContribution" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="MaximumContribution" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="MaximumContributionIndividual" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="MaximumContributionFamily" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="MaximumContributionMarriedFilingSeparately" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="GuaranteedPremium" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" default="Monthly" name="RatesFrequencyMode" type="Frequency" />
+          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="RoundMode" type="RoundMode" />
+          <xs:element minOccurs="0" maxOccurs="1" default="Financial" name="EmployerContributionRoundMode" type="RoundMode" />
+          <xs:element minOccurs="0" maxOccurs="1" default="0.01" name="EmployerContributionRoundFactor" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="PremiumRoundMode" type="RoundMode" />
+          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="BenefitAmountMode" type="BenefitAmountMode" />
+          <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="RatesAndFormsState" type="RatesAndFormsState" />
           <xs:element minOccurs="0" maxOccurs="1" name="RoundFactor" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="DeductionFrequency" nillable="true" type="xs:int" />
           <xs:element minOccurs="1" maxOccurs="1" name="DeductionDateBeforeEffectiveDate" type="xs:int" />
@@ -2439,6 +2444,11 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Advertisings" type="ArrayOfAdvertising" />
           <xs:element minOccurs="0" maxOccurs="1" name="Attachments" type="ArrayOfAttachment" />
         </xs:sequence>
+        <xs:attribute name="EngineID" type="xs:string" />
+        <xs:attribute name="FolderGuid" xmlns:q11="http://microsoft.com/wsdl/types/" type="q11:guid" />
+        <xs:attribute name="RelativePath" type="xs:string" />
+        <xs:attribute default="Unknown" name="Type" type="ProductType" />
+        <xs:attribute name="PayerID" type="xs:string" />
         <xs:attribute default="false" name="Global" type="xs:boolean" />
         <xs:attribute default="false" name="LicenseRequired" type="xs:boolean" />
         <xs:attribute default="false" name="AppointmentsRequired" type="xs:boolean" />
@@ -2465,6 +2475,7 @@
         <xs:attribute default="Optional" name="RequiredTaxID" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredSalary" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredInsuredSSN" type="InterfaceOption" />
+        <xs:attribute default="Optional" name="RequiredInsuredGender" type="InterfaceOption" />
         <xs:attribute default="false" name="RequiredPrimaryInsuredSSNOnly" type="xs:boolean" />
         <xs:attribute default="false" name="AllowBlankSSN6Mo" type="xs:boolean" />
         <xs:attribute default="true" name="RateCard" type="xs:boolean" />
@@ -2480,6 +2491,8 @@
         <xs:attribute default="Optional" name="RequiredInsuredHomePhone" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredInsuredWorkPhone" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredInsuredMaritalStatus" type="InterfaceOption" />
+        <xs:attribute default="Optional" name="RequiredEmployeeMobilePhone" type="InterfaceOption" />
+        <xs:attribute default="Optional" name="RequiredEmployeePersonalEmail" type="InterfaceOption" />
         <xs:attribute default="true" name="ShowLivingChildren" type="xs:boolean" />
         <xs:attribute default="true" name="ShowEstate" type="xs:boolean" />
         <xs:attribute default="true" name="ShowSuccessionOfHeirs" type="xs:boolean" />
@@ -2493,9 +2506,11 @@
         <xs:attribute default="true" name="RoundBenefitAmountAfterStepdown" type="xs:boolean" />
         <xs:attribute name="DisplayFormat" type="xs:string" />
         <xs:attribute default="false" name="IncreaseNotAllowedRule" type="xs:boolean" />
+        <xs:attribute default="false" name="GrandfatherBenefitAmounts" type="xs:boolean" />
         <xs:attribute default="false" name="UseEmployeeAge" type="xs:boolean" />
         <xs:attribute default="false" name="PolicyChangesNotAllowedRule" type="xs:boolean" />
         <xs:attribute default="false" name="AddNewPolicyAllowedRule" type="xs:boolean" />
+        <xs:attribute default="false" name="PolicyCancelNotAllowedRule" type="xs:boolean" />
         <xs:attribute default="true" name="ForceLateEntry" type="xs:boolean" />
         <xs:attribute default="false" name="NewHiresNotLateEntry" type="xs:boolean" />
         <xs:attribute default="0" name="GILimitSteps" type="xs:int" />
@@ -2508,11 +2523,6 @@
         <xs:attribute default="0" name="ExtraChildEmployeeCost" type="xs:decimal" />
         <xs:attribute default="0" name="ExtraChildEmployerCost" type="xs:decimal" />
         <xs:attribute default="0" name="DefaultPayerProductID" type="xs:int" />
-        <xs:attribute name="EngineID" type="xs:string" />
-        <xs:attribute name="FolderGuid" xmlns:q11="http://microsoft.com/wsdl/types/" type="q11:guid" />
-        <xs:attribute name="RelativePath" type="xs:string" />
-        <xs:attribute default="Unknown" name="Type" type="ProductType" />
-        <xs:attribute name="PayerID" type="xs:string" />
         <xs:attribute name="ProductPath" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
@@ -2587,7 +2597,7 @@
           <xs:element minOccurs="0" maxOccurs="1" name="MiddleInitial" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="LastName" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Suffix" type="xs:string" />
-          <xs:element minOccurs="1" maxOccurs="1" name="Sex" type="Gender" />
+          <xs:element minOccurs="0" maxOccurs="1" default="NotSet" name="Sex" type="Gender" />
           <xs:element minOccurs="0" maxOccurs="1" name="PersonalEmail" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Employment" type="Employment" />
         </xs:sequence>
@@ -3086,36 +3096,6 @@
       <xs:enumeration value="HR_Admin" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="RoundMode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Unknown" />
-      <xs:enumeration value="NoRound" />
-      <xs:enumeration value="Round" />
-      <xs:enumeration value="RoundUp" />
-      <xs:enumeration value="RoundDown" />
-      <xs:enumeration value="Math" />
-      <xs:enumeration value="Financial" />
-      <xs:enumeration value="Other" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="BenefitAmountMode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Unknown" />
-      <xs:enumeration value="Weekly" />
-      <xs:enumeration value="Monthly" />
-      <xs:enumeration value="Annual" />
-      <xs:enumeration value="Other" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="RatesAndFormsState">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Unknown" />
-      <xs:enumeration value="StateOfEnrollment" />
-      <xs:enumeration value="StateOfGroupDomicile" />
-      <xs:enumeration value="StateOfResidence" />
-      <xs:enumeration value="Other" />
-    </xs:restriction>
-  </xs:simpleType>
   <xs:complexType name="ArrayOfAuthorizedUser">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AuthorizedUser" type="AuthorizedUser" />
@@ -3151,6 +3131,36 @@
       <xs:enumeration value="None" />
       <xs:enumeration value="GI_SI" />
       <xs:enumeration value="ALL" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RoundMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="NoRound" />
+      <xs:enumeration value="Round" />
+      <xs:enumeration value="RoundUp" />
+      <xs:enumeration value="RoundDown" />
+      <xs:enumeration value="Math" />
+      <xs:enumeration value="Financial" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BenefitAmountMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Weekly" />
+      <xs:enumeration value="Monthly" />
+      <xs:enumeration value="Annual" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RatesAndFormsState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="StateOfEnrollment" />
+      <xs:enumeration value="StateOfGroupDomicile" />
+      <xs:enumeration value="StateOfResidence" />
+      <xs:enumeration value="Other" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ArrayOfChoice11">
@@ -5150,6 +5160,11 @@
       <xs:enumeration value="AIGEOI" />
       <xs:enumeration value="UnumEOI" />
       <xs:enumeration value="LFGEOI" />
+      <xs:enumeration value="StandardEOI" />
+      <xs:enumeration value="DearbornEOI" />
+      <xs:enumeration value="GuardianEOI" />
+      <xs:enumeration value="CignaEOI" />
+      <xs:enumeration value="SunLifeEOI" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="SpouseSignatureMode">
@@ -5388,8 +5403,10 @@
         <xs:attribute default="Days" name="EnrollmentGracePeriodType" type="xs:string" />
         <xs:attribute default="false" name="EnrollmentOpenYearRound" type="xs:boolean" />
         <xs:attribute default="false" name="ExtendCoverageThroughEndMonth" type="xs:boolean" />
+        <xs:attribute default="false" name="ExtendGracePeriodToEOM" type="xs:boolean" />
         <xs:attribute default="0" name="EnrollmentWaitingPeriodDays" type="xs:int" />
         <xs:attribute default="0" name="EffectiveWaitPeriod" type="xs:int" />
+        <xs:attribute default="false" name="UseHireDateToCalcWaitingPeriod" type="xs:boolean" />
         <xs:attribute default="Days" name="EffectiveWaitPeriodType" type="xs:string" />
         <xs:attribute default="true" name="EffectiveFirstDayOfMonth" type="xs:boolean" />
         <xs:attribute default="false" name="EffectiveDateCutoff" type="xs:boolean" />
@@ -5658,6 +5675,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="1" name="GroupNumber" type="xs:string" />
           <xs:element minOccurs="1" maxOccurs="1" name="DecisionSupportEnabled" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TwoFactorAuth" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="AdvertisingEnabled" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="MedicalEngineSettings" type="MedicalEngineSettings" />
           <xs:element minOccurs="0" maxOccurs="1" name="ExternalReferenceIDs" type="ArrayOfExternalReferenceID" />
