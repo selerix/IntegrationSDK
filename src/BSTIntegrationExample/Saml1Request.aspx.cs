@@ -16,6 +16,7 @@ using Selerix.Foundation.Data;
 using Selerix.Foundation;
 using System.Xml;
 using System.IO;
+using System.Collections.Specialized;
 
 namespace BSTIntegrationExample
 {
@@ -322,6 +323,93 @@ namespace BSTIntegrationExample
             remotePost.Add("SAMLResponse", ComponentSpace.SAML.SAML.ToBase64String(samlResponseXml));
             remotePost.Url = assertionConsumerServiceURL;
             remotePost.Post();
+        }
+    }
+
+    /// <summary>
+    /// Summary description for RemotePost.
+    /// </summary>
+    public class RemotePost
+    {
+        /// <summary>
+        /// Named list of post variables
+        /// </summary>
+        private readonly NameValueCollection Inputs = new NameValueCollection();
+
+        /// <summary>
+        /// Designates the url of the remote post.
+        /// </summary>
+        public string Url { get; set; } = "";
+
+        /// <summary>
+        /// Designates the Post method to send the form.
+        /// </summary>
+        public string Method { get; set; } = "post";
+
+        /// <summary>
+        /// Designates the name of the form.
+        /// </summary>
+        public string FormName { get; set; } = "RemoteForm";
+
+        /// <summary>
+        /// Adds the specified name of the form.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="value">The value.</param>
+        public void Add(string name, string value)
+        {
+            Inputs.Add(name, value);
+        }
+
+        /// <summary>
+        /// Posts the specified page.
+        /// </summary>
+        /// <remarks></remarks>
+        public void Post()
+        {
+            Post(string.Empty);
+        }
+
+        /// <summary>
+        /// Posts the specified page.
+        /// </summary>
+        /// <param name="newWindowName">New name of the window.</param>
+        /// <remarks></remarks>
+        public void Post(string newWindowName)
+        {
+            System.Text.StringBuilder form = new System.Text.StringBuilder();
+
+            form.Append("<!DOCTYPE html>");
+            form.Append("<html><head>");
+
+            form.Append(string.Format("</head><body>", FormName));
+            form.Append(string.Format("<form name=\"{0}\" method=\"{1}\" action=\"{2}\"", FormName, Method, Url));
+            if (!string.IsNullOrEmpty(newWindowName))
+            {
+                form.Append(string.Format(" target=\"{0}\"", newWindowName));
+            }
+
+            form.Append(">");
+
+            for (int i = 0; i < Inputs.Keys.Count; i++)
+            {
+                form.Append(string.Format("<input name=\"{0}\" type=\"hidden\" value=\"{1}\">", Inputs.Keys[i], System.Web.HttpContext.Current.Server.HtmlEncode(Inputs[Inputs.Keys[i]])));
+            }
+
+            form.Append(@"
+	            <script type='text/javascript'>
+                <!--
+		            var submitCount = 0;
+                    window.onload = function() { if (submitCount == 0) document.forms[0].submit(); submitCount = submitCount + 1; }
+                //-->       
+	            </script>");
+
+            form.Append("</form>");
+            form.Append("</body></html>");
+
+            System.Web.HttpContext.Current.Response.Clear();
+            System.Web.HttpContext.Current.Response.Write(form.ToString());
+            System.Web.HttpContext.Current.Response.End();
         }
     }
 }
