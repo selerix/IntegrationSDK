@@ -20,6 +20,9 @@
       <xs:element minOccurs="0" maxOccurs="1" name="StoryLine" type="StoryLine" />
       <xs:element minOccurs="0" maxOccurs="1" name="Agents" type="ArrayOfAgent" />
       <xs:element minOccurs="0" maxOccurs="1" name="Offerings" type="ArrayOfOffering" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Products" type="ArrayOfProduct" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Payers" type="ArrayOfPayer" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Brokers" type="ArrayOfBroker" />
       <xs:element minOccurs="0" maxOccurs="1" name="Questions" type="ArrayOfQuestion" />
       <xs:element minOccurs="0" maxOccurs="1" name="Applicants" type="ArrayOfApplicant" />
       <xs:element minOccurs="0" maxOccurs="1" name="TemporaryApplicants" type="ArrayOfApplicant1" />
@@ -28,9 +31,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="Applications" type="ArrayOfApplication" />
       <xs:element minOccurs="0" maxOccurs="1" name="TemporaryApplications" type="ArrayOfApplication1" />
       <xs:element minOccurs="0" maxOccurs="1" name="TransmittalResult" type="Result" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Products" type="ArrayOfProduct" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Payers" type="ArrayOfPayer" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Brokers" type="ArrayOfBroker" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TwoFactorAuthentication" type="TwoFactorAuthenticationInfo" />
     </xs:sequence>
     <xs:attribute name="User" type="xs:string" />
     <xs:attribute name="Password" type="xs:string" />
@@ -39,6 +40,7 @@
     <xs:attribute name="RequestID" xmlns:q3="http://microsoft.com/wsdl/types/" type="q3:guid" />
     <xs:attribute default="Unknown" name="Type" type="TransmittalType" />
     <xs:attribute default="Undefined" name="UploadMode" type="UploadMode" />
+    <xs:attribute default="false" name="AllowUpdateSSN" type="xs:boolean" />
     <xs:attribute default="false" name="Empty" type="xs:boolean" />
     <xs:attribute name="PortfolioID" xmlns:q4="http://microsoft.com/wsdl/types/" type="q4:guid" />
   </xs:complexType>
@@ -69,6 +71,7 @@
     <xs:attribute default="true" name="DecisionSupport" type="xs:boolean" />
     <xs:attribute default="false" name="Advertising" type="xs:boolean" />
     <xs:attribute default="true" name="Themes" type="xs:boolean" />
+    <xs:attribute default="false" name="AssetFiles" type="xs:boolean" />
     <xs:attribute default="true" name="GeneralRules" type="xs:boolean" />
     <xs:attribute default="true" name="Brokers" type="xs:boolean" />
   </xs:complexType>
@@ -160,6 +163,42 @@
       <xs:enumeration value="Payer" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:complexType name="TwoFactorAuthenticationInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AbstractModelObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="GrantType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Password" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AccessToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ExpiresInSeconds" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Error" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ResourceId" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TwoFactorAuthenticationRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TwoFactorAuthenticationOptions" type="ArrayOfTwoFactorAuthenticationOption" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TwoFactorAuthenticationToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AccessCodeExpired" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Code" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DeviceFingerprint" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RememberDevice" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TwoFactorAuthenticationOptionId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TwoFactorAuthenticationCode" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfTwoFactorAuthenticationOption">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TwoFactorAuthenticationOptions" nillable="true" type="TwoFactorAuthenticationOption" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TwoFactorAuthenticationOption">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Type" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="ApplicationDocument">
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractModelObject">
@@ -312,12 +351,24 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Zip" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="FullAddress" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="EventDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmployeeID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PersonID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AddressType" type="AddressType" />
         </xs:sequence>
-        <xs:attribute default="1" name="Language" type="xs:int" />
         <xs:attribute name="Type" type="xs:string" />
+        <xs:attribute default="1" name="Language" type="xs:int" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:simpleType name="AddressType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Home" />
+      <xs:enumeration value="Mailing" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="Coverage">
     <xs:complexContent mixed="false">
       <xs:extension base="Rider">
@@ -457,6 +508,10 @@
       <xs:enumeration value="BankNameChanged" />
       <xs:enumeration value="BankAddressChanged" />
       <xs:enumeration value="EnrollmentStatusChanged" />
+      <xs:enumeration value="TitleChanged" />
+      <xs:enumeration value="EmailMessageSent" />
+      <xs:enumeration value="TextMessageSent" />
+      <xs:enumeration value="AppMessageSent" />
       <xs:enumeration value="Other" />
     </xs:restriction>
   </xs:simpleType>
@@ -608,6 +663,7 @@
       <xs:enumeration value="BankNameChanged" />
       <xs:enumeration value="BankAddressChanged" />
       <xs:enumeration value="EnrollmentStatusChanged" />
+      <xs:enumeration value="TitleChanged" />
       <xs:enumeration value="AdministrativeChange" />
       <xs:enumeration value="TerminatedEmploymentRetired" />
       <xs:enumeration value="VoluntaryTermination" />
@@ -627,6 +683,8 @@
       <xs:enumeration value="TerminatedGrossMisconduct" />
       <xs:enumeration value="TerminatedDeath" />
       <xs:enumeration value="TerminatedLeaveExpired" />
+      <xs:enumeration value="LeaveFurlough" />
+      <xs:enumeration value="TerminatedEndOfAssignment" />
       <xs:enumeration value="Other" />
     </xs:restriction>
   </xs:simpleType>
@@ -660,6 +718,7 @@
       <xs:enumeration value="Agent" />
       <xs:enumeration value="HR" />
       <xs:enumeration value="Engagement" />
+      <xs:enumeration value="Employee" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="TestCase">
@@ -669,6 +728,16 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Script" type="xs:string" />
         </xs:sequence>
         <xs:attribute name="ClassName" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EmployerMatchInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AbstractModelObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="EmployerMatchPercentage" type="xs:decimal" />
+          <xs:element minOccurs="1" maxOccurs="1" name="EmployerMatchMaxSalaryPercentage" type="xs:decimal" />
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -685,11 +754,11 @@
             </xs:complexType>
           </xs:element>
         </xs:sequence>
-        <xs:attribute default="Server" name="RunAt" type="ScriptRunAt" />
-        <xs:attribute default="JScript" name="Language" type="ScriptLanguages" />
         <xs:attribute name="Type" type="xs:string" />
+        <xs:attribute default="Server" name="RunAt" type="ScriptRunAt" />
         <xs:attribute name="Field" type="xs:string" />
         <xs:attribute name="Method" type="xs:string" />
+        <xs:attribute default="JScript" name="Language" type="ScriptLanguages" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -898,6 +967,8 @@
       <xs:enumeration value="Optional" />
       <xs:enumeration value="RequiredIfNew" />
       <xs:enumeration value="ReadOnly" />
+      <xs:enumeration value="ReadOnlyIfNotNull" />
+      <xs:enumeration value="ReadOnlyIfNotNullRequiredIfNull" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ReplacementTableQuestionRule">
@@ -1146,6 +1217,7 @@
       <xs:enumeration value="ReadOnly" />
       <xs:enumeration value="ReadOnlyWithOption" />
       <xs:enumeration value="PreSelected" />
+      <xs:enumeration value="PreSelectedEditable" />
       <xs:enumeration value="ReadOnlyCostsBuiltin" />
     </xs:restriction>
   </xs:simpleType>
@@ -1167,9 +1239,9 @@
   <xs:complexType name="DependsOnCriteria">
     <xs:complexContent mixed="false">
       <xs:extension base="QuestionRule">
-        <xs:attribute default="Equal" name="Operator" type="RuleOperator" />
         <xs:attribute name="QuestionID" type="xs:string" />
         <xs:attribute name="Value" type="xs:string" />
+        <xs:attribute default="Equal" name="Operator" type="RuleOperator" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1295,6 +1367,7 @@
       <xs:enumeration value="PerYear_51" />
       <xs:enumeration value="Weekly" />
       <xs:enumeration value="PerYear_53" />
+      <xs:enumeration value="PerYear_60" />
       <xs:enumeration value="PerYear_260" />
     </xs:restriction>
   </xs:simpleType>
@@ -1360,6 +1433,7 @@
       <xs:extension base="Script">
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="1" default="NoCoverage" name="Tier" type="Tier" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmployerMatchInfos" type="ArrayOfEmployerMatchInfo" />
           <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionPercent" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionMaximumPercentage" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" maxOccurs="1" name="EmployerContributionFamilyPercentage" nillable="true" type="xs:decimal" />
@@ -1396,6 +1470,11 @@
       <xs:enumeration value="EmployeeSpouse2Children" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:complexType name="ArrayOfEmployerMatchInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployerMatchInfo" type="EmployerMatchInfo" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="RuleMaximumBenefitAmountPercent">
     <xs:complexContent mixed="false">
       <xs:extension base="Script">
@@ -1415,6 +1494,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleProductRequiredDetails" type="RuleProductRequiredDetails" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="SameBenefitAmount" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" default="false" name="UseFaceAmount" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="SameCoverageTier" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="PendCoverageIfRequiredCoverageFullPending" type="xs:boolean" />
         </xs:sequence>
@@ -1547,6 +1627,8 @@
       <xs:element minOccurs="0" maxOccurs="1" name="MonthlyShareOfLowestCostMonthlyPremGrp" type="AmountByMonthDetailType" />
       <xs:element minOccurs="0" maxOccurs="1" name="AnnualSafeHarborCd" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="MonthlySafeHarborGrp" type="MonthlySafeHarborCdType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AnnualICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MonthlyICHRAZipCdGrp" type="MonthlyICHRAZipCdGrpType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="OfferCoverageByMonthType">
@@ -1595,6 +1677,22 @@
       <xs:element minOccurs="0" maxOccurs="1" name="OctSafeHarborCd" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="NovSafeHarborCd" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="DecSafeHarborCd" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MonthlyICHRAZipCdGrpType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="JanICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FebICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MarICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AprICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MayICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JunICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JulICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AugICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SepICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="OctICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="NovICHRAZipCd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DecICHRAZipCd" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="EmployerCoveredIndividualType">
@@ -1871,9 +1969,6 @@
   <xs:complexType name="PolicyHolder">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Phone" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="BeneficiaryAddress" type="Address" />
-      <xs:element minOccurs="0" maxOccurs="1" name="Percent" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" maxOccurs="1" name="FirstName" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="MiddleInitial" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="LastName" type="xs:string" />
@@ -1883,6 +1978,9 @@
       <xs:element minOccurs="0" maxOccurs="1" name="Age" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" maxOccurs="1" name="BirthDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" maxOccurs="1" name="CountryOfCitizenship" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Phone" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BeneficiaryAddress" type="Address" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Percent" nillable="true" type="xs:decimal" />
     </xs:sequence>
     <xs:attribute name="UniqueID" xmlns:q10="http://microsoft.com/wsdl/types/" type="q10:guid" use="required" />
     <xs:attribute name="ApplicantID" type="xs:string" />
@@ -1924,6 +2022,10 @@
           <xs:element minOccurs="0" maxOccurs="1" name="DocumentApplications" type="ArrayOfDocumentApplication" />
           <xs:element minOccurs="0" maxOccurs="1" name="Form" type="Form" />
         </xs:sequence>
+        <xs:attribute name="EmployeeID" type="xs:string" />
+        <xs:attribute name="UserID" type="xs:string" />
+        <xs:attribute name="ApplicantID" type="xs:string" />
+        <xs:attribute name="SignatureMode" type="xs:string" />
         <xs:attribute default="true" name="IsApplicantSignatureRequired" type="xs:boolean" />
         <xs:attribute default="1" name="ApplicantSignaturePerForm" type="xs:int" />
         <xs:attribute default="true" name="IsSpouseSignatureRequired" type="xs:boolean" />
@@ -1933,13 +2035,6 @@
         <xs:attribute default="1" name="EnrollerSignaturePerForm" type="xs:int" />
         <xs:attribute default="false" name="IsEmployerSignatureRequired" type="xs:boolean" />
         <xs:attribute default="1" name="EmployerSignaturePerForm" type="xs:int" />
-        <xs:attribute default="false" name="NewFormRequired" type="xs:boolean" />
-        <xs:attribute name="AlternativeTextTextItem" type="xs:string" />
-        <xs:attribute name="SpecialInstructionTextTextItem" type="xs:string" />
-        <xs:attribute name="EmployeeID" type="xs:string" />
-        <xs:attribute name="UserID" type="xs:string" />
-        <xs:attribute name="ApplicantID" type="xs:string" />
-        <xs:attribute name="SignatureMode" type="xs:string" />
         <xs:attribute default="false" name="DigitizedSignature" type="xs:boolean" />
         <xs:attribute default="false" name="PINSignature" type="xs:boolean" />
         <xs:attribute default="false" name="ClickAcceptSignature" type="xs:boolean" />
@@ -1954,6 +2049,9 @@
         <xs:attribute default="Incomplete" name="PendingStatus" type="DocumentStatus" />
         <xs:attribute default="false" name="Ignore" type="xs:boolean" />
         <xs:attribute default="false" name="SoftIgnore" type="xs:boolean" />
+        <xs:attribute default="false" name="NewFormRequired" type="xs:boolean" />
+        <xs:attribute name="AlternativeTextTextItem" type="xs:string" />
+        <xs:attribute name="SpecialInstructionTextTextItem" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -2021,16 +2119,28 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractScriptableObject">
         <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Category" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="SpecialInstructionText" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="AlternativeText" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="Category" type="xs:string" />
         </xs:sequence>
+        <xs:attribute default="false" name="FormLibrary" type="xs:boolean" />
+        <xs:attribute name="File" type="xs:string" />
+        <xs:attribute name="XSLTFile" type="xs:string" />
         <xs:attribute default="Internal" name="FormProviderType" type="FormProviderType" />
+        <xs:attribute name="Type" type="xs:string" />
+        <xs:attribute name="SignatureMode" type="xs:string" />
+        <xs:attribute default="false" name="DigitizedSignature" type="xs:boolean" />
+        <xs:attribute default="false" name="PINSignature" type="xs:boolean" />
+        <xs:attribute default="false" name="ClickAcceptSignature" type="xs:boolean" />
+        <xs:attribute default="false" name="VoicePrintSignature" type="xs:boolean" />
+        <xs:attribute default="false" name="OneStepSignature" type="xs:boolean" />
         <xs:attribute default="0" name="NumberOfPages" type="xs:int" />
         <xs:attribute default="0" name="ChildrenNum" type="xs:int" />
         <xs:attribute default="false" name="NewFormRequiredForEachApplication" type="xs:boolean" />
         <xs:attribute default="false" name="NewFormRequiredForEachOffering" type="xs:boolean" />
+        <xs:attribute default="false" name="NewFormRequiredForEachPrimaryInsureds" type="xs:boolean" />
         <xs:attribute default="false" name="NewFormRequiredForEachInsured" type="xs:boolean" />
+        <xs:attribute default="false" name="NewFormRequiredForAddPrimaryName" type="xs:boolean" />
         <xs:attribute default="100" name="ApplicationPerForm" type="xs:int" />
         <xs:attribute default="true" name="IsApplicantSignatureRequired" type="xs:boolean" />
         <xs:attribute default="1" name="ApplicantSignaturePerForm" type="xs:int" />
@@ -2044,16 +2154,6 @@
         <xs:attribute default="false" name="IsSpecialInstruction" type="xs:boolean" />
         <xs:attribute name="SpecialInstructionTextTextItem" type="xs:string" />
         <xs:attribute name="AlternativeTextTextItem" type="xs:string" />
-        <xs:attribute default="false" name="FormLibrary" type="xs:boolean" />
-        <xs:attribute name="File" type="xs:string" />
-        <xs:attribute name="XSLTFile" type="xs:string" />
-        <xs:attribute name="Type" type="xs:string" />
-        <xs:attribute name="SignatureMode" type="xs:string" />
-        <xs:attribute default="false" name="DigitizedSignature" type="xs:boolean" />
-        <xs:attribute default="false" name="PINSignature" type="xs:boolean" />
-        <xs:attribute default="false" name="ClickAcceptSignature" type="xs:boolean" />
-        <xs:attribute default="false" name="VoicePrintSignature" type="xs:boolean" />
-        <xs:attribute default="false" name="OneStepSignature" type="xs:boolean" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -2113,6 +2213,16 @@
       <xs:element minOccurs="0" maxOccurs="1" name="CustomApplicationRule" type="CustomApplicationRule" />
       <xs:element minOccurs="0" maxOccurs="1" name="RiderTotalUnitsRule" type="RiderTotalUnitsRule" />
     </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="AssetFile">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AbstractScriptableEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="ContentAttachmentID" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="Rates">
     <xs:complexContent mixed="false">
@@ -2211,12 +2321,12 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="1" name="CustomFilter" type="xs:string" />
         </xs:sequence>
+        <xs:attribute name="Increment" type="xs:decimal" use="required" />
         <xs:attribute default="false" name="IsMaxToApplicationAmount" type="xs:boolean" />
         <xs:attribute default="false" name="IsIncrementEditable" type="xs:boolean" />
         <xs:attribute default="false" name="IsEqualToApplicationAmount" type="xs:boolean" />
-        <xs:attribute default="BenefitAmount" name="BenefitAmountMode" type="RuleBenefitAmountMode" />
-        <xs:attribute name="Increment" type="xs:decimal" use="required" />
         <xs:attribute name="MinValue" type="xs:decimal" use="required" />
+        <xs:attribute default="BenefitAmount" name="BenefitAmountMode" type="RuleBenefitAmountMode" />
         <xs:attribute name="MaxValue" type="xs:decimal" use="required" />
         <xs:attribute default="0" name="MinPolicyTimes" type="xs:decimal" />
         <xs:attribute default="0" name="MaxPolicyTimes" type="xs:decimal" />
@@ -2322,17 +2432,24 @@
         <xs:attribute name="CodeTextItem" type="xs:string" />
         <xs:attribute name="DescriptionTextItem" type="xs:string" />
         <xs:attribute default="false" name="DefaultValue" type="xs:boolean" />
+        <xs:attribute default="NotSet" name="BenefitAmountMode" type="RuleBenefitAmountMode" />
         <xs:attribute default="false" name="IsOptional" type="xs:boolean" />
         <xs:attribute name="Tier" type="xs:string" />
-        <xs:attribute default="NotSet" name="BenefitAmountMode" type="RuleBenefitAmountMode" />
         <xs:attribute default="NotSet" name="RiderState" type="RateParamState" />
         <xs:attribute default="false" name="ChangeUWLimit" type="xs:boolean" />
-        <xs:attribute default="false" name="IncludeInEmployerAmount" type="xs:boolean" />
+        <xs:attribute default="Split" name="EmployerContribution" type="RiderPaymentContribution" />
         <xs:attribute default="Unknown" name="UWMode" type="UnderwritingMode" />
         <xs:anyAttribute />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:simpleType name="RiderPaymentContribution">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Split" />
+      <xs:enumeration value="EmployerPay" />
+      <xs:enumeration value="EmployeePay" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="RateCard">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Template" type="RateTemplate" />
@@ -2374,8 +2491,6 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractScriptableObject">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
-          <xs:any minOccurs="0" maxOccurs="unbounded" />
           <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element minOccurs="0" maxOccurs="1" name="Param" type="RateParam" />
             <xs:element minOccurs="0" maxOccurs="1" name="AgeParam" type="AgeParam" />
@@ -2388,6 +2503,8 @@
             <xs:element minOccurs="0" maxOccurs="1" name="UnitsParam" type="UnitsParam" />
           </xs:choice>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="Rider" type="RateRider" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:any minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
         <xs:attribute default="" name="Code" type="xs:string" />
         <xs:attribute default="false" name="CostIsCustom" type="xs:boolean" />
@@ -2505,10 +2622,12 @@
           <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="UWLimitMode" type="Frequency" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="UWLimitsForBasePremium" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="UseGILimit" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" default="false" name="ShowAllTiers" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="true" name="PremiumLimitsEnabled" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="true" name="BenefitLimitsEnabled" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="true" name="AgeLimitsEnabled" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="true" name="SalaryLimitsEnabled" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ProductRateFiles" type="ArrayOfRateCardShortInfo" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="UseDifferentSamplesForInsureds" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="Grid" name="SamplesDisplayType" type="SamplesDisplayType" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="ApplyEmployeeSamplesToEveryInsured" type="xs:boolean" />
@@ -2585,13 +2704,16 @@
         <xs:attribute name="FolderGuid" xmlns:q11="http://microsoft.com/wsdl/types/" type="q11:guid" />
         <xs:attribute name="RelativePath" type="xs:string" />
         <xs:attribute default="Unknown" name="Type" type="ProductType" />
+        <xs:attribute default="Unknown" name="EngineName" type="EngineName" />
         <xs:attribute name="PayerID" type="xs:string" />
+        <xs:attribute default="false" name="ObsoleteProduct" type="xs:boolean" />
         <xs:attribute default="false" name="Global" type="xs:boolean" />
         <xs:attribute default="false" name="LicenseRequired" type="xs:boolean" />
         <xs:attribute default="false" name="AppointmentsRequired" type="xs:boolean" />
         <xs:attribute default="false" name="UseNewQuestionControl" type="xs:boolean" />
         <xs:attribute name="State" type="xs:string" />
         <xs:attribute default="false" name="Locked" type="xs:boolean" />
+        <xs:attribute default="false" name="ReplacePolicyNumber" type="xs:boolean" />
         <xs:attribute default="true" name="SameSexDomesticPartnerAsSpouse" type="xs:boolean" />
         <xs:attribute default="0" name="SameSexDomesticPartnerAge" type="xs:int" />
         <xs:attribute default="false" name="OppositeSexDomesticPartnerAsSpouse" type="xs:boolean" />
@@ -2608,6 +2730,7 @@
         <xs:attribute default="NotShown" name="BeneficiaryRequiredSSN" type="InterfaceOption" />
         <xs:attribute default="Optional" name="BeneficiaryRequiredGender" type="InterfaceOption" />
         <xs:attribute default="NotShown" name="RequiredCountryOfCitizenship" type="InterfaceOption" />
+        <xs:attribute default="false" name="CollectBeneficiariesDuringEnrollment" type="xs:boolean" />
         <xs:attribute default="NotShown" name="RequiredPriorName" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredTaxID" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredSalary" type="InterfaceOption" />
@@ -2629,6 +2752,7 @@
         <xs:attribute default="Optional" name="RequiredInsuredWorkPhone" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredInsuredMaritalStatus" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredEmployeeMobilePhone" type="InterfaceOption" />
+        <xs:attribute default="Required" name="RequiredEmployeeDOB" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredEmployeePersonalEmail" type="InterfaceOption" />
         <xs:attribute default="true" name="ShowLivingChildren" type="xs:boolean" />
         <xs:attribute default="true" name="ShowEstate" type="xs:boolean" />
@@ -2706,6 +2830,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="Contact" type="Person" />
           <xs:element minOccurs="0" maxOccurs="1" name="TaxID" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NAICS" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -2719,6 +2844,7 @@
           <xs:element minOccurs="0" maxOccurs="1" name="PhoneHome" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PhoneWork" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PhoneMobile" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PhoneMobileVerified" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="Email" type="xs:string" />
         </xs:sequence>
       </xs:extension>
@@ -2736,15 +2862,30 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Suffix" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" default="NotSet" name="Sex" type="Gender" />
           <xs:element minOccurs="0" maxOccurs="1" name="PersonalEmail" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NotificationTextEnabled" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NotificationEmailEnabled" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MessageCategoryPreferences" type="ArrayOfMessageCategoryPreference" />
           <xs:element minOccurs="0" maxOccurs="1" name="Employment" type="Employment" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="ArrayOfMessageCategoryPreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageCategoryPreference" nillable="true" type="MessageCategoryPreference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageCategoryPreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Enabled" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="Applicant">
     <xs:complexContent mixed="false">
       <xs:extension base="Person">
         <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" default="false" name="SendInvite" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="LegalStatus" type="LegalStatus" />
           <xs:element minOccurs="0" maxOccurs="1" name="LegalStatusDescription" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="Relationship" type="Relationship" />
@@ -2780,6 +2921,7 @@
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="DoNotUpdateInfo" type="xs:boolean" />
         </xs:sequence>
         <xs:attribute name="DependentNumber" type="xs:string" />
+        <xs:attribute name="LogKey" type="xs:string" />
         <xs:attribute name="EmployeeID" type="xs:string" />
         <xs:attribute name="ForceChangePIN" type="xs:string" />
       </xs:extension>
@@ -2825,7 +2967,6 @@
       <xs:element minOccurs="0" maxOccurs="1" default="Unknown" name="CreditType" type="CreditType" />
       <xs:element minOccurs="0" maxOccurs="1" name="CreditNumber" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="CreditExpiration" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" maxOccurs="1" name="CreditSecurityCode" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="ExternalPaymentProvider" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="1" name="PaymentTransactions" type="ArrayOfPaymentTransactionEntry" />
     </xs:sequence>
@@ -2839,6 +2980,7 @@
       <xs:enumeration value="Invoice" />
       <xs:enumeration value="AuthorizeNetPaymentProvider" />
       <xs:enumeration value="PaylogixPaymentProvider" />
+      <xs:enumeration value="PiopacPaymentProvider" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="BankType">
@@ -2911,10 +3053,10 @@
   </xs:complexType>
   <xs:complexType name="Result">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="ObjectGuid" xmlns:q13="http://microsoft.com/wsdl/types/" type="q13:guid" />
       <xs:element minOccurs="0" maxOccurs="1" name="WarningsList" type="ArrayOfString" />
       <xs:element minOccurs="0" maxOccurs="1" name="MissedArtifacts" type="ArrayOfChoice2" />
       <xs:element minOccurs="0" maxOccurs="1" name="Error" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ObjectGuid" xmlns:q13="http://microsoft.com/wsdl/types/" type="q13:guid" />
     </xs:sequence>
     <xs:attribute name="Status" type="xs:string" />
   </xs:complexType>
@@ -2953,9 +3095,9 @@
             </xs:complexType>
           </xs:element>
         </xs:sequence>
-        <xs:attribute name="AlternativeTextTextItem" type="xs:string" />
         <xs:attribute name="File" type="xs:string" />
         <xs:attribute name="Order" type="xs:int" use="required" />
+        <xs:attribute name="AlternativeTextTextItem" type="xs:string" />
         <xs:attribute name="PresentationType" type="xs:string" />
         <xs:attribute default="Unknown" name="Type" type="PresentationType" />
         <xs:attribute default="Main" name="Place" type="PresentationPlace" />
@@ -3249,6 +3391,15 @@
   <xs:complexType name="TierCC">
     <xs:attribute name="Tier" type="Tier" use="required" />
   </xs:complexType>
+  <xs:complexType name="ArrayOfRateCardShortInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductRateFile" type="RateCardShortInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RateCardShortInfo">
+    <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute name="FilePath" type="xs:string" />
+  </xs:complexType>
   <xs:simpleType name="SamplesDisplayType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Grid" />
@@ -3325,7 +3476,6 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractScriptableObject">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Disclamer" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Text">
             <xs:complexType mixed="true">
               <xs:sequence>
@@ -3337,6 +3487,7 @@
           <xs:element minOccurs="0" maxOccurs="1" name="YesOptionText" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="NoOptionText" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="unbounded" name="DependsOn" type="DependsOnCriteria" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Disclamer" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Relationships" type="ArrayOfRelationshipCC" />
           <xs:element minOccurs="0" maxOccurs="1" name="Applicants" type="ArrayOfApplicantCC" />
           <xs:element minOccurs="0" maxOccurs="1" name="ListItems" type="ArrayOfQuestionListItem" />
@@ -3353,8 +3504,15 @@
         <xs:attribute default="false" name="IsGroup" type="xs:boolean" />
         <xs:attribute default="false" name="IsTable" type="xs:boolean" />
         <xs:attribute default="false" name="IsGlobal" type="xs:boolean" />
+        <xs:attribute default="true" name="ShowChildOnTheSamePage" type="xs:boolean" />
+        <xs:attribute default="false" name="AlwaysShowName" type="xs:boolean" />
         <xs:attribute default="false" name="IsAgent" type="xs:boolean" />
         <xs:attribute default="false" name="IsPrimaryInsuredQuestion" type="xs:boolean" />
+        <xs:attribute default="-1.7976931348623157E+308" name="MinValue" type="xs:double" />
+        <xs:attribute default="-1.7976931348623157E+308" name="MaxValue" type="xs:double" />
+        <xs:attribute name="MinDate" type="xs:dateTime" />
+        <xs:attribute name="MaxDate" type="xs:dateTime" />
+        <xs:attribute default="-2147483648" name="MaxLength" type="xs:int" />
         <xs:attribute default="true" name="IsRequired" type="xs:boolean" />
         <xs:attribute default="false" name="IsEnroller" type="xs:boolean" />
         <xs:attribute default="false" name="IsPreQualify" type="xs:boolean" />
@@ -3363,6 +3521,7 @@
         <xs:attribute default="false" name="DoNotInherit" type="xs:boolean" />
         <xs:attribute default="0" name="PageIndex" type="xs:int" />
         <xs:attribute default="false" name="NeedPostBack" type="xs:boolean" />
+        <xs:attribute default="Unknown" name="Type" type="xs:string" />
         <xs:attribute name="DesireAnswer" type="xs:string" />
         <xs:attribute name="ParentAnswer" type="xs:string" />
         <xs:attribute name="Label" type="xs:string" />
@@ -3377,13 +3536,6 @@
         <xs:attribute name="InstructionNotesCtrlHeaderText" type="xs:string" />
         <xs:attribute name="InstructionNotesCtrlInstructionText" type="xs:string" />
         <xs:attribute default="0" name="Order" type="xs:int" />
-        <xs:attribute default="true" name="ShowChildOnTheSamePage" type="xs:boolean" />
-        <xs:attribute default="-1.7976931348623157E+308" name="MinValue" type="xs:double" />
-        <xs:attribute default="-1.7976931348623157E+308" name="MaxValue" type="xs:double" />
-        <xs:attribute name="MinDate" type="xs:dateTime" />
-        <xs:attribute name="MaxDate" type="xs:dateTime" />
-        <xs:attribute default="-2147483648" name="MaxLength" type="xs:int" />
-        <xs:attribute default="Unknown" name="Type" type="xs:string" />
         <xs:attribute name="DefaultAnswer" type="xs:string" />
         <xs:attribute default="Unknown" name="UnderwritingMode" type="UnderwritingMode" />
         <xs:attribute name="ChangeUnderwritingMode" type="xs:boolean" use="required" />
@@ -3490,12 +3642,12 @@
   <xs:complexType name="CtrlInfo">
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractObjectInfo">
+        <xs:attribute name="CtrlID" type="xs:string" />
         <xs:attribute name="Path" type="xs:string" />
         <xs:attribute name="ClassName" type="xs:string" />
         <xs:attribute name="Position" type="xs:string" />
         <xs:attribute default="false" name="AddToEnd" type="xs:boolean" />
         <xs:attribute name="ModalFormsHosterID" type="xs:string" />
-        <xs:attribute name="CtrlID" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -3552,6 +3704,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="SpecialSituations" type="SpecialSituationsCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="LinkedAccounts" type="LinkedAccountsCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="EditRates" type="EditRatesCtrlInfo" />
+      <xs:element minOccurs="0" maxOccurs="1" name="GuardianLifeBridgeIntroduction" type="GuardianLifeBridgeIntroductionCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="QuickEdit" type="QuickEditCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="SidebarMenu" type="SidebarMenuCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="Template" type="CtrlInfoTemplate" />
@@ -3560,7 +3713,8 @@
       <xs:element minOccurs="0" maxOccurs="1" name="ExtSystemSelection" type="ExtSystemSelectionCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="PageHeader" type="PageHeaderCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="PersonEmploymentInfo" type="PersonEmploymentInfoCtrlInfo" />
-      <xs:element minOccurs="0" maxOccurs="1" name="ErrorCheck" type="ErrorCheckCtrlInfo" />
+      <xs:element minOccurs="0" maxOccurs="1" name="HarmonyBridgeIntroduction" type="HarmonyBridgeIntroductionCtrlInfo" />
+      <xs:element minOccurs="0" maxOccurs="1" name="AllstateBridgeIntroduction" type="AllstateBridgeIntroductionCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="ApplicantDetail" type="ApplicantDetailCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="ResetPasswordRequest" type="ResetPasswordRequestCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="PlanIntroduction" type="PlanIntroductionCtrlInfo" />
@@ -3592,6 +3746,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="GettingStarted" type="GettingStartedCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="Locations" type="LocationCtrlInfo" />
       <xs:element minOccurs="0" maxOccurs="1" name="Application" type="ApplicationCtrlInfo" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ErrorCheck" type="ErrorCheckCtrlInfo" />
     </xs:choice>
   </xs:complexType>
   <xs:complexType name="InstructionNotesCtrlInfo">
@@ -3705,9 +3860,9 @@
     <xs:complexContent mixed="false">
       <xs:extension base="CtrlInfo">
         <xs:attribute name="SuffixRequired" type="InterfaceOption" use="required" />
+        <xs:attribute name="SSNRequired" type="xs:string" />
         <xs:attribute name="SexRequired" type="InterfaceOption" use="required" />
         <xs:attribute name="BirthDateRequired" type="InterfaceOption" use="required" />
-        <xs:attribute name="SSNRequired" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -3731,8 +3886,8 @@
   <xs:complexType name="PINCtrlInfo">
     <xs:complexContent mixed="false">
       <xs:extension base="CtrlInfo">
-        <xs:attribute name="MemberIDInstructionsTextItem" type="xs:string" />
         <xs:attribute name="MemberIDRequired" type="xs:string" />
+        <xs:attribute name="MemberIDInstructionsTextItem" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -3766,8 +3921,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="CtrlInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="HintText" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="unbounded" name="Button" type="ButtonCtrlInfo" />
+          <xs:element minOccurs="0" maxOccurs="1" name="HintText" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -3779,9 +3934,6 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Text" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="ToolTip" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="ConfirmMessage" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="ImagePath" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="HoverImagePath" type="xs:string" />
-          <xs:element minOccurs="0" maxOccurs="1" name="DisabledImagePath" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="RedirectURL">
             <xs:complexType>
               <xs:sequence>
@@ -3790,6 +3942,9 @@
               </xs:sequence>
             </xs:complexType>
           </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="ImagePath" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="HoverImagePath" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DisabledImagePath" type="xs:string" />
         </xs:sequence>
         <xs:attribute default="false" name="ForgetSession" type="xs:boolean" />
         <xs:attribute default="false" name="ExtLogin" type="xs:boolean" />
@@ -3914,6 +4069,16 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="GuardianLifeBridgeIntroductionCtrlInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="CtrlInfo">
+        <xs:attribute name="ShowMasterGroupNumber" type="xs:boolean" use="required" />
+        <xs:attribute name="ShowMasterGroupNumberLabel" type="xs:boolean" use="required" />
+        <xs:attribute name="ShowNetworkID" type="xs:boolean" use="required" />
+        <xs:attribute name="Sponsor" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="QuickEditCtrlInfo">
     <xs:complexContent mixed="false">
       <xs:extension base="CtrlInfo">
@@ -3988,7 +4153,10 @@
             <xs:element minOccurs="0" maxOccurs="1" name="RateParamEditor" type="RateParamEditorCtrlInfo" />
             <xs:element minOccurs="0" maxOccurs="1" name="BridgeIntroduction" type="BridgeIntroductionCtrlInfo" />
             <xs:element minOccurs="0" maxOccurs="1" name="EverwellBridgeIntroduction" type="EverwellBridgeIntroductionCtrlInfo" />
+            <xs:element minOccurs="0" maxOccurs="1" name="HarmonyBridgeIntroduction" type="HarmonyBridgeIntroductionCtrlInfo" />
             <xs:element minOccurs="0" maxOccurs="1" name="PortfolioNavigation" type="PortfolioNavigationCtrlInfo" />
+            <xs:element minOccurs="0" maxOccurs="1" name="GuardianLifeBridgeIntroduction" type="GuardianLifeBridgeIntroductionCtrlInfo" />
+            <xs:element minOccurs="0" maxOccurs="1" name="AllstateBridgeIntroduction" type="AllstateBridgeIntroductionCtrlInfo" />
           </xs:choice>
         </xs:sequence>
       </xs:extension>
@@ -3997,10 +4165,10 @@
   <xs:complexType name="Template">
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractEntityObject">
-        <xs:attribute name="RepeaterBy" type="RepeatBy" use="required" />
         <xs:attribute name="OfferingID" type="xs:string" />
         <xs:attribute name="PresentationID" type="xs:string" />
         <xs:attribute name="State" type="xs:string" />
+        <xs:attribute name="RepeaterBy" type="RepeatBy" use="required" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -4030,24 +4198,24 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Forms" type="ArrayOfChoice3" />
           <xs:element minOccurs="0" maxOccurs="1" name="TestCases" type="ArrayOfTestCase" />
         </xs:sequence>
+        <xs:attribute name="FormID" type="xs:string" />
         <xs:attribute name="NextFormID" type="xs:string" />
         <xs:attribute name="MainPage" type="xs:string" />
-        <xs:attribute name="StoryLine" type="xs:string" />
-        <xs:attribute name="StartFormID" type="xs:string" />
-        <xs:attribute default="false" name="AlwaysEnable" type="xs:boolean" />
-        <xs:attribute default="false" name="PortfolioUpdate" type="xs:boolean" />
-        <xs:attribute default="false" name="GetLoginGuid" type="xs:boolean" />
-        <xs:attribute default="false" name="ForgetSession" type="xs:boolean" />
-        <xs:attribute default="false" name="SaveBeforeRedirect" type="xs:boolean" />
-        <xs:attribute name="FormID" type="xs:string" />
         <xs:attribute name="CssFile" type="xs:string" />
         <xs:attribute name="AddToEnd" type="xs:boolean" use="required" />
         <xs:attribute name="QuestionnaireID" type="xs:string" />
         <xs:attribute name="Theme" type="xs:string" />
         <xs:attribute name="SiteStyle" type="xs:string" />
         <xs:attribute default="true" name="BusyBox" type="xs:boolean" />
+        <xs:attribute name="StoryLine" type="xs:string" />
+        <xs:attribute name="StartFormID" type="xs:string" />
+        <xs:attribute default="false" name="AlwaysEnable" type="xs:boolean" />
+        <xs:attribute default="false" name="PortfolioUpdate" type="xs:boolean" />
         <xs:attribute default="false" name="EnrollmentUpload" type="xs:boolean" />
         <xs:attribute default="false" name="EnrollmentUpdate" type="xs:boolean" />
+        <xs:attribute default="false" name="GetLoginGuid" type="xs:boolean" />
+        <xs:attribute default="false" name="ForgetSession" type="xs:boolean" />
+        <xs:attribute default="false" name="SaveBeforeRedirect" type="xs:boolean" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -4059,6 +4227,7 @@
           <xs:element minOccurs="0" maxOccurs="1" name="SubMenu" type="MenuInfo" />
           <xs:element minOccurs="1" maxOccurs="1" name="IsEmptyParent" type="xs:boolean" />
         </xs:sequence>
+        <xs:attribute name="MenuID" type="xs:string" />
         <xs:attribute name="Status" type="xs:string" />
         <xs:attribute name="GroupMenuID" type="xs:string" />
         <xs:attribute name="SpaceBefore" type="xs:string" />
@@ -4076,7 +4245,6 @@
         <xs:attribute name="Key" type="xs:string" />
         <xs:attribute name="SelectedClass" type="xs:string" />
         <xs:attribute name="HoverClass" type="xs:string" />
-        <xs:attribute name="MenuID" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -4184,8 +4352,8 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Presentations" type="ArrayOfPresentation" />
         </xs:sequence>
         <xs:attribute default="false" name="FullScreen" type="xs:boolean" />
-        <xs:attribute name="File" type="xs:string" />
         <xs:attribute default="true" name="FullScreenLinkEnable" type="xs:boolean" />
+        <xs:attribute name="File" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -4350,10 +4518,10 @@
         <xs:attribute name="StateRequired" type="InterfaceOption" use="required" />
         <xs:attribute name="ZipRequired" type="InterfaceOption" use="required" />
         <xs:attribute name="CountryRequired" type="InterfaceOption" use="required" />
-        <xs:attribute name="UseAutoTextBank" type="xs:boolean" use="required" />
-        <xs:attribute name="HideSingleCountry" type="xs:boolean" use="required" />
         <xs:attribute name="RequiredCssClass" type="xs:string" />
         <xs:attribute name="OptionalCssClass" type="xs:string" />
+        <xs:attribute name="UseAutoTextBank" type="xs:boolean" use="required" />
+        <xs:attribute name="HideSingleCountry" type="xs:boolean" use="required" />
         <xs:attribute name="CountryTextKey" type="xs:string" />
         <xs:attribute name="Line1TextKey" type="xs:string" />
         <xs:attribute name="Line2TextKey" type="xs:string" />
@@ -4401,7 +4569,7 @@
       <xs:enumeration value="Argentina" />
       <xs:enumeration value="Brazil" />
       <xs:enumeration value="Chile" />
-      <xs:enumeration value="Columbia" />
+      <xs:enumeration value="Colombia" />
       <xs:enumeration value="Venezuela" />
       <xs:enumeration value="Malaysia" />
       <xs:enumeration value="Australia" />
@@ -4411,7 +4579,7 @@
       <xs:enumeration value="Singapore" />
       <xs:enumeration value="Thailand" />
       <xs:enumeration value="Japan" />
-      <xs:enumeration value="Korea" />
+      <xs:enumeration value="SouthKorea" />
       <xs:enumeration value="Vietnam" />
       <xs:enumeration value="China" />
       <xs:enumeration value="Turkey" />
@@ -4421,6 +4589,7 @@
       <xs:enumeration value="SriLanka" />
       <xs:enumeration value="Burma" />
       <xs:enumeration value="Iran" />
+      <xs:enumeration value="SouthSudan" />
       <xs:enumeration value="Morocco" />
       <xs:enumeration value="Algeria" />
       <xs:enumeration value="Tunisia" />
@@ -4443,13 +4612,14 @@
       <xs:enumeration value="Chad" />
       <xs:enumeration value="CentralAfricanRepublic" />
       <xs:enumeration value="Cameroon" />
-      <xs:enumeration value="CapeVerdeIsland" />
+      <xs:enumeration value="CapeVerde" />
       <xs:enumeration value="SaoTome" />
       <xs:enumeration value="EquatorialGuinea" />
       <xs:enumeration value="Gabon" />
       <xs:enumeration value="Bahamas" />
-      <xs:enumeration value="Zaire" />
+      <xs:enumeration value="CongoKinshasa" />
       <xs:enumeration value="Angola" />
+      <xs:enumeration value="GuineaBissau" />
       <xs:enumeration value="Barbados" />
       <xs:enumeration value="AscensionIslands" />
       <xs:enumeration value="Sudan" />
@@ -4475,10 +4645,10 @@
       <xs:enumeration value="BritishVirginis" />
       <xs:enumeration value="StHelena" />
       <xs:enumeration value="Aruba" />
-      <xs:enumeration value="FaeroeIslands" />
+      <xs:enumeration value="FaroeIslands" />
       <xs:enumeration value="Greenland" />
       <xs:enumeration value="Cayman" />
-      <xs:enumeration value="Gilbratar" />
+      <xs:enumeration value="Gibraltar" />
       <xs:enumeration value="Portugal" />
       <xs:enumeration value="Luxembourg" />
       <xs:enumeration value="Ireland" />
@@ -4497,6 +4667,9 @@
       <xs:enumeration value="Andorra" />
       <xs:enumeration value="SanMarino" />
       <xs:enumeration value="Ukraine" />
+      <xs:enumeration value="Serbia" />
+      <xs:enumeration value="Montenegro" />
+      <xs:enumeration value="Kosovo" />
       <xs:enumeration value="Croatia" />
       <xs:enumeration value="Slovenia" />
       <xs:enumeration value="BosniaHerzegovina" />
@@ -4541,15 +4714,18 @@
       <xs:enumeration value="CookIslands" />
       <xs:enumeration value="Niue" />
       <xs:enumeration value="AmericanSamoa" />
-      <xs:enumeration value="WesternSamoa" />
+      <xs:enumeration value="Samoa" />
       <xs:enumeration value="Kiribati" />
       <xs:enumeration value="NewCaledonia" />
       <xs:enumeration value="Tuvalu" />
       <xs:enumeration value="FrenchPolynesia" />
+      <xs:enumeration value="Micronesia" />
+      <xs:enumeration value="MarshallIslands" />
       <xs:enumeration value="StLucia" />
       <xs:enumeration value="Dominica" />
       <xs:enumeration value="StVincent" />
       <xs:enumeration value="DominicanRepublic" />
+      <xs:enumeration value="NorthKorea" />
       <xs:enumeration value="HongKong" />
       <xs:enumeration value="Macao" />
       <xs:enumeration value="Cambodia" />
@@ -4590,7 +4766,7 @@
       <xs:enumeration value="Seychelles" />
       <xs:enumeration value="BritishIndianOceanTerritory" />
       <xs:enumeration value="CocoaIslands" />
-      <xs:enumeration value="Samoa" />
+      <xs:enumeration value="WesternSamoa" />
       <xs:enumeration value="EastTimor" />
       <xs:enumeration value="FrenchSouthernTerritioies" />
       <xs:enumeration value="HeardIsland" />
@@ -4598,18 +4774,34 @@
       <xs:enumeration value="PitcarinIslands" />
       <xs:enumeration value="SvalbardIsland" />
       <xs:enumeration value="Tokelau" />
-      <xs:enumeration value="USMinorOutlyingIslands" />
-      <xs:enumeration value="WesternSahara" />
       <xs:enumeration value="Maldives" />
       <xs:enumeration value="ChristmasIslands" />
       <xs:enumeration value="NorfolkIsland" />
       <xs:enumeration value="Curacao" />
-      <xs:enumeration value="Congo" />
+      <xs:enumeration value="CongoBrazzaville" />
       <xs:enumeration value="Monaco" />
       <xs:enumeration value="HolySee" />
       <xs:enumeration value="DiegoGarcia" />
       <xs:enumeration value="Swaziland" />
       <xs:enumeration value="Palestine" />
+      <xs:enumeration value="Akrotiri" />
+      <xs:enumeration value="Ashmore" />
+      <xs:enumeration value="ClippertonIslands" />
+      <xs:enumeration value="CoralSeaIslands" />
+      <xs:enumeration value="Dhekelia" />
+      <xs:enumeration value="Guernsey" />
+      <xs:enumeration value="IsleofMan" />
+      <xs:enumeration value="Jersey" />
+      <xs:enumeration value="NorthernMarianaIslands" />
+      <xs:enumeration value="PuertoRico" />
+      <xs:enumeration value="SaintBarthelemy" />
+      <xs:enumeration value="SaintMartin" />
+      <xs:enumeration value="SintMaarten" />
+      <xs:enumeration value="SouthGeorgiaSouthSandwichIslands" />
+      <xs:enumeration value="TimorLeste" />
+      <xs:enumeration value="USMinorOutlyingIslands" />
+      <xs:enumeration value="VirginIslandsUS" />
+      <xs:enumeration value="WesternSahara" />
       <xs:enumeration value="Other" />
     </xs:restriction>
   </xs:simpleType>
@@ -4630,6 +4822,22 @@
         <xs:attribute name="ShowMasterGroupNumber" type="xs:boolean" use="required" />
         <xs:attribute name="ShowMasterGroupNumberLabel" type="xs:boolean" use="required" />
         <xs:attribute name="ShowNetworkID" type="xs:boolean" use="required" />
+        <xs:attribute name="Sponsor" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="HarmonyBridgeIntroductionCtrlInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="CtrlInfo">
+        <xs:attribute name="Sponsor" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AllstateBridgeIntroductionCtrlInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="CtrlInfo">
+        <xs:attribute name="ShowMasterGroupNumber" type="xs:boolean" use="required" />
+        <xs:attribute name="ShowMasterGroupNumberLabel" type="xs:boolean" use="required" />
         <xs:attribute name="Sponsor" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
@@ -4686,6 +4894,7 @@
         <xs:attribute name="JobClassDescription" type="InterfaceOption" use="required" />
         <xs:attribute name="ExtSystemJobClass" type="InterfaceOption" use="required" />
         <xs:attribute name="Sponsor" type="xs:string" />
+        <xs:attribute name="SkipOnInitAndSave" type="xs:boolean" use="required" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -4744,6 +4953,7 @@
       <xs:enumeration value="RetirementSavings" />
       <xs:enumeration value="Transit" />
       <xs:enumeration value="WellnessPreventiveCare" />
+      <xs:enumeration value="Telemedicine" />
       <xs:enumeration value="Custom" />
       <xs:enumeration value="OneView" />
       <xs:enumeration value="Aflac_SNG" />
@@ -4855,13 +5065,13 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractObjectInfo">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="Menu" type="MenuInfo" />
           <xs:element minOccurs="0" maxOccurs="unbounded" name="StoryLineInherits" type="StoryLineInherits" />
           <xs:element minOccurs="0" maxOccurs="1" name="StoryLinePath" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="SmtpServer" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PreviousStoryLinePath" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="ProcessInfoPath" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Menu" type="MenuInfo" />
           <xs:element minOccurs="0" maxOccurs="1" name="Forms" type="ArrayOfChoice14" />
           <xs:element minOccurs="0" maxOccurs="1" name="ModalForms" type="ArrayOfModalFormInfo" />
           <xs:element minOccurs="0" maxOccurs="1" name="TextItems" type="ArrayOfTextItem" />
@@ -5033,18 +5243,26 @@
       <xs:element minOccurs="1" maxOccurs="1" name="CoinsuranceBeforeDeductible" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="CopaysAfterDeductibleEnabled" type="xs:boolean" />
       <xs:element minOccurs="1" maxOccurs="1" name="CopayPrimaryPhysician" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CopayPrimaryPhysicianPercent" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="CopaySpecialist" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CopaySpecialistPercent" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="CopayUrgentCare" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CopayUrgentCarePercent" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="CopayEmergencyCare" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CopayEmergencyCarePercent" type="xs:decimal" />
       <xs:element minOccurs="0" maxOccurs="1" name="HealthPrescriptionCopayTiers" type="ArrayOfHealthPrescriptionCopayTier" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutCoinsuranceAfterDeductible" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutCoinsuranceBeforeDeductible" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutCopaysAfterDeductibleEnabled" type="xs:boolean" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutCopayEmergencyCare" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OutCopayEmergencyCarePercent" type="xs:decimal" />
       <xs:element minOccurs="0" maxOccurs="1" name="OutHealthPrescriptionCopayTiers" type="ArrayOfHealthPrescriptionCopayTier" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutCopayPrimaryPhysician" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OutCopayPrimaryPhysicianPercent" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutCopaySpecialist" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OutCopaySpecialistPercent" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutCopayUrgentCare" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OutCopayUrgentCarePercent" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutDeductibleFamily" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutDeductibleSingle" type="xs:decimal" />
       <xs:element minOccurs="1" maxOccurs="1" name="OutMaxFamily" type="xs:decimal" />
@@ -5069,6 +5287,7 @@
   <xs:complexType name="HealthPrescriptionCopayTier">
     <xs:sequence>
       <xs:element minOccurs="1" maxOccurs="1" name="Cost" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CostPercent" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ArrayOfAdvertising">
@@ -5123,6 +5342,40 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:simpleType name="EngineName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="NT" />
+      <xs:enumeration value="MembershipPlan" />
+      <xs:enumeration value="TSA" />
+      <xs:enumeration value="SB1" />
+      <xs:enumeration value="DB1" />
+      <xs:enumeration value="FSA" />
+      <xs:enumeration value="Dummy" />
+      <xs:enumeration value="DBN" />
+      <xs:enumeration value="SmartApp" />
+      <xs:enumeration value="CORE" />
+      <xs:enumeration value="UNUM" />
+      <xs:enumeration value="PTO" />
+      <xs:enumeration value="UL" />
+      <xs:enumeration value="Flex" />
+      <xs:enumeration value="CI" />
+      <xs:enumeration value="AllApp" />
+      <xs:enumeration value="TexasLife" />
+      <xs:enumeration value="OneView" />
+      <xs:enumeration value="AFProduct" />
+      <xs:enumeration value="INGLink" />
+      <xs:enumeration value="AFEnroll" />
+      <xs:enumeration value="HarmonyConnect" />
+      <xs:enumeration value="BostonMutualBridge" />
+      <xs:enumeration value="BenefitFocus" />
+      <xs:enumeration value="WashingtonNational" />
+      <xs:enumeration value="Everwell" />
+      <xs:enumeration value="SecurityMutual" />
+      <xs:enumeration value="Allstate" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="OfferingProduct">
     <xs:complexContent mixed="false">
       <xs:extension base="Product">
@@ -5132,9 +5385,9 @@
           <xs:element minOccurs="0" maxOccurs="1" name="EligibleApplicants" type="ArrayOfEligibleApplicant" />
         </xs:sequence>
         <xs:attribute name="ProductID" type="xs:string" />
+        <xs:attribute default="true" name="ShowOnEnrollmentSite" type="xs:boolean" />
         <xs:attribute default="false" name="MaxBenefitIncludesRule" type="xs:boolean" />
         <xs:attribute name="MaxBenefitIncludesOfferingID" type="xs:string" />
-        <xs:attribute default="true" name="ShowOnEnrollmentSite" type="xs:boolean" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -5176,6 +5429,7 @@
         <xs:attribute default="NotSet" name="IncreasesMode" type="IncreasesMode" />
         <xs:attribute default="NotSet" name="CancellationsMode" type="CancellationsMode" />
         <xs:attribute default="Unknown" name="ProductType" type="ProductType" />
+        <xs:attribute default="Unknown" name="EngineName" type="EngineName" />
         <xs:attribute default="Default" name="EnrollmentStyle" type="OfferingEnrollmentStyle" />
         <xs:attribute name="TextBankBase" type="xs:string" />
       </xs:extension>
@@ -5227,6 +5481,8 @@
         <xs:attribute default="Employee" name="Scope" type="CustomFieldScope" />
         <xs:attribute default="false" name="IsReadOnly" type="xs:boolean" />
         <xs:attribute default="true" name="IsShowOnEnrollmentSite" type="xs:boolean" />
+        <xs:attribute default="false" name="IsInformational" type="xs:boolean" />
+        <xs:attribute default="false" name="IsReadOnlyAdmin" type="xs:boolean" />
         <xs:attribute name="OrderNum" type="xs:int" />
       </xs:extension>
     </xs:complexContent>
@@ -5310,6 +5566,12 @@
       <xs:enumeration value="GuardianEOI" />
       <xs:enumeration value="CignaEOI" />
       <xs:enumeration value="SunLifeEOI" />
+      <xs:enumeration value="BoonChapmanEOI" />
+      <xs:enumeration value="LfgMlpEOI" />
+      <xs:enumeration value="StandardBrixEOI" />
+      <xs:enumeration value="RelianceStandardEOI" />
+      <xs:enumeration value="SymetraEOI" />
+      <xs:enumeration value="BoonChapmanIPM" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="SpouseSignatureMode">
@@ -5435,6 +5697,7 @@
           <xs:element minOccurs="1" maxOccurs="1" name="ProgressBarPosition" type="InterfacePosition" />
           <xs:element minOccurs="1" maxOccurs="1" name="SignAsDefaultEnroller" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="TrackEnrollmentMethod" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OfferingProducts" type="ArrayOfOfferingProduct" />
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredEmployeeID" type="EmployeeInterfaceOption" />
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredEmployeeSSN" type="EmployeeInterfaceOption" />
           <xs:element minOccurs="1" maxOccurs="1" name="EmployeeIdentIsGlobal" type="xs:boolean" />
@@ -5444,6 +5707,7 @@
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredHourlyWage" type="EmployeeInterfaceOption" />
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredMinimumSalary" type="xs:decimal" />
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredHoursPerWeek" type="EmployeeInterfaceOption" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RequiredMinimumHoursPerWeek" type="xs:string" />
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredDaysPerWeek" type="EmployeeInterfaceOption" />
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredPTO" type="EmployeeInterfaceOption" />
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredCountryOfCitizenship" type="EmployeeInterfaceOption" />
@@ -5459,6 +5723,7 @@
           <xs:element minOccurs="1" maxOccurs="1" name="RequiredPersonalEmail" type="EmployeeInterfaceOption" />
           <xs:element minOccurs="1" maxOccurs="1" name="ReadOnlyEmployeeName" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="ReadOnlyEmployeeDOB" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RequiredEmployeeDOB" type="EmployeeInterfaceOption" />
           <xs:element minOccurs="1" maxOccurs="1" name="ReadOnlyEmployeeGender" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="ReadOnlyDependentName" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="ReadOnlyDependentDOB" type="xs:boolean" />
@@ -5472,8 +5737,8 @@
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="WaiveAllAllowed" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="DemographicDependentChangeAllowed" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="DemographicEmployeeChangeAllowed" type="xs:boolean" />
-          <xs:element minOccurs="0" maxOccurs="1" name="OfferingProducts" type="ArrayOfOfferingProduct" />
-          <xs:element minOccurs="0" maxOccurs="1" name="RequiredMinimumHoursPerWeek" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ChatAssistanceEnabled" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ScreenShareEnrollmentAssistanceEnabled" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="CreditTypeAllowed" type="ArrayOfCreditType" />
           <xs:element minOccurs="0" maxOccurs="1" name="BankTypeAllowed" type="ArrayOfBankType" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="InvoiceAllowed" type="xs:boolean" />
@@ -5514,6 +5779,8 @@
       <xs:enumeration value="Optional" />
       <xs:enumeration value="RequiredIfNew" />
       <xs:enumeration value="ReadOnly" />
+      <xs:enumeration value="ReadOnlyIfNotNull" />
+      <xs:enumeration value="ReadOnlyIfNotNullRequiredIfNull" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EnrollerRequirements">
@@ -5538,21 +5805,24 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractEntityObject">
         <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="GeneralEnrollmentRuleID" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="IgnoreUnconfirmedApplicationRule" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="WaiveApplicationRule" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="WaiveApplicationNoCoverageRule" nillable="true" type="xs:boolean" />
-          <xs:element minOccurs="0" maxOccurs="1" name="GeneralEnrollmentRuleID" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="EnrollThroughDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" maxOccurs="1" name="RetroactiveEffectiveDate" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="EffectiveDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" maxOccurs="1" name="TerminateDate" nillable="true" type="xs:dateTime" />
         </xs:sequence>
+        <xs:attribute default="60" name="EnrollmentGracePeriodDays" type="xs:int" />
         <xs:attribute default="60" name="EnrollmentGracePeriod" type="xs:int" />
         <xs:attribute default="Days" name="EnrollmentGracePeriodType" type="xs:string" />
         <xs:attribute default="false" name="EnrollmentOpenYearRound" type="xs:boolean" />
         <xs:attribute default="false" name="ExtendCoverageThroughEndMonth" type="xs:boolean" />
+        <xs:attribute default="false" name="ExtendGracePeriodToEOM" type="xs:boolean" />
         <xs:attribute default="0" name="EnrollmentWaitingPeriodDays" type="xs:int" />
         <xs:attribute default="0" name="EffectiveWaitPeriod" type="xs:int" />
+        <xs:attribute default="false" name="UseHireDateToCalcWaitingPeriod" type="xs:boolean" />
         <xs:attribute default="Days" name="EffectiveWaitPeriodType" type="xs:string" />
         <xs:attribute default="true" name="EffectiveFirstDayOfMonth" type="xs:boolean" />
         <xs:attribute default="false" name="EffectiveDateCutoff" type="xs:boolean" />
@@ -5562,9 +5832,6 @@
         <xs:attribute default="OpenForEnrollment" name="ExistingCoverage" type="ExistingCoverageEnrollmentRule" />
         <xs:attribute default="Apply" name="EnrollmentPreSelection" type="EnrollmentPreSelection" />
         <xs:attribute default="DoNotConfirmWaive" name="ConfirmWaive" type="ConfirmWaiveEnrollmentRule" />
-        <xs:attribute default="60" name="EnrollmentGracePeriodDays" type="xs:int" />
-        <xs:attribute default="false" name="ExtendGracePeriodToEOM" type="xs:boolean" />
-        <xs:attribute default="false" name="UseHireDateToCalcWaitingPeriod" type="xs:boolean" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -5644,6 +5911,7 @@
           <xs:element minOccurs="0" maxOccurs="1" name="EligibilityRuleLocations" type="ArrayOfEligibilityRuleLocation" />
           <xs:element minOccurs="0" maxOccurs="1" name="EligibilityRuleCustomFields" type="ArrayOfEligibilityRuleCustomField" />
         </xs:sequence>
+        <xs:attribute name="GeneralEligibilityRuleID" type="xs:string" />
         <xs:attribute default="0" name="MinSalary" type="xs:decimal" />
         <xs:attribute default="999999" name="MaxSalary" type="xs:decimal" />
         <xs:attribute default="0" name="MinHoursPerWeek" type="xs:decimal" />
@@ -5653,7 +5921,6 @@
         <xs:attribute name="JobClassID" type="xs:string" />
         <xs:attribute name="StateOfResidence" type="xs:string" />
         <xs:attribute default="false" name="Global" type="xs:boolean" />
-        <xs:attribute name="GeneralEligibilityRuleID" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -5746,6 +6013,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="1" name="Code" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AcaUnionClass" type="xs:boolean" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -5769,6 +6037,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="PayRun">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="PayPeriodBegin" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PayPeriodEnd" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
     <xs:attribute name="PayDate" type="xs:dateTime" use="required" />
     <xs:attribute name="DeductionDate" type="xs:dateTime" use="required" />
     <xs:attribute default="false" name="Deduct" type="xs:boolean" />
@@ -5782,6 +6054,7 @@
       <xs:enumeration value="DraftOrCardOrInvoice" />
       <xs:enumeration value="AuthorizeNetPaymentProvider" />
       <xs:enumeration value="PaylogixPaymentProvider" />
+      <xs:enumeration value="PiopacPaymentProvider" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="StoryLineContext">
@@ -5811,12 +6084,13 @@
     <xs:complexContent mixed="false">
       <xs:extension base="AbstractEntityObject">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="GroupNumber" type="xs:string" />
           <xs:element minOccurs="1" maxOccurs="1" name="DecisionSupportEnabled" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="TwoFactorAuth" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="AdvertisingEnabled" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ShowProjectedAnnual" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="MedicalEngineSettings" type="MedicalEngineSettings" />
           <xs:element minOccurs="0" maxOccurs="1" name="ExternalReferenceIDs" type="ArrayOfExternalReferenceID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CaseBuilderNotes" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PortfolioThemes" type="ArrayOfManageThemeAssociation" />
           <xs:element minOccurs="0" maxOccurs="1" name="XMLCensusStatistics" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="ExtWebService" type="xs:string" />
@@ -5834,8 +6108,10 @@
           <xs:element minOccurs="0" maxOccurs="1" name="StoryLinePath" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PayrollFrequency" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="DeductionFrequency" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GroupNumber" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="EnrollmentStartDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" maxOccurs="1" name="EnrollmentEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EnrollmentTimeZone" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PublishStartDateTimezone" type="xs:string" />
           <xs:element minOccurs="0" maxOccurs="1" name="PublishStartDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" maxOccurs="1" name="PublishEndDateTimezone" type="xs:string" />
@@ -5866,6 +6142,7 @@
           <xs:element minOccurs="0" maxOccurs="1" name="Presentations" type="ArrayOfPresentation" />
           <xs:element minOccurs="0" maxOccurs="1" name="TextItems" type="ArrayOfTextItem" />
           <xs:element minOccurs="0" maxOccurs="1" name="Questionnaire" type="ArrayOfChoice13" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Files" type="ArrayOfAssetFile" />
         </xs:sequence>
         <xs:attribute default="Unknown" name="Source" type="CaseSourceType" />
         <xs:attribute name="ExtSponsor" type="xs:string" />
@@ -5970,6 +6247,11 @@
       <xs:element minOccurs="1" maxOccurs="1" name="Answer" nillable="true" type="Answer" />
       <xs:element minOccurs="1" maxOccurs="1" name="AnswerTable" nillable="true" type="AnswerTable" />
     </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfAssetFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="File" nillable="true" type="AssetFile" />
+    </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="CaseSourceType">
     <xs:restriction base="xs:string">
@@ -6098,6 +6380,7 @@
       <xs:enumeration value="EmployeeDependents" />
       <xs:enumeration value="CoverageDependents" />
       <xs:enumeration value="CoverageNotPrimaryInsured" />
+      <xs:enumeration value="LifeEvents" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

@@ -256,11 +256,11 @@ namespace BSTIntegrationExample
             X509Certificate2 x509Certificate = GetSelerixCertificate();
 
             // Extract the asserted identity from the SAML response.
-            SAMLAssertion samlAssertion = null;
+            SAMLAssertion samlAssertion;
 
-            if (samlResponse.GetAssertions().Count > 0)
+            if (samlResponse.GetUnsignedAssertions().Count > 0)
             {
-                samlAssertion = samlResponse.GetAssertions()[0];
+                samlAssertion = samlResponse.GetUnsignedAssertions().FirstOrDefault();
             }
             else if (samlResponse.GetEncryptedAssertions().Count > 0)
             {
