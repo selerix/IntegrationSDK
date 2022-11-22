@@ -1342,6 +1342,18 @@
             </summary>
             <value><c>true</c> if verified; otherwise, <c>false</c>.</value>
         </member>
+        <member name="P:Selerix.Foundation.Data.AbstractModelObject.OriginalFileLineNumber">
+            <summary>
+            Gets or sets the original file line number.
+            </summary>
+            <value>The original file line number.</value>
+        </member>
+        <member name="M:Selerix.Foundation.Data.AbstractModelObject.ShouldSerializeOriginalFileLineNumber">
+            <summary>
+            Shoulds the serialize original file line number.
+            </summary>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
         <member name="P:Selerix.Foundation.Data.AbstractModelObject.AsOfDate">
             <summary>
             Date when object was last updated.
@@ -2964,6 +2976,11 @@
         <member name="F:Selerix.Foundation.Data.ReportOutputFormat.CUSTOM">
             <summary>
             CUSTOM
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Data.ReportOutputFormat.EXCEL2007">
+            <summary>
+            EXCEL2007
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Data.SafeDictionary`2">
@@ -5593,6 +5610,11 @@
             Work Anniversary
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.EngagementEventType.PendingDocuments">
+            <summary>
+            Pending Documents
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.enmCustomFieldType">
             <summary>
             Enum. Specifies the custom field type.
@@ -7838,6 +7860,16 @@
             The business unit
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPDepartmentSource.EEOCJobClassification">
+            <summary>
+            The eeoc job classification
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPDepartmentSource.NAICS">
+            <summary>
+            The naics
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.Integration.ADP.ADPJobClassSource">
             <summary>
             ADP job class source
@@ -7863,6 +7895,11 @@
             The flsa
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPJobClassSource.WorkerCategory">
+            <summary>
+            The worker category
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPJobClassSource.Custom">
             <summary>
             The custom
@@ -7878,14 +7915,14 @@
             The location
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPLocationSource.EEOEstablishment">
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPLocationSource.CompanyCode">
             <summary>
-            The eeo establishment
+            Company code
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPLocationSource.PayrollGroupCode">
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPLocationSource.BusinessUnit">
             <summary>
-            The payroll group code
+            The business unit
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.Integration.EventSource">
@@ -16104,6 +16141,11 @@
         <member name="F:Selerix.Foundation.EventSubClassEx.Transfer">
             <summary>
             The transfer event
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EventSubClassEx.PendingDocumentsChanged">
+            <summary>
+            Pending documents changed.
             </summary>
         </member>
         <member name="F:Selerix.Foundation.EventSubClassEx.ManualSync">

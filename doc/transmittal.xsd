@@ -129,6 +129,7 @@
     <xs:attribute name="Name" type="xs:string" />
     <xs:attribute default="false" name="Deleted" type="xs:boolean" />
     <xs:attribute default="false" name="Verified" type="xs:boolean" />
+    <xs:attribute name="OriginalFileLineNumber" type="xs:int" />
   </xs:complexType>
   <xs:complexType name="ExtEngineConfig">
     <xs:sequence>
