@@ -1885,6 +1885,7 @@
             </xs:complexType>
           </xs:element>
           <xs:element minOccurs="0" maxOccurs="1" name="Questionnaire" type="ArrayOfChoice16" />
+          <xs:element minOccurs="0" maxOccurs="1" name="WithdrawnAsOfDate" nillable="true" type="xs:dateTime" />
         </xs:sequence>
         <xs:attribute name="EmployeeID" type="xs:string" />
         <xs:attribute name="ApplicantID" type="xs:string" />
@@ -1900,6 +1901,8 @@
         <xs:attribute default="Unknown" name="UnderwritingMode" type="UnderwritingMode" />
         <xs:attribute name="ApplicationWarningText" type="xs:string" />
         <xs:attribute default="Unknown" name="Status" type="xs:string" />
+        <xs:attribute name="Withdrawn" type="xs:boolean" />
+        <xs:attribute name="WithdrawnByID" type="xs:string" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

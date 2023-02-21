@@ -537,6 +537,21 @@
             Employee pay 100% of rider cost
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.CertificateSortingField">
+            <summary>
+            Enumeration of sortable field for certificate.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CertificateSortingField.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.CertificateSortingField.Subject">
+            <summary>
+            Subject
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.IZipArchive">
             <summary>
             Represents a package of compressed files in the zip archive format.
@@ -1627,6 +1642,20 @@
             </summary>
             <param name="value">enum to evaluate</param>
             <returns>Sort attribute value</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.EnumeratorManipulation.EnumMember(System.Enum)">
+            <summary>
+            Datas the format.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.EnumeratorManipulation.ToArray``1">
+            <summary>
+            Convert an enumeration into an array.
+            </summary>
+            <typeparam name="TEnum"></typeparam>
+            <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Data.EnumeratorManipulation.GetEnumDescription(System.Enum)">
             <summary>
@@ -2983,6 +3012,11 @@
             EXCEL2007
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Data.ReportOutputFormat.JSON">
+            <summary>
+            JSON
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Data.SafeDictionary`2">
             <summary>
             Dictionary that doesn't throw exception if item doesn't exists in [] access. Acts like Hashtable
@@ -3943,6 +3977,15 @@
             <param name="status"></param>
             <returns></returns>
         </member>
+        <member name="M:Selerix.Foundation.Data.Utils.FindString(System.String,System.String,System.String)">
+            <summary>
+            Find exact match for the string
+            </summary>
+            <param name="baseString"></param>
+            <param name="stringToFind"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
         <member name="M:Selerix.Foundation.Data.Utils.IsGuid(System.String)">
             <summary>
             Determines whether the specified GUID string is GUID.
@@ -4485,6 +4528,13 @@
             <param name="nationId">nationId</param>
             <returns>normilized ZIP Code</returns>
         </member>
+        <member name="M:Selerix.Foundation.Data.Utils.Len(System.String)">
+            <summary>
+            Get the length of a string.
+            </summary>
+            <param name="value">String to get the length of</param>
+            <returns>Returns the length of a string similar to Len in Visual Basic. Null strings return length of 0.</returns>
+        </member>
         <member name="M:Selerix.Foundation.Data.Utils.BankingMask(System.String)">
             <summary>
             Extension method which returns a banking number with all but the last 4 digits masked out
@@ -4543,6 +4593,13 @@
             Gets abbreviated time zone, such as "CST"
             </summary>
             <param name="timeZoneId">ID, such as "Central Standard Time"</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.GetTimeZoneAbbr(System.Int32)">
+            <summary>
+            Gets abbreviated time zone, such as "CST"
+            </summary>
+            <param name="timezoneOffset">Time zone offset hours, such as -6</param>
             <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.Truncate(System.String,System.Int32)">
@@ -5280,6 +5337,11 @@
             New child
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.EngagementEventSubType.Retire">
+            <summary>
+            Retire
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.EngagementEventSubType.LeaveOfAbsenceAll">
             <summary>
             All Leave of Absence events.
@@ -5428,6 +5490,11 @@
         <member name="F:Selerix.Foundation.EngagementLifeEventSubType.NewChild">
             <summary>
             New child
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EngagementLifeEventSubType.Retire">
+            <summary>
+            Retire
             </summary>
         </member>
         <member name="T:Selerix.Foundation.EngagementEmploymentStatusChangeEventSubType">
@@ -5613,6 +5680,21 @@
         <member name="F:Selerix.Foundation.EngagementEventType.PendingDocuments">
             <summary>
             Pending Documents
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EngagementEventType.CustomFieldChange">
+            <summary>
+            Custom Field Change
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EngagementEventType.ApplicationAgentPendingChange">
+            <summary>
+            Agent Pending Application change
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EngagementEventType.ApplicationEOIPendingChange">
+            <summary>
+            EOI Pending Application change
             </summary>
         </member>
         <member name="T:Selerix.Foundation.enmCustomFieldType">
@@ -7665,9 +7747,9 @@
             Resend events
             </summary>
         </member>
-        <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.Delete">
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.DeleteError">
             <summary>
-            Delete events
+            Delete error events
             </summary>
         </member>
         <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.Sync">
@@ -7678,6 +7760,11 @@
         <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.ProcessNow">
             <summary>
             Process events now
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationAction.DeleteEvent">
+            <summary>
+            Delete events
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.ConfigurationType">
@@ -7698,6 +7785,16 @@
         <member name="F:Selerix.Foundation.Enumerations.ConfigurationType.Sandbox">
             <summary>
             Sandbox configuration.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConfigurationType.DirectPartner">
+            <summary>
+            Direct Partner.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ConfigurationType.NetworkPartner">
+            <summary>
+            The network partner
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.IntegrationEventDirection">
@@ -8098,6 +8195,21 @@
             The organization5
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.Enumerations.Integration.Paycor.DeductionStartDateOption">
+            <summary>
+            Option what date to use for deduction start
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.Paycor.DeductionStartDateOption.CoverageEffectiveDate">
+            <summary>
+            The coverage effective date
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.Paycor.DeductionStartDateOption.CoverageDeductionDate">
+            <summary>
+            The coverage deduction date
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.Integration.Paylocity.FrequencyOverride">
             <summary>
             Override deduction frequency for Paylocity
@@ -8331,21 +8443,6 @@
         <member name="F:Selerix.Foundation.Enumerations.Integration.Viventium.ViventiumPrimaryEmployeeSource.MaxHoursWorked">
             <summary>
             The maximum hours worked
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Enumerations.Integration.WBEDX.ChangeType">
-            <summary>
-            Change type
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Integration.WBEDX.ChangeType.CoverageChanges">
-            <summary>
-            The coverage changes
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Integration.WBEDX.ChangeType.DemographicChanges">
-            <summary>
-            The demographic changes
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.LifeEventItemType">
@@ -8723,6 +8820,36 @@
             The pay group
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.Enumerations.PendingReasonCode">
+            <summary>
+            PendingReasonCode
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.PendingReasonCode.APDV">
+            <summary>
+            Agent Pending Dependent Verification
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.PendingReasonCode.APQ">
+            <summary>
+            Agent Pending Questions
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.PendingReasonCode.APF">
+            <summary>
+            Agent Pending Forms
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.PendingReasonCode.DPF">
+            <summary>
+            Dependent Pending Forms
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.PendingReasonCode.APLC">
+            <summary>
+            Agent Pending Locked Coverage
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.Placement">
             <summary>
             Placement types
@@ -8847,6 +8974,87 @@
             <summary>
             Complete
             </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.ReportTaskParameterType">
+            <summary>Parameter types</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.LocationID">
+            <summary>Location</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.PayerID">
+            <summary>Payer</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.PayerProductID">
+            <summary>PayerProduct</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.CaseProductID">
+            <summary>CaseProduct</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.PayrollCompanyID">
+            <summary>PayrollCompany</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.EmployeeID">
+            <summary>Employee</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.PlanYearID">
+            <summary>PlanYear</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.EnrollerID">
+            <summary>Enroller</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.EmployeeStatusID">
+            <summary>EmployeeStatus</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.UploadPluginID">
+            <summary>UploadPluginID</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.UploadMode">
+            <summary>UploadMode</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.BillingContractID">
+            <summary>BillingContract</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.Scope">
+            <summary>Scope</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.Style">
+            <summary>Style</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.EmailCarrierMode">
+            <summary>EmailCarrier</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.CompressToZip">
+            <summary>CompressToZip</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.ErrorLimit">
+            <summary>ErrorLimit</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.ConfigID">
+            <summary>ConfigID</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.RemoteFileName">
+            <summary>RemoteFileName</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.FilesNewerThan">
+            <summary>RemoteFileName</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.AutoAddDept">
+            <summary>AutoAddDept</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.RecordLifeEventCompleted">
+            <summary>RecordLifeEventCompleted</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.Encrypted">
+            <summary>Encrypted</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.FileCleanUpOption">
+            <summary>FileCleanUpOption</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.Custom">
+            <summary>Custom</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportTaskParameterType.Standard">
+            <summary>Standard</summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.SiteSetupType">
             <summary>
@@ -16146,6 +16354,21 @@
         <member name="F:Selerix.Foundation.EventSubClassEx.PendingDocumentsChanged">
             <summary>
             Pending documents changed.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EventSubClassEx.CustomFieldChanged">
+            <summary>
+            Custom Field changed.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EventSubClassEx.ApplicationPendingStatusChanged">
+            <summary>
+            Application status changed.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EventSubClassEx.CoverageUWPendingChanged">
+            <summary>
+            Coverage UW Pending changed
             </summary>
         </member>
         <member name="F:Selerix.Foundation.EventSubClassEx.ManualSync">

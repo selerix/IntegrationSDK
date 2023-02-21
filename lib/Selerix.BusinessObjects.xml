@@ -4081,6 +4081,41 @@
             </summary>
             <returns>bool true/false</returns>
         </member>
+        <member name="P:Selerix.BusinessObjects.Application.Withdrawn">
+            <summary>
+            Gets or sets if application got withdrawn.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Application.XmlWithdrawn">
+            <summary>
+            Gets or sets if application got withdrawn. For xml serialization only.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeXmlWithdrawn">
+            <summary>
+            Should serialize XmlWithdrawn?
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Application.WithdrawnAsOfDate">
+            <summary>
+            Gets or sets the date and time when application got withdrawn.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeWithdrawnAsOfDate">
+            <summary>
+            Should serialize WithdrawnAsOfDate?
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Application.WithdrawnByID">
+            <summary>
+            Gets or sets the user who withdrew application.
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.Application.ShouldSerializeWithdrawnByID">
+            <summary>
+            Should serialize WithdrawnByID?
+            </summary>
+        </member>
         <member name="M:Selerix.BusinessObjects.Application.SaveAnswer(System.String,System.String)">
             <summary>
             The SaveAnswer object saves the questionnaire answer.
@@ -9608,6 +9643,21 @@
         <member name="F:Selerix.BusinessObjects.EdiSettingGroupNumberType.NetworkID">
             <summary>
             Network ID
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.EdiSettingGroupNumberType.SubGroupNumber">
+            <summary>
+            Sub Group Number
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.EdiSettingGroupNumberType.PlanSubCode">
+            <summary>
+            Plan Subcode
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.EdiSettingGroupNumberType.SubNetworkID">
+            <summary>
+            Subnetwork ID
             </summary>
         </member>
         <member name="T:Selerix.BusinessObjects.EdiSettingType">
