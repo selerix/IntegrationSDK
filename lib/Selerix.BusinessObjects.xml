@@ -11983,6 +11983,11 @@
             The screen share enrollment assistance  is enabled
             </summary>
         </member>
+        <member name="P:Selerix.BusinessObjects.GeneralRules.ConfirmSSN">
+            <summary>
+            Does the employee have to enter the SSN twice?
+            </summary>
+        </member>
         <member name="M:Selerix.BusinessObjects.GeneralRules.BuildGeneralRulesOfferingProductGroup(Selerix.BusinessObjects.Portfolio)">
             <summary>
             Builds the list of all active general rules offering products.

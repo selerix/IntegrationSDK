@@ -4528,6 +4528,21 @@
             <param name="nationId">nationId</param>
             <returns>normilized ZIP Code</returns>
         </member>
+        <member name="M:Selerix.Foundation.Data.Utils.FormatZip(System.String)">
+            <summary>
+            Formatting Zip code for USA address
+            </summary>
+            <param name="zipCode">zipCode</param>
+            <returns>formatted Zip code</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.FormatZip(System.String,Selerix.Foundation.Nation)">
+            <summary>
+            Formatting Zip code according nation
+            </summary>
+            <param name="zipCode">zipCode</param>
+            <param name="nation">nationId</param>
+            <returns>formatted Zip code</returns>
+        </member>
         <member name="M:Selerix.Foundation.Data.Utils.Len(System.String)">
             <summary>
             Get the length of a string.
@@ -8445,6 +8460,57 @@
             The maximum hours worked
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.Enumerations.IntegrationSearchDomains">
+            <summary>
+            Integration search domain enum
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.None">
+            <summary>
+            Search domain is not defined
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.EmployeeId">
+            <summary>
+            EmployeeId only
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.EmployeeName">
+            <summary>
+            Employee name only
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.Location">
+            <summary>
+            Location only
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.ReceivedDate">
+            <summary>
+            Received Date only
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.ProcessedDate">
+            <summary>
+            Processing date only
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.Events">
+            <summary>
+            Deep search in the eevents
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.All">
+            <summary>
+            All fields (EmployeeId, EmployeeName, Location)
+            This is default search domain
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationSearchDomains.AllWithEvents">
+            <summary>
+            All fields including deep seach into events
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.LifeEventItemType">
             <summary>
             LifeEventItemType
@@ -8925,6 +8991,26 @@
             Employee portal
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.Enumerations.ReportDeliveryOption">
+            <summary>
+            Report delivery options.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportDeliveryOption.RunNow">
+            <summary>
+            Run report now.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportDeliveryOption.Deliver">
+            <summary>
+            Deliver report to recipients.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportDeliveryOption.Schedule">
+            <summary>
+            Schedule recurring report.
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.ReportEditorMode">
             <summary>
             View modes for the report editor
@@ -8943,6 +9029,31 @@
         <member name="F:Selerix.Foundation.Enumerations.ReportEditorMode.Custom">
             <summary>
             Custom mode - used for custom category parameters
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.ReportMultiCaseSelectMethod">
+            <summary>
+            Report multi-select type
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportMultiCaseSelectMethod.Case">
+            <summary>
+            The case
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportMultiCaseSelectMethod.Broker">
+            <summary>
+            The broker
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportMultiCaseSelectMethod.Payer">
+            <summary>
+            The payer
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.ReportMultiCaseSelectMethod.CurrentCase">
+            <summary>
+            The current case
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.ReportProcessStatus">
