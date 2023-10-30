@@ -2111,6 +2111,8 @@
       <xs:enumeration value="Bitmap" />
       <xs:enumeration value="EncryptedBitmap" />
       <xs:enumeration value="VoiceConformationFile" />
+      <xs:enumeration value="VoiceConfirmation" />
+      <xs:enumeration value="VoiceConfirmationFile" />
       <xs:enumeration value="Unknown" />
     </xs:restriction>
   </xs:simpleType>
@@ -2740,6 +2742,7 @@
         <xs:attribute default="Optional" name="RequiredSalary" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredInsuredSSN" type="InterfaceOption" />
         <xs:attribute default="Optional" name="RequiredInsuredGender" type="InterfaceOption" />
+        <xs:attribute default="false" name="AllowOtherGender" type="xs:boolean" />
         <xs:attribute default="false" name="RequiredPrimaryInsuredSSNOnly" type="xs:boolean" />
         <xs:attribute default="false" name="AllowBlankSSN6Mo" type="xs:boolean" />
         <xs:attribute default="true" name="RateCard" type="xs:boolean" />
@@ -5377,6 +5380,7 @@
       <xs:enumeration value="Everwell" />
       <xs:enumeration value="SecurityMutual" />
       <xs:enumeration value="Allstate" />
+      <xs:enumeration value="Informational" />
       <xs:enumeration value="Other" />
     </xs:restriction>
   </xs:simpleType>
@@ -5576,6 +5580,8 @@
       <xs:enumeration value="RelianceStandardEOI" />
       <xs:enumeration value="SymetraEOI" />
       <xs:enumeration value="BoonChapmanIPM" />
+      <xs:enumeration value="UniBloxEOI" />
+      <xs:enumeration value="OneAmericaEOI" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="SpouseSignatureMode">
@@ -5743,6 +5749,7 @@
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="DemographicEmployeeChangeAllowed" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="ChatAssistanceEnabled" type="xs:boolean" />
           <xs:element minOccurs="1" maxOccurs="1" name="ScreenShareEnrollmentAssistanceEnabled" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" default="false" name="ConfirmSSN" type="xs:boolean" />
           <xs:element minOccurs="0" maxOccurs="1" name="CreditTypeAllowed" type="ArrayOfCreditType" />
           <xs:element minOccurs="0" maxOccurs="1" name="BankTypeAllowed" type="ArrayOfBankType" />
           <xs:element minOccurs="0" maxOccurs="1" default="false" name="InvoiceAllowed" type="xs:boolean" />
@@ -5793,6 +5800,7 @@
       <xs:enumeration value="MustCollectDependentDocumentation" />
       <xs:enumeration value="CollectDocumentationIfProvided" />
       <xs:enumeration value="DoNotCollectDependentDocumentation" />
+      <xs:enumeration value="MustUploadDependentDocumentation" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ArrayOfCreditType">
@@ -6287,6 +6295,10 @@
       <xs:enumeration value="CallCenter" />
       <xs:enumeration value="Self" />
       <xs:enumeration value="HR_Admin" />
+      <xs:enumeration value="SsoLogin" />
+      <xs:enumeration value="UserToken" />
+      <xs:enumeration value="LoginGuid" />
+      <xs:enumeration value="AccessToken" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ArrayOfJournalEntry">

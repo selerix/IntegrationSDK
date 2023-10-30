@@ -2524,6 +2524,14 @@
             </summary>
             <param name="collection">The collection whose elements are copied to the new list.</param>
         </member>
+        <member name="M:Selerix.Foundation.Data.KeyValuePairList`2.Add(`0,`1)">
+            <summary>
+            Cascaded add of new values to list
+            </summary>
+            <param name="key">Key</param>
+            <param name="value">Value</param>
+            <returns>modified list for following modification</returns>
+        </member>
         <member name="T:Selerix.Foundation.Data.KeyValuePairList">
             <summary>
             Specialized class KeyValuePairList &lt;string, string&gt;
@@ -3017,6 +3025,11 @@
             JSON
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Data.ReportOutputFormat.JSON_LOWER_CAMEL_CASE">
+            <summary>
+            JSON LOWER CAMEL CASE
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Data.SafeDictionary`2">
             <summary>
             Dictionary that doesn't throw exception if item doesn't exists in [] access. Acts like Hashtable
@@ -3215,6 +3228,27 @@
             </summary>
             <param name="writer">The writer.</param>
             <param name="obj">The obj.</param>
+        </member>
+        <member name="T:Selerix.Foundation.Data.SerializationHelperEx">
+            <summary>
+            Helps to deserialize object from xml file or stream;
+            </summary>
+        </member>
+        <member name="M:Selerix.Foundation.Data.SerializationHelperEx.Deserialize``1(System.Xml.Linq.XDocument)">
+            <summary>
+            Deserializes from XDocument
+            </summary>
+            <typeparam name="T">type of target object</typeparam>
+            <param name="doc">The XDocunent</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Selerix.Foundation.Data.SerializationHelperEx.Serialize``1(``0)">
+            <summary>
+            Serializes the specified object to XDocument.
+            </summary>
+            <param name="value">The object.</param>
+            <returns>System.Xml.Lint.XDocument</returns>
         </member>
         <member name="T:Selerix.Foundation.Data.SmartList`1">
             <summary>
@@ -3672,6 +3706,13 @@
             The RelationshipFromLegalStatus object specifies the legal status of the applicant's beneficiaries.
             </summary>
             <param name="legalStatus">The legal status.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Data.Utils.LegalStatusFromRelationship(Selerix.Foundation.Relationship)">
+            <summary>
+            The LegalStatusFromRelationship method returns the legal status with same name as given relationship.        
+            </summary>
+            <param name="relationship">The Relationship.</param>
             <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.GetExceptionDetails(System.Exception,System.Boolean,System.Collections.Generic.IList{System.Type},System.String)">
@@ -4509,11 +4550,10 @@
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.CompareMoneyValues(System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
             <summary>
-            Compare two decimal numbers as SQL Money type
+            Compare two decimal numbers up to ten-thousandth of currency unit.
             </summary>
-            <param name="a"></param>
-            <param name="b"></param>
-            <returns></returns>
+            <param name="a">First decimal number</param>
+            <param name="b">Second decimal number</param>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.Round2Digits(System.Decimal)">
             <summary> Round value to 2 digits after period. This hack allow to put decimal value to SOAP with two digits after period</summary>
@@ -4603,18 +4643,20 @@
             <param name="timeZoneId">ID, such as "Central Standard Time"</param>
             <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.GetTimeZoneAbbr(System.String)">
+        <member name="M:Selerix.Foundation.Data.Utils.GetTimeZoneAbbr(System.String,System.Boolean)">
             <summary>
             Gets abbreviated time zone, such as "CST"
             </summary>
             <param name="timeZoneId">ID, such as "Central Standard Time"</param>
+            <param name="includeDaylightSavings"></param>
             <returns></returns>
         </member>
-        <member name="M:Selerix.Foundation.Data.Utils.GetTimeZoneAbbr(System.Int32)">
+        <member name="M:Selerix.Foundation.Data.Utils.GetTimeZoneAbbr(System.Int32,System.Boolean)">
             <summary>
             Gets abbreviated time zone, such as "CST"
             </summary>
             <param name="timezoneOffset">Time zone offset hours, such as -6</param>
+            <param name="includeDaylightSavings">Will include standard or daylight acronym if true</param>
             <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Data.Utils.Truncate(System.String,System.Int32)">
@@ -5248,6 +5290,21 @@
             </summary>
             <param name="source">The source.</param>
             <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.SHA1(System.String)">
+            <summary>
+            Computes SHA1 hash from source string as Unicode encoding.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Selerix.Foundation.Encryptor.SHA1(System.String,System.Text.Encoding)">
+            <summary>
+            Computes SHA1 hash from source string.
+            </summary>
+            <param name="source"></param>
+            <param name="encoding"></param>
+            <returns></returns>
         </member>
         <member name="M:Selerix.Foundation.Encryptor.SHA2(System.String)">
             <summary>
@@ -6037,6 +6094,26 @@
             HR or some other administrator enrolled.
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.EnrollmentSessionType.SsoLogin">
+            <summary>
+            Enrollment open by SSO login
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EnrollmentSessionType.UserToken">
+            <summary>
+            Enrollment open by user_token
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EnrollmentSessionType.LoginGuid">
+            <summary>
+            Enrollment open by Login GUID
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.EnrollmentSessionType.AccessToken">
+            <summary>
+            Enrollment open by access_token
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.AcaAdministrativePeriod">
             <summary>
             Used with AcaStandardMeasurementViewModel and AcaInitialMeasurementViewModel
@@ -6242,6 +6319,156 @@
             Mailing Address
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.Enumerations.BCM.BcmGroupSearchType">
+            <summary>
+            Enumeration of BcmGroup search types.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSearchType.All">
+            <summary>
+            All
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSearchType.Pending">
+            <summary>
+            Pending,
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSearchType.Accepted">
+            <summary>
+            Accepted.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSearchType.Rejected">
+            <summary>
+            Rejected.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus">
+            <summary>
+            BcmGroup Setup Status
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus.NotStarted">
+            <summary>
+            NotStarted
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus.CaseInfo">
+            <summary>
+            CaseInfo
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus.Locations">
+            <summary>
+            Locations
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus.JobClasses">
+            <summary>
+            JobClasses
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus.PayGroups">
+            <summary>
+            PayGroups
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus.BenefitPlans">
+            <summary>
+            BenefitPlans
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSetupStatus.Complete">
+            <summary>
+            Complete
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.BCM.BcmGroupSortingField">
+            <summary>
+            BcmGroup Sorting Field
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSortingField.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSortingField.GroupNumber">
+            <summary>
+            GroupNumber
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSortingField.Status">
+            <summary>
+            Status.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupSortingField.DateReceived">
+            <summary>
+            Date Received.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.BCM.BcmGroupStatus">
+            <summary>
+            BcmGroup Status
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupStatus.Pending">
+            <summary>
+            Pending
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupStatus.InProgress">
+            <summary>
+            InProgress
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupStatus.Accepted">
+            <summary>
+            Accepted
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupStatus.Rejected">
+            <summary>
+            Rejected
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmGroupStatus.Error">
+            <summary>
+            Error
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.BCM.BcmJobClassSortingField">
+            <summary>
+            BcmJobClassSortingField
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmJobClassSortingField.Code">
+            <summary>
+            The code
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.BCM.BcmListSearchType">
+            <summary>
+            BcmListSearchType
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmListSearchType.All">
+            <summary>
+            All
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmListSearchType.Mapped">
+            <summary>
+            The mapped
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BCM.BcmListSearchType.UnMapped">
+            <summary>
+            The un mapped
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.enmBeneficiaryType">
             <summary>
             Enum. Specifies the type of beneficiary.
@@ -6255,6 +6482,31 @@
         <member name="F:Selerix.Foundation.Enumerations.enmBeneficiaryType.Contingent">
             <summary>
             Contingent beneficiary.
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.BenefitType">
+            <summary>
+            Enum. Specifies benefit type; for example, self-pay or COBRA.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BenefitType.Payroll">
+            <summary>
+            Payroll.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BenefitType.SelfPay">
+            <summary>
+            Self-pay.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BenefitType.Cobra">
+            <summary>
+            COBRA.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.BenefitType.Retiree">
+            <summary>
+            Retiree.
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.BorderRadius">
@@ -6400,6 +6652,11 @@
         <member name="F:Selerix.Foundation.Enumerations.enmEnrollerRequirements.DoNotCollectDependentDocumentation">
             <summary>
             Do not collect dependent documentation.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.enmEnrollerRequirements.MustUploadDependentDocumentation">
+            <summary>
+            Dependent documentation must be uploaded.
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.enmInterfaceLocation">
@@ -7207,6 +7464,16 @@
             Message Category
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.MessageLocked">
+            <summary>
+            Message Locked
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.MessageUnlocked">
+            <summary>
+            Message Unlocked
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.MessageReminderScheduledFor">
             <summary>
             Message Reminder Scheduled For
@@ -7412,6 +7679,16 @@
             Quiz message category
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.QuizLocked">
+            <summary>
+            Quiz locked
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.QuizUnlocked">
+            <summary>
+            Quiz Unlocked
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.SurveyEventDrivenEnabled">
             <summary>
             Survey Event Driven Enabled.
@@ -7440,6 +7717,16 @@
         <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.SurveyMessageCategory">
             <summary>
             Survey Message Category
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.SurveyLocked">
+            <summary>
+            Survey locked
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.SurveyUnlocked">
+            <summary>
+            Survey unlocked
             </summary>
         </member>
         <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.Event">
@@ -7482,6 +7769,16 @@
             Message category optional change.
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.CampaignLocked">
+            <summary>
+            Campaign locked
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationSubType.CampaignUnlocked">
+            <summary>
+            Campaign Unlocked
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.Engagement.ModificationType">
             <summary>
             Modification type used with engagement audit log.
@@ -7500,6 +7797,11 @@
         <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationType.Delete">
             <summary>
             Delete
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.ModificationType.Import">
+            <summary>
+            Import
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.Engagement.NotificationType">
@@ -7525,6 +7827,31 @@
         <member name="F:Selerix.Foundation.Enumerations.Engagement.TemplateType.Content">
             <summary>
             Content
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.Engagement.UserFeedbackType">
+            <summary>
+            User feedback type.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.UserFeedbackType.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.UserFeedbackType.ProductFeedback">
+            <summary>
+            Product Feedback
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.UserFeedbackType.ReportBug">
+            <summary>
+            Report a bug
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Engagement.UserFeedbackType.Suggestion">
+            <summary>
+            Suggestion
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.Enrollment.Recommendations.RecommendationSource">
@@ -7707,6 +8034,16 @@
             BoonChapman IPM as form provider bridge
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Enumerations.enmFormProviderType.UniBloxEOI">
+            <summary>
+            UniBlox EOI bridge
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.enmFormProviderType.OneAmericaEOI">
+            <summary>
+            OneAmerica EOI bridge
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.HttpVerb">
             <summary>
             HTTP Verb types
@@ -7872,6 +8209,11 @@
             ADP integration
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.Enumerations.IntegrationProvider.BCM_WBEDX">
+            <summary>
+            WBEDX BCM Integration Provider
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.Enumerations.IntegrationProvider.Aflac">
             <summary>
             Everwell Integration
@@ -7935,6 +8277,11 @@
         <member name="F:Selerix.Foundation.Enumerations.DeliveryStatus.Error">
             <summary>
             Delivery returned an error.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.DeliveryStatus.Warning">
+            <summary>
+            Upload returned an warning.
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.ReceiptStatus">
@@ -8037,6 +8384,76 @@
             The business unit
             </summary>
         </member>
+        <member name="T:Selerix.Foundation.Enumerations.Integration.ADP.ADPMarketPlaceEventDetail">
+            <summary>
+            ADPMarketPlaceEventDetail
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPMarketPlaceEventDetail.Create">
+            <summary>
+            The create
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPMarketPlaceEventDetail.Change">
+            <summary>
+            The change
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPMarketPlaceEventDetail.Cancel">
+            <summary>
+            The cancel
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPMarketPlaceEventDetail.Status">
+            <summary>
+            The status
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPMarketPlaceEventDetail.AddUser">
+            <summary>
+            The add user
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.ADP.ADPMarketPlaceEventDetail.CancelUser">
+            <summary>
+            The cancel user
+            </summary>
+        </member>
+        <member name="T:Selerix.Foundation.Enumerations.Integration.DeductionProcessingDate">
+            <summary>
+            What date use for deduction start/end
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.DeductionProcessingDate.CoverageDeductionDates">
+            <summary>
+            The coverage deduction dates
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.DeductionProcessingDate.CoverageEffectiveDates">
+            <summary>
+            The coverage effective dates
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.DeductionProcessingDate.PayPeriodStart">
+            <summary>
+            The pay period start
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.DeductionProcessingDate.PayPeriodEnd">
+            <summary>
+            The pay period end
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.DeductionProcessingDate.PayPerionStartPlusOne">
+            <summary>
+            The pay perion start plus one
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.DeductionProcessingDate.PayPeriodEndMinusOne">
+            <summary>
+            The pay period end minus one
+            </summary>
+        </member>
         <member name="T:Selerix.Foundation.Enumerations.Integration.EventSource">
             <summary>
             Queue event source.
@@ -8079,6 +8496,9 @@
         </member>
         <member name="F:Selerix.Foundation.Enumerations.Integration.EventSource.Policy">
             <summary>The policy</summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.Integration.EventSource.BcmSetup">
+            <summary>The BCM (Benefits Configuration Management)(</summary>
         </member>
         <member name="F:Selerix.Foundation.Enumerations.Integration.EventSource.Messaging">
             <summary>
@@ -8208,21 +8628,6 @@
         <member name="F:Selerix.Foundation.Enumerations.Integration.iSolved.ISolvedLocationSource.Organization5">
             <summary>
             The organization5
-            </summary>
-        </member>
-        <member name="T:Selerix.Foundation.Enumerations.Integration.Paycor.DeductionStartDateOption">
-            <summary>
-            Option what date to use for deduction start
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Integration.Paycor.DeductionStartDateOption.CoverageEffectiveDate">
-            <summary>
-            The coverage effective date
-            </summary>
-        </member>
-        <member name="F:Selerix.Foundation.Enumerations.Integration.Paycor.DeductionStartDateOption.CoverageDeductionDate">
-            <summary>
-            The coverage deduction date
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.Integration.Paylocity.FrequencyOverride">
@@ -8779,6 +9184,11 @@
         <member name="F:Selerix.Foundation.Enumerations.NetchexLocationSource.Location">
             <summary>
             The Location
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.Enumerations.NetchexLocationSource.CompanyName">
+            <summary>
+            The company name
             </summary>
         </member>
         <member name="T:Selerix.Foundation.Enumerations.OAuthType">
@@ -9522,6 +9932,11 @@
             Job title changed
             </summary>
         </member>
+        <member name="F:Selerix.Foundation.ApplicationCoverageReason.AdministrativeChange">
+            <summary>
+            AdministrativeChange
+            </summary>
+        </member>
         <member name="F:Selerix.Foundation.ApplicationCoverageReason.TerminatedEmploymentRetired">
             <summary>
             TerminatedEmploymentRetired
@@ -9789,6 +10204,16 @@
         <member name="F:Selerix.Foundation.FormProviderType.BoonChapmanIPM">
             <summary>
             BoonChapman IPM as form provider bridge
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.FormProviderType.UniBloxEOI">
+            <summary>
+            UniBlox EOI bridge
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.FormProviderType.OneAmericaEOI">
+            <summary>
+            OneAmerica EOI bridge
             </summary>
         </member>
         <member name="T:Selerix.Foundation.SignatureMode">
@@ -11339,6 +11764,11 @@
         </member>
         <member name="F:Selerix.Foundation.EngineName.Allstate">
             <summary>The allstate</summary>
+        </member>
+        <member name="F:Selerix.Foundation.EngineName.Informational">
+            <summary>
+            Informational Engine
+            </summary>
         </member>
         <member name="F:Selerix.Foundation.EngineName.Other">
             <summary>
@@ -12963,7 +13393,7 @@
         </member>
         <member name="F:Selerix.Foundation.SignatureDataType.VoiceConformation">
             <summary>
-            Voice conformation.
+            Voice conformation. Deprecated. Use 'VoiceConfirmation' instead.
             </summary>
         </member>
         <member name="F:Selerix.Foundation.SignatureDataType.Timestamp">
@@ -12983,7 +13413,17 @@
         </member>
         <member name="F:Selerix.Foundation.SignatureDataType.VoiceConformationFile">
             <summary>
-            Voice conformation file.
+            Voice conformation file. Deprecated. Use 'VoiceConfirmationFile' instead.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.SignatureDataType.VoiceConfirmation">
+            <summary>
+            Voice confirmation.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.SignatureDataType.VoiceConfirmationFile">
+            <summary>
+            Voice confirmation file.
             </summary>
         </member>
         <member name="F:Selerix.Foundation.SignatureDataType.Unknown">
@@ -13093,7 +13533,7 @@
         </member>
         <member name="F:Selerix.Foundation.enmSignatureDataType.VoiceConformation">
             <summary>
-            Voice confirmation.
+            Voice conformation. Deprecated. Use 'VoiceConfirmation' instead.
             </summary>
         </member>
         <member name="F:Selerix.Foundation.enmSignatureDataType.Timestamp">
@@ -13112,6 +13552,16 @@
             </summary>
         </member>
         <member name="F:Selerix.Foundation.enmSignatureDataType.VoiceConformationFile">
+            <summary>
+            Voice conformation file. Deprecated. Use 'VoiceConfirmationFile' instead.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmSignatureDataType.VoiceConfirmation">
+            <summary>
+            Voice confirmation.
+            </summary>
+        </member>
+        <member name="F:Selerix.Foundation.enmSignatureDataType.VoiceConfirmationFile">
             <summary>
             Voice confirmation file.
             </summary>

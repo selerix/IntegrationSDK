@@ -281,6 +281,11 @@
             The name of the entity.
             </value>
         </member>
+        <member name="P:Selerix.BusinessObjects.ACA.ACAEntity.EntityEnabled">
+            <summary>
+            Gets or sets whether or not entity is considered enabled
+            </summary>
+        </member>
         <member name="T:Selerix.BusinessObjects.ACA.ACAContact">
             <summary>
             ACA Contact
@@ -1069,6 +1074,72 @@
             The foreign postal cd
             </summary>
         </member>
+        <member name="T:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail">
+            <summary>
+            Form 1094-C - Transmittal of Employer-Provided Health Insurance Offer and Coverage Information Returns
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.SubmissionId">
+            <summary>
+            Gets or sets the submission identifier.
+            </summary>
+            <value>
+            The submission identifier.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.TestScenarioId">
+            <summary>
+            Gets or sets the test scenario identifier.
+            </summary>
+            <value>
+            The test scenario identifier.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.TaxYr">
+            <summary>
+            Gets or sets the tax yr.
+            </summary>
+            <value>
+            The tax yr.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.CorrectedInd">
+            <summary>
+            Gets or sets the corrected ind.
+            </summary>
+            <value>
+            The corrected ind.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.EmployerInformationGrp">
+            <summary>
+            The employer information
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.Form1095CAttachedCnt">
+            <summary>
+            Gets or sets the form1095 c attached count.
+            </summary>
+            <value>
+            The form1095 c attached count.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.AuthoritativeTransmittalInd">
+            <summary>
+            Gets or sets the authoritative transmittal ind.
+            </summary>
+            <value>
+            The authoritative transmittal ind.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetail.Form1095CUpstreamDetails">
+            <summary>
+            Gets or sets the form1095 c upstream detail.
+            </summary>
+            <value>
+            The form1095 c upstream detail.
+            </value>
+        </member>
         <member name="T:Selerix.BusinessObjects.ACA.Form1094CUpstreamDetailType">
             <summary>
             Form 1094-C - Transmittal of Employer-Provided Health Insurance Offer and Coverage Information Returns
@@ -1157,6 +1228,91 @@
             <summary>
             Gets the ale sect4980 h TRNST relief.
             </summary>
+            <param name="month">The month.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail">
+            <summary>
+            Form 1095-C  Employer-Provided Health Insurance Offer and Coverage Statement.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.RecordId">
+            <summary>
+            Gets or sets the record identifier.
+            </summary>
+            <value>
+            The record identifier.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.CorrectedInd">
+            <summary>
+            Gets or sets the corrected ind.
+            </summary>
+            <value>
+            The corrected ind.
+            </value>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.EmployeeInfoGrp">
+            <summary>
+            Employee information Group
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.EmployeeOfferAndCoverageGrp">
+            <summary>
+            The employee offer and coverage GRP
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.CoveredIndividualGrps">
+            <summary>
+            Covered Individual Group Information
+            </summary>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.ShouldSerializeCoveredIndividualGrps">
+            <summary>
+            Shoulds the serialize covered individual GRPS.
+            </summary>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.GetCoveredPersonName(System.Int32)">
+            <summary>
+            Gets the name of the covered person.
+            </summary>
+            <param name="personId">The person identifier.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.GetCoveredPersonFirstName(System.Int32)">
+            <summary>
+            Gets the first name of the covered person.
+            </summary>
+            <param name="personId">The person identifier.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.GetCoveredPersonLastName(System.Int32)">
+            <summary>
+            Gets the last name of the covered person.
+            </summary>
+            <param name="personId">The person identifier.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.GetCoveredPersonSSN(System.Int32)">
+            <summary>
+            Gets the covered person SSN.
+            </summary>
+            <param name="personId">The person identifier.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.GetCoveredPersonBirthDate(System.Int32)">
+            <summary>
+            Gets the covered person birth date.
+            </summary>
+            <param name="personId">The person identifier.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Selerix.BusinessObjects.ACA.Form1095CUpstreamDetail.GetCoveredPersonMonthlyIndicator(System.Int32,System.Int32)">
+            <summary>
+            Gets the covered person monthly indicator.
+            </summary>
+            <param name="personId">The person identifier.</param>
             <param name="month">The month.</param>
             <returns>System.String.</returns>
         </member>
@@ -14097,6 +14253,71 @@
             Creates a collection of person objects.
             </summary>
         </member>
+        <member name="T:Selerix.BusinessObjects.PayCalendarExport">
+            <summary>
+            Class representing every row of pay calendar excel export
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.PayCalendarExport.PayDate">
+            <summary>
+            Pay date
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.PayCalendarExport.ProcessingDate">
+            <summary>
+            Processing Date, also referred to as Deduction Date
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.PayCalendarExport.PayPeriodBegin">
+            <summary>
+            Begin date of pay period
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.PayCalendarExport.PayPeriodEnd">
+            <summary>
+            End date of pay period
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.PayCalendarExport.Deduct">
+            <summary>
+            Value indicating whether this PayRoll is deduction period merits and actual deduct.
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.PayCalendarExport.Index">
+            <summary>
+            Order of row in sheet
+            </summary>
+        </member>
+        <member name="T:Selerix.BusinessObjects.PayCalendarExportColumns">
+            <summary>
+            Pay calendar export column indexes
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.PayCalendarExportColumns.PayDate">
+            <summary>
+            Pay Date column index
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.PayCalendarExportColumns.ProcessingDate">
+            <summary>
+            Processing Date column index
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.PayCalendarExportColumns.PayPeriodBegin">
+            <summary>
+            Pay Period Begin column index
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.PayCalendarExportColumns.PayPeriodEnd">
+            <summary>
+            Pay Period End column index
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.PayCalendarExportColumns.Deduct">
+            <summary>
+            Deduct column index
+            </summary>
+        </member>
         <member name="T:Selerix.BusinessObjects.Payer">
             <summary>
             Specifies the attributes of a payer.
@@ -16487,6 +16708,11 @@
         <member name="P:Selerix.BusinessObjects.Product.RequiredInsuredGender">
             <summary>
             The require insured gender
+            </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.Product.AllowOtherGender">
+            <summary>
+            Is Other gender selection allowed as prerequisite for this product?  Defaults to 'false'.
             </summary>
         </member>
         <member name="P:Selerix.BusinessObjects.Product.RequiredPrimaryInsuredSSNOnly">
@@ -27301,6 +27527,11 @@
             Do not collect dependent documentation.
             </summary>
         </member>
+        <member name="F:Selerix.BusinessObjects.EnrollerRequirements.MustUploadDependentDocumentation">
+            <summary>
+            Dependent documentation must be uploaded.
+            </summary>
+        </member>
         <member name="T:Selerix.BusinessObjects.PremiumLimitByType">
             <summary>
             Enumeration that specifies where premium limit should apply.
@@ -27502,6 +27733,21 @@
         <member name="F:Selerix.BusinessObjects.ProductSortOrder.ProductOrder">
             <summary>
             Sort by product order
+            </summary>
+        </member>
+        <member name="T:Selerix.BusinessObjects.EnrollmentWorkflow">
+            <summary>
+            Defines the worflow used to enroll into multi coverage product types.
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.EnrollmentWorkflow.Standard">
+            <summary>
+            Employee selects each person manually.
+            </summary>
+        </member>
+        <member name="F:Selerix.BusinessObjects.EnrollmentWorkflow.Iterative">
+            <summary>
+            Employee is offered to enroll next eligible person.
             </summary>
         </member>
         <member name="T:Selerix.BusinessObjects.AmountMode">
@@ -29626,6 +29872,18 @@
             <summary>
             The form filename.
             </summary>
+        </member>
+        <member name="P:Selerix.BusinessObjects.UI.Html.FormShortcodeInfo.XmlLowerCaseUniqueID">
+            <summary>
+            Gets or sets the unique ID. This property is used for serialization only.
+            </summary>
+            <value>The unique ID.</value>
+        </member>
+        <member name="M:Selerix.BusinessObjects.UI.Html.FormShortcodeInfo.ShouldSerializeXmlLowerCaseUniqueID">
+            <summary>
+            A ShouldSerialize[Object] method (ShouldSerializeUniqueID) that returns true or false. XML serialization enables an object's public fields and properties to be saved and loaded to/from an XML file. Typically, XML serialization will be desired for an object that is not null or empty and has a value such as a string object or a list object that is not null and has at least one element.
+            </summary>
+            <returns>bool true/false</returns>
         </member>
         <member name="M:Selerix.BusinessObjects.UI.Html.FormShortcodeInfo.#ctor">
             <summary>
