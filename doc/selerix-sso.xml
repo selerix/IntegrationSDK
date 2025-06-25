@@ -58,7 +58,7 @@
     <md:Company>Selerix Systems, Inc.</md:Company>
     <md:GivenName>David</md:GivenName>
     <md:SurName>Ford</md:SurName>
-    <md:EmailAddress>david.ford@selerix.com</md:EmailAddress>
+    <md:EmailAddress>integrations@selerix.com</md:EmailAddress>
     <md:TelephoneNumber>+1 (214) 856-4216</md:TelephoneNumber>
   </md:ContactPerson>
 </md:EntityDescriptor>
